@@ -1,0 +1,28 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Header from '../components/global/Header.astro';
+import Footer from '../components/global/Footer.astro';
+import ScrollFauna from '../components/easter-eggs/ScrollFauna.astro';
+import CursorLeaves from '../components/easter-eggs/CursorLeaves.astro';
+import SectionReveal from '../components/easter-eggs/SectionReveal.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  jsonLd?: Record<string, unknown>;
+}
+
+const { title, description, ogImage, jsonLd } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} ogImage={ogImage} jsonLd={jsonLd}>
+  <Header />
+  <main class="flex-1">
+    <slot />
+  </main>
+  <Footer />
+  <ScrollFauna />
+  <CursorLeaves />
+  <SectionReveal />
+</BaseLayout>

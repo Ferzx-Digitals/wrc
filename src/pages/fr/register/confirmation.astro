@@ -1,0 +1,76 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+import Button from '../../../components/ui/Button.astro';
+import CountdownTimer from '../../../components/global/CountdownTimer.astro';
+import { CONTACT_EMAIL } from '../../../utils/constants';
+import { getLocaleFromUrl } from '../../../i18n/utils';
+
+const locale = getLocaleFromUrl(Astro.url);
+const prefix = `/${locale}`;
+---
+
+<PageLayout title="Inscription Confirmée" description="Votre inscription au 11e Congrès Mondial des Gardes Forestiers de l'IRF a été confirmée.">
+  <section class="py-20">
+    <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8 text-center">
+      <!-- Success Icon -->
+      <div class="w-24 h-24 mx-auto rounded-full bg-wrc-green-100 flex items-center justify-center mb-8">
+        <svg class="w-12 h-12 text-wrc-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+
+      <h1 class="text-4xl font-heading font-extrabold text-wrc-green-900 mb-4">
+        Inscription Confirmée !
+      </h1>
+      <p class="text-lg text-gray-600 mb-8">
+        Merci de vous être inscrit au 11e Congrès Mondial des Gardes Forestiers de l'IRF.
+        Vous recevrez un e-mail de confirmation avec les détails de votre inscription sous peu.
+      </p>
+
+      <!-- Confirmation Details -->
+      <div class="bg-wrc-green-50 rounded-2xl p-8 mb-8 text-left">
+        <h2 class="font-heading font-bold text-wrc-green-900 mb-4">Prochaines Étapes</h2>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-wrc-green-700 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">1</span>
+            <span class="text-gray-700">Vérifiez votre e-mail pour le reçu de confirmation et le numéro d'inscription</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-wrc-green-700 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">2</span>
+            <span class="text-gray-700">Demandez votre visa argentin si nécessaire — <a href="https://www.migraciones.gob.ar/accesible/indexdnm.php?visas" class="text-wrc-green-700 underline" target="_blank" rel="noopener">consulter le portail des visas</a></span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-wrc-green-700 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">3</span>
+            <span class="text-gray-700">Réservez votre voyage à Puerto Iguazú — <a href={`${prefix}/travel`} class="text-wrc-green-700 underline">voir les options de voyage</a></span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-wrc-green-700 text-white flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">4</span>
+            <span class="text-gray-700">Consultez le programme du congrès — <a href={`${prefix}/program`} class="text-wrc-green-700 underline">voir le programme</a></span>
+          </li>
+        </ul>
+      </div>
+
+      <p class="text-sm text-gray-500 mb-8">
+        Des questions ? Contactez-nous à{' '}
+        <a href={`mailto:${CONTACT_EMAIL}`} class="text-wrc-green-700 underline">{CONTACT_EMAIL}</a>
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href={`${prefix}/program`} variant="primary">
+          Voir le Programme
+        </Button>
+        <Button href={`${prefix}`} variant="outline">
+          Retour à l'Accueil
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Countdown -->
+  <section class="py-12 bg-gradient-to-r from-wrc-green-800 to-wrc-green-900 text-white text-center">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-xl font-heading font-bold mb-4">À Bientôt au Congrès !</h2>
+      <CountdownTimer />
+    </div>
+  </section>
+</PageLayout>

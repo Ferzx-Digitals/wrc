@@ -1,0 +1,185 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Button from '../../components/ui/Button.astro';
+import SectionDivider from '../../components/global/SectionDivider.astro';
+import { getLocaleFromUrl } from '../../i18n/utils';
+
+const locale = getLocaleFromUrl(Astro.url);
+const prefix = `/${locale}`;
+
+const streams = [
+  {
+    title: 'Fuerza Laboral Inclusiva y Representativa',
+    description: 'Promover la diversidad, la equidad y la inclusión dentro de la profesión de guardaparques. Abordar el equilibrio de género, la representación indígena y asegurar que todas las voces sean escuchadas en la conservación.',
+    icon: '🌍',
+  },
+  {
+    title: 'Bienestar y Condiciones Laborales',
+    description: 'Mejorar la seguridad, el apoyo a la salud mental, la compensación justa y los entornos de trabajo para guardaparques en todo el mundo. Abordar los riesgos y desafíos que enfrentan los guardaparques diariamente.',
+    icon: '🛡️',
+  },
+  {
+    title: 'Conducta Profesional y Ética',
+    description: 'Establecer y mantener altos estándares profesionales, directrices éticas y marcos de responsabilidad para las operaciones de guardaparques a nivel mundial.',
+    icon: '⚖️',
+  },
+  {
+    title: 'Desarrollo de Capacidades y Formación',
+    description: 'Desarrollar habilidades, conocimientos y capacidades a través de programas de formación, mentoría y oportunidades de desarrollo profesional para guardaparques en todos los niveles.',
+    icon: '📚',
+  },
+  {
+    title: 'Participación Comunitaria y Alianzas',
+    description: 'Construir relaciones sólidas entre guardaparques, comunidades locales, pueblos indígenas y organizaciones de conservación para crear enfoques colaborativos en la gestión de áreas protegidas.',
+    icon: '🤝',
+  },
+];
+
+const objectives = [
+  {
+    title: 'Reconocimiento de Guardaparques y 30x30',
+    description: 'Mejorar el reconocimiento de la profesión de guardaparques y alinearse con el Marco Global 30x30 para proteger el 30% del planeta para 2030.',
+    color: 'from-wrc-green-700 to-wrc-green-800',
+  },
+  {
+    title: 'Experiencias de Guardaparques',
+    description: 'Mostrar las experiencias, desafíos y contribuciones de guardaparques de las siete regiones de la IRF en todo el mundo.',
+    color: 'from-wrc-blue-700 to-wrc-blue-800',
+  },
+  {
+    title: 'Soluciones de Guardaparques',
+    description: 'Desarrollar soluciones prácticas para los desafíos de conservación regionales y globales a través de la colaboración y el intercambio de conocimientos.',
+    color: 'from-wrc-earth-600 to-wrc-earth-700',
+  },
+  {
+    title: 'Declaración de Guardaparques',
+    description: 'Producir la Declaración de Iguazú — una declaración histórica que enfatiza el papel de los guardaparques en la conservación de la naturaleza.',
+    color: 'from-emerald-700 to-emerald-800',
+  },
+];
+
+const topics = [
+  { title: 'Pueblos Indígenas y Guardaparques', description: 'Unir el conocimiento tradicional con las prácticas modernas de conservación.', icon: '🏔️' },
+  { title: 'Enfoque Una Salud', description: 'Conectar la salud humana, animal y ambiental a través del trabajo de los guardaparques.', icon: '🩺' },
+  { title: 'Participación Juvenil', description: 'Involucrar a la próxima generación en la conservación y la profesión de guardaparques.', icon: '🌱' },
+  { title: 'Tecnología e Innovación', description: 'Aprovechar herramientas modernas para el monitoreo, la aplicación de la ley y la comunicación.', icon: '📡' },
+  { title: 'Resiliencia Climática', description: 'Adaptar las estrategias de los guardaparques para abordar los impactos del cambio climático en las áreas protegidas.', icon: '🌡️' },
+];
+---
+
+<PageLayout title="Tema del Congreso" description="Explore el tema del 11° Congreso Mundial de Guardaparques de la IRF: Reconociendo a los Guardaparques — Avanzando la profesión para salvaguardar nuestro futuro.">
+  <!-- Hero -->
+  <section class="relative h-[350px] sm:h-[400px] bg-gradient-to-r from-wrc-green-900/90 to-wrc-green-800/70">
+    <div class="absolute inset-0 opacity-10">
+      <div class="w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M20%2020.5V18H0v-2h20v-2l-3-3%203-3v-2H0V4h20V1.5L23.5%205%2020%208.5z%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.2%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E')]"></div>
+    </div>
+    <div class="relative h-full flex items-center">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white">
+          Tema del Congreso
+        </h1>
+        <p class="mt-4 text-xl text-white/80 max-w-2xl">
+          Reconociendo a los Guardaparques: Avanzando la profesión para salvaguardar nuestro futuro
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Theme Description -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="bg-wrc-green-50 rounded-2xl p-8 md:p-10 mb-12">
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-wrc-green-900 mb-4">
+            "Reconociendo a los Guardaparques: Avanzando la profesión para salvaguardar nuestro futuro"
+          </h2>
+          <p class="text-gray-600 leading-relaxed">
+            El tema del 11° Congreso Mundial de Guardaparques de la IRF se centra en mejorar las condiciones laborales,
+            proporcionar mejor equipamiento y formación, y empoderar a los guardaparques para que cumplan su papel vital
+            en la protección de la biodiversidad y la construcción de un futuro sostenible. Los guardaparques protegen más del 15%
+            de la superficie terrestre y el 8% de nuestros océanos — sin embargo, sus contribuciones son frecuentemente
+            subvaloradas y sus necesidades ignoradas.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Thematic Streams - Zigzag layout -->
+  <section class="py-16 bg-gray-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-center text-wrc-green-900 mb-12">
+        Ejes Temáticos
+      </h2>
+      <div class="space-y-12">
+        {streams.map((stream, i) => (
+          <div class={`flex flex-col md:flex-row items-center gap-8 ${i % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+            <div class="w-full md:w-1/2">
+              <div class="aspect-[16/10] rounded-xl bg-gradient-to-br from-wrc-green-100 to-wrc-blue-100 flex items-center justify-center">
+                <span class="text-6xl" aria-hidden="true">{stream.icon}</span>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2">
+              <h3 class="text-xl font-heading font-bold text-wrc-green-900 mb-3">{stream.title}</h3>
+              <p class="text-gray-600 leading-relaxed">{stream.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <SectionDivider variant="jungle" />
+
+  <!-- Congress Objectives -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+        Objetivos del Congreso
+      </h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {objectives.map((obj) => (
+          <div class={`group relative rounded-xl overflow-hidden bg-gradient-to-br ${obj.color} p-6 min-h-[200px] flex flex-col justify-end cursor-pointer transition-all duration-300 hover:shadow-xl hover:scale-[1.02]`}>
+            <h3 class="font-heading font-bold text-lg text-white mb-2">{obj.title}</h3>
+            <p class="text-sm text-white/80 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-h-0 group-hover:max-h-40 overflow-hidden">
+              {obj.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- WRC Topics Grid -->
+  <section class="py-16 bg-gray-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+        Temas de Discusión
+      </h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {topics.map((topic) => (
+          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+            <span class="text-3xl mb-3 block" aria-hidden="true">{topic.icon}</span>
+            <h3 class="font-heading font-bold text-lg text-gray-900 mb-2">{topic.title}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">{topic.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Submit CTA -->
+  <section class="py-16 bg-gradient-to-r from-wrc-green-800 to-wrc-green-900 text-white text-center">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold mb-4">Comparta Su Experiencia</h2>
+      <p class="text-lg text-white/80 mb-8">
+        Envíe una expresión de interés para presentar en el 11° Congreso Mundial de Guardaparques de la IRF.
+      </p>
+      <Button href={`${prefix}/submit`} variant="secondary" size="lg">
+        Enviar Expresión de Interés
+      </Button>
+    </div>
+  </section>
+</PageLayout>

@@ -1,0 +1,23 @@
+---
+interface Props {
+  src: string;
+  title?: string;
+  height?: string;
+  class?: string;
+}
+
+const { src, title = 'Map', height = '400', class: className = '' } = Astro.props;
+---
+
+<div class:list={['rounded-xl overflow-hidden shadow-md', className]}>
+  <iframe
+    src={src}
+    width="100%"
+    height={height}
+    style="border:0; filter: saturate(0.8) contrast(1.1);"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    title={title}
+  ></iframe>
+</div>

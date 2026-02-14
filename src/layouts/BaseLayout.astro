@@ -1,0 +1,64 @@
+---
+import '../styles/global.css';
+import { SITE_NAME, VENUE, ORGANIZERS, REGISTRATION_FEE_USD } from '../utils/constants';
+import { getLocaleFromUrl, t } from '../i18n/utils';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  jsonLd?: Record<string, unknown>;
+}
+
+const locale = getLocaleFromUrl(Astro.url);
+const { title, description, ogImage, jsonLd } = Astro.props;
+const pageTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
+const pageDescription = description || t('site.description', locale);
+const siteOrigin = (Astro.site ?? new URL('https://wrc2027.org')).origin;
+const canonicalURL = new URL(Astro.url.pathname, siteOrigin);
+const pathWithoutLocale = Astro.url.pathname.replace(/^\/(en|es|fr)/, '');
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Hreflang -->
+    <link rel="alternate" hreflang="en" href={`${siteOrigin}/en${pathWithoutLocale}`} />
+    <link rel="alternate" hreflang="es" href={`${siteOrigin}/es${pathWithoutLocale}`} />
+    <link rel="alternate" hreflang="fr" href={`${siteOrigin}/fr${pathWithoutLocale}`} />
+    <link rel="alternate" hreflang="x-default" href={`${siteOrigin}/en${pathWithoutLocale}`} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content={locale === 'es' ? 'es_ES' : locale === 'fr' ? 'fr_FR' : 'en_US'} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
+
+    <!-- Schema.org JSON-LD -->
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="min-h-screen flex flex-col bg-white text-gray-900">
+    <slot />
+  </body>
+</html>

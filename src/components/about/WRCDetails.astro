@@ -1,0 +1,41 @@
+---
+import CountdownTimer from '../global/CountdownTimer.astro';
+import MapEmbed from '../ui/MapEmbed.astro';
+import { VENUE } from '../../utils/constants';
+import { getLocaleFromUrl, t } from '../../i18n/utils';
+
+const locale = getLocaleFromUrl(Astro.url);
+---
+
+<!-- Scroll 2: 11th WRC Details -->
+<section class="py-16 bg-wrc-green-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <h2 class="text-3xl sm:text-4xl font-heading font-bold text-wrc-green-900">
+        {t('about.wrc.title', locale)}
+      </h2>
+      <p class="mt-3 text-lg text-wrc-green-700 font-heading font-semibold">
+        {t('about.wrc.subtitle', locale)}
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-10 items-start mb-12">
+      <div class="space-y-4 text-gray-600 leading-relaxed">
+        <p>{t('about.wrc.p1', locale)}</p>
+        <p set:html={t('about.wrc.p2', locale)} />
+        <p>{t('about.wrc.p3', locale)}</p>
+      </div>
+      <MapEmbed
+        src={VENUE.mapEmbed}
+        title="Puerto Iguazu, Misiones, Argentina"
+        height="350"
+      />
+    </div>
+
+    <!-- Countdown -->
+    <div class="text-center">
+      <h3 class="text-xl font-heading font-bold text-wrc-green-900 mb-6">{t('about.wrc.countdown', locale)}</h3>
+      <CountdownTimer />
+    </div>
+  </div>
+</section>

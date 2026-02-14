@@ -1,0 +1,101 @@
+---
+import { getLocaleFromUrl, t } from '../../i18n/utils';
+
+const locale = getLocaleFromUrl(Astro.url);
+
+const teamMembers = [
+  { name: 'Chris Galliers', role: 'President IRF', org: 'IRF' },
+  { name: 'Andy Davies', role: 'Secretary', org: 'IRF' },
+  { name: 'Carlien Roodt', role: 'Executive Officer', org: 'IRF' },
+  { name: 'Mike Lynch', role: 'Treasurer', org: 'IRF' },
+  { name: 'Jolene Nelson', role: 'Oceania Rep', org: 'IRF' },
+  { name: 'Monica Alvarez', role: 'Fed Development Officer', org: 'IRF' },
+  { name: 'Rohit Singh', role: 'Asia Rep', org: 'IRF' },
+  { name: 'Antuel Sánchez', role: 'General Secretary', org: 'SIGUNARA' },
+  { name: 'Leonardo Juber', role: 'Member', org: 'SIGUNARA' },
+  { name: 'Sofia Nazar', role: 'Member', org: 'SIGUNARA' },
+  { name: 'Oscar Carvajal Mora', role: 'President FLG', org: 'FLG' },
+  { name: 'Laura Pastorino Ladereche', role: 'Vice President FLG', org: 'FLG' },
+  { name: 'Andrea Juncos', role: 'Executive Director', org: 'Plan A' },
+  { name: 'Ana Lacuadra', role: 'Project Manager', org: 'Plan A' },
+  { name: 'Malvina Solis', role: 'Local Coordinator', org: 'Plan A' },
+  { name: 'Martina Alvarez', role: 'Registration', org: 'Plan A' },
+  { name: 'Natalia Benejam', role: 'Commercial Coordinator', org: 'Plan A' },
+  { name: 'Renata Bollini', role: 'Coordinator Assistant', org: 'Plan A' },
+  { name: 'Celeste Dichico', role: 'Academic Coordinator', org: 'Plan A' },
+];
+
+const orgColors: Record<string, string> = {
+  IRF: 'bg-wrc-green-100 text-wrc-green-700 border-wrc-green-200',
+  SIGUNARA: 'bg-wrc-blue-100 text-wrc-blue-700 border-wrc-blue-200',
+  FLG: 'bg-wrc-earth-100 text-wrc-earth-600 border-wrc-earth-200',
+  'Plan A': 'bg-purple-100 text-purple-700 border-purple-200',
+};
+
+const avatarBgs: Record<string, string> = {
+  IRF: 'bg-wrc-green-200 text-wrc-green-700',
+  SIGUNARA: 'bg-wrc-blue-200 text-wrc-blue-700',
+  FLG: 'bg-wrc-earth-200 text-wrc-earth-700',
+  'Plan A': 'bg-purple-200 text-purple-700',
+};
+---
+
+<section class="py-16 relative overflow-hidden">
+  <div class="absolute inset-0 nature-texture" aria-hidden="true"></div>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+    <h2 class="text-3xl md:text-4xl font-heading font-bold text-center text-wrc-green-900 mb-4">
+      {t('home.team.title', locale)}
+    </h2>
+
+    <!-- Decorative divider -->
+    <div class="flex items-center justify-center gap-2 mb-10" aria-hidden="true">
+      <div class="h-px w-12 bg-wrc-green-300"></div>
+      <svg class="w-5 h-5 text-wrc-green-500" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M10 18 Q7 12 5 8 Q3 4 6 2 Q8 1 10 4 Q12 1 14 2 Q17 4 15 8 Q13 12 10 18Z" />
+      </svg>
+      <div class="h-px w-12 bg-wrc-green-300"></div>
+    </div>
+
+    <div class="swiper team-carousel">
+      <div class="swiper-wrapper">
+        {teamMembers.map((member) => (
+          <div class="swiper-slide">
+            <div class="text-center px-2">
+              <!-- Photo placeholder with nature-themed ring -->
+              <div class={`w-24 h-24 sm:w-28 sm:h-28 mx-auto rounded-full flex items-center justify-center mb-3 shadow-md ring-2 ring-wrc-green-200/50 ${avatarBgs[member.org] || 'bg-gray-200 text-gray-500'}`}>
+                <span class="text-2xl font-heading font-bold">{member.name.charAt(0)}</span>
+              </div>
+              <h3 class="font-heading font-bold text-sm text-gray-900">{member.name}</h3>
+              <p class="text-xs text-gray-500 mt-1">{member.role}</p>
+              <span class={`inline-block mt-2 px-2 py-0.5 rounded-full text-xs font-medium border ${orgColors[member.org] || 'bg-gray-100 text-gray-600 border-gray-200'}`}>
+                {member.org}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="swiper-pagination mt-6"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import Swiper from 'swiper';
+  import { Pagination, Autoplay } from 'swiper/modules';
+
+  new Swiper('.team-carousel', {
+    modules: [Pagination, Autoplay],
+    slidesPerView: 2,
+    spaceBetween: 16,
+    autoplay: { delay: 3000, disableOnInteraction: false },
+    pagination: { el: '.team-carousel .swiper-pagination', clickable: true },
+    breakpoints: {
+      480: { slidesPerView: 3 },
+      768: { slidesPerView: 4 },
+      1024: { slidesPerView: 5 },
+      1280: { slidesPerView: 6 },
+    },
+    a11y: { enabled: true },
+  });
+</script>

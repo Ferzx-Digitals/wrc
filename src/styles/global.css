@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+@theme {
+  --color-wrc-green-50: #f0fdf4;
+  --color-wrc-green-100: #dcfce7;
+  --color-wrc-green-200: #bbf7d0;
+  --color-wrc-green-300: #86efac;
+  --color-wrc-green-400: #4ade80;
+  --color-wrc-green-500: #22c55e;
+  --color-wrc-green-600: #16a34a;
+  --color-wrc-green-700: #15803d;
+  --color-wrc-green-800: #166534;
+  --color-wrc-green-900: #14532d;
+
+  --color-wrc-earth-50: #fffbeb;
+  --color-wrc-earth-100: #fef3c7;
+  --color-wrc-earth-200: #fde68a;
+  --color-wrc-earth-300: #fcd34d;
+  --color-wrc-earth-400: #fbbf24;
+  --color-wrc-earth-500: #d97706;
+  --color-wrc-earth-600: #b45309;
+  --color-wrc-earth-700: #92400e;
+  --color-wrc-earth-800: #78350f;
+
+  --color-wrc-blue-50: #eff6ff;
+  --color-wrc-blue-100: #dbeafe;
+  --color-wrc-blue-200: #bfdbfe;
+  --color-wrc-blue-300: #93c5fd;
+  --color-wrc-blue-400: #60a5fa;
+  --color-wrc-blue-500: #3b82f6;
+  --color-wrc-blue-600: #2563eb;
+  --color-wrc-blue-700: #1d4ed8;
+  --color-wrc-blue-800: #1e3a5f;
+  --color-wrc-blue-900: #1a2e4a;
+
+  --font-heading: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Open Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+/* Nature theme: pencil sketch filter for decorative SVGs */
+.sketch-element {
+  filter: url(#sketch-filter);
+  opacity: 0.12;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.sketch-element-dark {
+  filter: url(#sketch-filter);
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+/* Subtle paper/parchment texture overlay */
+.nature-texture {
+  position: relative;
+}
+.nature-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(34, 139, 34, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(139, 119, 42, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(34, 100, 34, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Waterfall mist effect for backgrounds */
+.mist-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.05) 30%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 70%, transparent 100%);
+  pointer-events: none;
+  animation: mist-drift 8s ease-in-out infinite alternate;
+}
+
+@keyframes mist-drift {
+  0% { opacity: 0.3; transform: translateX(-2%); }
+  100% { opacity: 0.6; transform: translateX(2%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mist-overlay::after {
+    animation: none;
+    opacity: 0.4;
+  }
+}
+
+/* Floating sketch decoration animation */
+@keyframes sketch-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+.sketch-float {
+  animation: sketch-float 6s ease-in-out infinite;
+}
+
+.sketch-float-delayed {
+  animation: sketch-float 7s ease-in-out 2s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sketch-float,
+  .sketch-float-delayed {
+    animation: none;
+  }
+}
+
+/* Nature section with background image support */
+.nature-bg-section {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.nature-bg-section > .nature-bg-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.nature-bg-section > *:not(.nature-bg-overlay) {
+  position: relative;
+  z-index: 2;
+}

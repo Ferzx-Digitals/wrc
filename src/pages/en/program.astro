@@ -1,0 +1,189 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Tabs from '../../components/ui/Tabs.astro';
+import Button from '../../components/ui/Button.astro';
+import SectionDivider from '../../components/global/SectionDivider.astro';
+import { getLocaleFromUrl } from '../../i18n/utils';
+
+const locale = getLocaleFromUrl(Astro.url);
+const prefix = `/${locale}`;
+
+const fieldTripsData = await import('../../content/field-trips/en.json');
+const fieldTrips = fieldTripsData.trips;
+
+const programTabs = [
+  { id: 'overview', label: 'Overview' },
+  { id: 'schedule', label: 'Detailed Schedule' },
+  { id: 'activities', label: 'Activities' },
+  { id: 'field-trips', label: 'Field Trips' },
+];
+
+const overviewSchedule = [
+  { day: 'Friday 18 April', events: 'Arrival & Registration, Welcome Reception' },
+  { day: 'Saturday 19 April', events: 'Opening Ceremony, Plenary Sessions, Cultural Night' },
+  { day: 'Sunday 20 April', events: 'Plenary Sessions, Concurrent Workshops, Press Conference' },
+  { day: 'Monday 21 April', events: 'Field Trips (Full Day)' },
+  { day: 'Tuesday 22 April', events: 'Plenary Sessions, Open Discussions, Cultural Night' },
+  { day: 'Wednesday 23 April', events: 'Closing Ceremony, Iguazu Declaration, Farewell' },
+];
+
+const activities = [
+  {
+    title: 'Plenary Talks',
+    description: 'Main stage sessions by prominent conservation experts addressing inclusive workforce, welfare of rangers, professional conduct, and capacity building.',
+    icon: '🎤',
+    count: '8-10 sessions',
+  },
+  {
+    title: 'Concurrent Workshops',
+    description: 'Thematic workshops on equity & equality, indigenous peoples, one health approach, youth involvement, technology, and community engagement.',
+    icon: '🔬',
+    count: '12-15 workshops',
+  },
+  {
+    title: 'Open Discussions',
+    description: 'Informal platforms for Indigenous Peoples, female rangers, youth leaders, volunteers, and retired rangers to share experiences.',
+    icon: '💬',
+    count: '6-8 sessions',
+  },
+  {
+    title: 'Cultural Nights',
+    description: 'Evening entertainment featuring music, art, and cultural expressions from ranger communities worldwide. Two cultural events planned.',
+    icon: '🎭',
+    count: '2 evenings',
+  },
+  {
+    title: 'Field Trips',
+    description: 'Full-day excursions to Iguazu National Park, wildlife centers, gemstone mines, Jesuit missions, and the Brazilian side of the falls.',
+    icon: '🌿',
+    count: '6 options',
+  },
+];
+---
+
+<PageLayout title="Congress Program" description="Explore the full program of the 11th IRF World Ranger Congress — plenary talks, workshops, field trips, and cultural events.">
+  <!-- Hero -->
+  <section class="relative h-[350px] sm:h-[400px] bg-gradient-to-r from-wrc-green-900/90 to-wrc-green-800/70">
+    <div class="absolute inset-0 opacity-10">
+      <div class="w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M20%2020.5V18H0v-2h20v-2l-3-3%203-3v-2H0V4h20V1.5L23.5%205%2020%208.5z%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.2%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E')]"></div>
+    </div>
+    <div class="relative h-full flex items-center">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white">
+          Congress Program
+        </h1>
+        <p class="mt-4 text-xl text-white/80 max-w-2xl">
+          Six days of learning, collaboration, and celebration
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Program Tabs -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <Tabs tabs={programTabs} defaultTab="overview">
+        <!-- Overview Tab -->
+        <div id="panel-overview" role="tabpanel">
+          <h2 class="text-2xl font-heading font-bold text-wrc-green-900 mb-6">
+            Program Overview
+          </h2>
+          <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
+            <table class="w-full">
+              <thead>
+                <tr class="bg-wrc-green-50">
+                  <th class="px-6 py-3 text-left text-sm font-heading font-bold text-wrc-green-900 w-1/3">Day</th>
+                  <th class="px-6 py-3 text-left text-sm font-heading font-bold text-wrc-green-900">Events</th>
+                </tr>
+              </thead>
+              <tbody>
+                {overviewSchedule.map((row, i) => (
+                  <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                    <td class="px-6 py-4 text-sm font-semibold text-gray-900 whitespace-nowrap">{row.day}</td>
+                    <td class="px-6 py-4 text-sm text-gray-600">{row.events}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div class="mt-6 text-center">
+            <Button href="#" variant="outline" size="sm">
+              Download Full Program (PDF)
+            </Button>
+          </div>
+        </div>
+
+        <!-- Detailed Schedule Tab -->
+        <div id="panel-schedule" role="tabpanel" hidden>
+          <h2 class="text-2xl font-heading font-bold text-wrc-green-900 mb-6">
+            Detailed Schedule
+          </h2>
+          <div class="space-y-6">
+            {overviewSchedule.map((day) => (
+              <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                <h3 class="font-heading font-bold text-lg text-wrc-green-900 mb-3">{day.day}</h3>
+                <div class="space-y-3">
+                  {day.events.split(', ').map((event) => (
+                    <div class="flex items-center gap-3 text-gray-600">
+                      <div class="w-2 h-2 rounded-full bg-wrc-green-500 shrink-0"></div>
+                      <span class="text-sm">{event}</span>
+                    </div>
+                  ))}
+                </div>
+                <p class="text-xs text-gray-400 mt-3 italic">Detailed times to be announced</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Activities Tab -->
+        <div id="panel-activities" role="tabpanel" hidden>
+          <h2 class="text-2xl font-heading font-bold text-wrc-green-900 mb-6">
+            Congress Activities
+          </h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {activities.map((activity) => (
+              <div class="group bg-white rounded-xl shadow-md p-6 border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <span class="text-3xl mb-3 block" aria-hidden="true">{activity.icon}</span>
+                <h3 class="font-heading font-bold text-lg text-gray-900 mb-2">{activity.title}</h3>
+                <p class="text-sm text-gray-600 leading-relaxed mb-3">{activity.description}</p>
+                <p class="text-xs text-wrc-green-700 font-semibold">{activity.count}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Field Trips Tab -->
+        <div id="panel-field-trips" role="tabpanel" hidden>
+          <h2 class="text-2xl font-heading font-bold text-wrc-green-900 mb-6">
+            Field Trips
+          </h2>
+          <p class="text-gray-600 mb-8">
+            Choose from six excursion options on Monday 21 April. Trips are included in the registration.
+            Additional costs noted are for entry fees.
+          </p>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {fieldTrips.map((trip) => (
+              <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
+                <div class="aspect-[16/10] bg-gradient-to-br from-wrc-green-100 to-wrc-blue-100 flex items-center justify-center">
+                  <span class="text-wrc-green-400 font-heading font-bold text-sm">{trip.name}</span>
+                </div>
+                <div class="p-5">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class={`text-xs px-2 py-0.5 rounded-full font-semibold ${trip.country === 'Argentina' ? 'bg-wrc-blue-100 text-wrc-blue-700' : 'bg-wrc-green-100 text-wrc-green-700'}`}>
+                      {trip.country}
+                    </span>
+                    <span class="text-xs text-gray-500">{trip.duration}</span>
+                  </div>
+                  <h3 class="font-heading font-bold text-gray-900 mb-2">{trip.name}</h3>
+                  <p class="text-sm text-gray-600 leading-relaxed mb-3">{trip.description}</p>
+                  <p class="text-sm font-semibold text-wrc-green-700">Entry fee: USD ${trip.price}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Tabs>
+    </div>
+  </section>
+</PageLayout>

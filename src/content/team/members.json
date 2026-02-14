@@ -1,0 +1,28 @@
+{
+  "members": [
+    { "name": "Chris Galliers", "role": "President IRF", "organization": "IRF", "order": 1 },
+    { "name": "Andy Davies", "role": "Secretary", "organization": "IRF", "order": 2 },
+    { "name": "Carlien Roodt", "role": "Executive Officer", "organization": "IRF", "order": 3 },
+    { "name": "Mike Lynch", "role": "Treasurer", "organization": "IRF", "order": 4 },
+    { "name": "Jolene Nelson", "role": "Oceania Representative", "organization": "IRF", "order": 5 },
+    { "name": "Monica Alvarez", "role": "Federation Development Officer", "organization": "IRF", "order": 6 },
+    { "name": "Rohit Singh", "role": "Asia Representative", "organization": "IRF", "order": 7 },
+    { "name": "Olivier Soulier-Versini", "role": "Community Manager GNF", "organization": "IRF", "order": 8 },
+    { "name": "Carole d'Antuoni", "role": "Presidente GNF", "organization": "IRF", "order": 9 },
+    { "name": "Tristan Calistri", "role": "Treasurer GNF", "organization": "IRF", "order": 10 },
+    { "name": "Jonathan Churcher", "role": "Board Member", "organization": "IRF", "order": 11 },
+    { "name": "Antuel Sánchez", "role": "General Secretary", "organization": "SIGUNARA", "order": 12 },
+    { "name": "Leonardo Juber", "role": "Member", "organization": "SIGUNARA", "order": 13 },
+    { "name": "Sofia Nazar", "role": "Member", "organization": "SIGUNARA", "order": 14 },
+    { "name": "Federico Rodriguez Mira", "role": "Member", "organization": "SIGUNARA", "order": 15 },
+    { "name": "Oscar Carvajal Mora", "role": "President FLG", "organization": "FLG", "order": 16 },
+    { "name": "Laura Pastorino Ladereche", "role": "Vice President FLG", "organization": "FLG", "order": 17 },
+    { "name": "Andrea Juncos", "role": "Executive Director", "organization": "Plan A", "order": 18 },
+    { "name": "Ana Lacuadra", "role": "Project Manager", "organization": "Plan A", "order": 19 },
+    { "name": "Malvina Solis", "role": "Local Coordinator", "organization": "Plan A", "order": 20 },
+    { "name": "Martina Alvarez", "role": "Registration", "organization": "Plan A", "order": 21 },
+    { "name": "Natalia Benejam", "role": "Commercial Coordinator", "organization": "Plan A", "order": 22 },
+    { "name": "Renata Bollini", "role": "Coordinator Assistant", "organization": "Plan A", "order": 23 },
+    { "name": "Celeste Dichico", "role": "Academic Coordinator", "organization": "Plan A", "order": 24 }
+  ]
+}

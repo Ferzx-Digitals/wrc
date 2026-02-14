@@ -1,0 +1,235 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Button from '../../components/ui/Button.astro';
+import MapEmbed from '../../components/ui/MapEmbed.astro';
+import CountdownTimer from '../../components/global/CountdownTimer.astro';
+import SectionDivider from '../../components/global/SectionDivider.astro';
+import { CONTACT_EMAIL, VENUE } from '../../utils/constants';
+import { getLocaleFromUrl } from '../../i18n/utils';
+
+const locale = getLocaleFromUrl(Astro.url);
+const prefix = `/${locale}`;
+
+const contactCards = [
+  {
+    title: 'General Inquiries',
+    description: 'Questions about the congress, registration, or logistics.',
+    email: CONTACT_EMAIL,
+    icon: '📧',
+  },
+  {
+    title: 'Sponsorship',
+    description: 'Interested in sponsoring the congress? Get the sponsorship prospectus.',
+    email: CONTACT_EMAIL,
+    icon: '🤝',
+  },
+  {
+    title: 'Press & Media',
+    description: 'Media inquiries, press accreditation, and interview requests.',
+    email: CONTACT_EMAIL,
+    icon: '📰',
+  },
+];
+
+const teamMembers = [
+  { name: 'Chris Galliers', role: 'IRF President', org: 'IRF' },
+  { name: 'David Guevara', role: 'SIGUNARA General Secretary', org: 'SIGUNARA' },
+  { name: 'Sebastian Sosa', role: 'FLG President', org: 'FLG' },
+  { name: 'Theresa Sowry', role: 'Special Advisor, IRF', org: 'IRF' },
+  { name: 'Heather Bairsto', role: 'Program Committee Chair', org: 'IRF' },
+];
+---
+
+<PageLayout title="Contact Us" description="Get in touch with the 11th IRF World Ranger Congress organizing team. Ask questions, request sponsorship info, or send media inquiries.">
+  <!-- Hero -->
+  <section class="relative h-[350px] sm:h-[400px] bg-gradient-to-r from-wrc-green-900/90 to-wrc-green-800/70">
+    <div class="absolute inset-0 opacity-10">
+      <div class="w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M20%2020.5V18H0v-2h20v-2l-3-3%203-3v-2H0V4h20V1.5L23.5%205%2020%208.5z%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.2%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E')]"></div>
+    </div>
+    <div class="relative h-full flex items-center">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white">
+          Contact Us
+        </h1>
+        <p class="mt-4 text-xl text-white/80 max-w-2xl">
+          We'd love to hear from you. Get in touch with our team.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form + Info -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12">
+        <!-- Contact Form -->
+        <div>
+          <h2 class="text-2xl font-heading font-bold text-wrc-green-900 mb-6">
+            Send Us a Message
+          </h2>
+          <form action={`https://formspree.io/f/placeholder`} method="POST" class="space-y-5">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-wrc-green-500 focus:border-wrc-green-500 transition-colors"
+                placeholder="Your full name"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-wrc-green-500 focus:border-wrc-green-500 transition-colors"
+                placeholder="your@email.com"
+              />
+            </div>
+            <div>
+              <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+              <select
+                id="subject"
+                name="subject"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-wrc-green-500 focus:border-wrc-green-500 transition-colors"
+              >
+                <option value="general">General Inquiry</option>
+                <option value="registration">Registration</option>
+                <option value="sponsorship">Sponsorship</option>
+                <option value="press">Press & Media</option>
+                <option value="volunteering">Volunteering</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows="5"
+                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-wrc-green-500 focus:border-wrc-green-500 transition-colors resize-y"
+                placeholder="How can we help you?"
+              ></textarea>
+            </div>
+            <Button type="submit" variant="primary" size="lg">
+              Send Message
+            </Button>
+          </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+          <h2 class="text-2xl font-heading font-bold text-wrc-green-900 mb-6">
+            Get in Touch
+          </h2>
+          <div class="space-y-4 mb-8">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-wrc-green-100 flex items-center justify-center shrink-0">
+                <span aria-hidden="true">📧</span>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500">Email</p>
+                <a href={`mailto:${CONTACT_EMAIL}`} class="text-wrc-green-700 font-semibold hover:underline">
+                  {CONTACT_EMAIL}
+                </a>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-wrc-green-100 flex items-center justify-center shrink-0">
+                <span aria-hidden="true">📍</span>
+              </div>
+              <div>
+                <p class="text-sm text-gray-500">Venue</p>
+                <p class="text-gray-900 font-semibold">{VENUE.name}</p>
+                <p class="text-sm text-gray-600">{VENUE.city}, {VENUE.state}, {VENUE.country}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Cards -->
+          <div class="space-y-4">
+            {contactCards.map((card) => (
+              <div class="bg-gray-50 rounded-xl p-5 border border-gray-100">
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl" aria-hidden="true">{card.icon}</span>
+                  <div>
+                    <h3 class="font-heading font-bold text-gray-900 mb-1">{card.title}</h3>
+                    <p class="text-sm text-gray-600 mb-2">{card.description}</p>
+                    <a href={`mailto:${card.email}`} class="text-sm text-wrc-green-700 font-semibold hover:underline">
+                      {card.email}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Congress Team -->
+  <section class="py-16 bg-gray-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+        Congress Team
+      </h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-6 max-w-5xl mx-auto">
+        {teamMembers.map((member) => (
+          <div class="text-center">
+            <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-wrc-green-200 to-wrc-blue-200 flex items-center justify-center mb-3">
+              <span class="text-wrc-green-600 font-heading font-bold text-lg">
+                {member.name.split(' ').map(n => n[0]).join('')}
+              </span>
+            </div>
+            <h3 class="font-heading font-bold text-sm text-gray-900">{member.name}</h3>
+            <p class="text-xs text-gray-500 mt-1">{member.role}</p>
+            <span class="inline-block mt-1 text-xs px-2 py-0.5 rounded-full bg-wrc-green-100 text-wrc-green-700 font-semibold">
+              {member.org}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <SectionDivider variant="jungle" />
+
+  <!-- Map -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-8">
+        Find Us
+      </h2>
+      <div class="max-w-4xl mx-auto">
+        <MapEmbed
+          src={VENUE.mapEmbed}
+          title="Congress Venue Location"
+          height="400"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- Countdown + CTAs -->
+  <section class="py-16 bg-gradient-to-r from-wrc-green-800 to-wrc-green-900 text-white text-center">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-heading font-bold mb-6">Congress Starts In</h2>
+      <CountdownTimer />
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <Button href={`${prefix}/register`} variant="secondary" size="lg">
+          Register Now
+        </Button>
+        <Button href={`${prefix}/submit`} variant="outline" size="lg" class="border-white text-white hover:bg-white/10">
+          Submit Interest
+        </Button>
+      </div>
+    </div>
+  </section>
+</PageLayout>

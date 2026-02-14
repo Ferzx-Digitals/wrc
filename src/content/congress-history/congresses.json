@@ -1,0 +1,14 @@
+{
+  "congresses": [
+    { "edition": "1st", "year": 1995, "location": "Zakopane", "country": "Poland" },
+    { "edition": "2nd", "year": 1997, "location": "San José", "country": "Costa Rica" },
+    { "edition": "3rd", "year": 2000, "location": "Kruger", "country": "South Africa" },
+    { "edition": "4th", "year": 2003, "location": "Melbourne", "country": "Australia" },
+    { "edition": "5th", "year": 2006, "location": "Stirling", "country": "Scotland" },
+    { "edition": "6th", "year": 2009, "location": "Santa Cruz", "country": "Bolivia" },
+    { "edition": "7th", "year": 2012, "location": "Arusha", "country": "Tanzania" },
+    { "edition": "8th", "year": 2016, "location": "Estes Park", "country": "USA" },
+    { "edition": "9th", "year": 2019, "location": "Chitwan", "country": "Nepal" },
+    { "edition": "10th", "year": 2024, "location": "Aix-les-Bains", "country": "France" }
+  ]
+}

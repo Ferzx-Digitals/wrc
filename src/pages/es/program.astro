@@ -1,0 +1,189 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Tabs from '../../components/ui/Tabs.astro';
+import Button from '../../components/ui/Button.astro';
+import SectionDivider from '../../components/global/SectionDivider.astro';
+import { getLocaleFromUrl } from '../../i18n/utils';
+
+const locale = getLocaleFromUrl(Astro.url);
+const prefix = `/${locale}`;
+
+const fieldTripsData = await import('../../content/field-trips/es.json');
+const fieldTrips = fieldTripsData.trips;
+
+const programTabs = [
+  { id: 'overview', label: 'Resumen' },
+  { id: 'schedule', label: 'Programa Detallado' },
+  { id: 'activities', label: 'Actividades' },
+  { id: 'field-trips', label: 'Excursiones' },
+];
+
+const overviewSchedule = [
+  { day: 'Viernes 18 de Abril', events: 'Llegada y Acreditación, Recepción de Bienvenida' },
+  { day: 'Sábado 19 de Abril', events: 'Ceremonia de Apertura, Sesiones Plenarias, Noche Cultural' },
+  { day: 'Domingo 20 de Abril', events: 'Sesiones Plenarias, Talleres Simultáneos, Conferencia de Prensa' },
+  { day: 'Lunes 21 de Abril', events: 'Excursiones (Día Completo)' },
+  { day: 'Martes 22 de Abril', events: 'Sesiones Plenarias, Discusiones Abiertas, Noche Cultural' },
+  { day: 'Miércoles 23 de Abril', events: 'Ceremonia de Clausura, Declaración de Iguazú, Despedida' },
+];
+
+const activities = [
+  {
+    title: 'Charlas Plenarias',
+    description: 'Sesiones principales por destacados expertos en conservación sobre fuerza laboral inclusiva, bienestar de guardaparques, conducta profesional y desarrollo de capacidades.',
+    icon: '🎤',
+    count: '8-10 sesiones',
+  },
+  {
+    title: 'Talleres Simultáneos',
+    description: 'Talleres temáticos sobre equidad e igualdad, pueblos indígenas, enfoque una salud, participación juvenil, tecnología y participación comunitaria.',
+    icon: '🔬',
+    count: '12-15 talleres',
+  },
+  {
+    title: 'Discusiones Abiertas',
+    description: 'Plataformas informales para pueblos indígenas, mujeres guardaparques, líderes juveniles, voluntarios y guardaparques retirados para compartir experiencias.',
+    icon: '💬',
+    count: '6-8 sesiones',
+  },
+  {
+    title: 'Noches Culturales',
+    description: 'Entretenimiento nocturno con música, arte y expresiones culturales de comunidades de guardaparques de todo el mundo. Dos eventos culturales planificados.',
+    icon: '🎭',
+    count: '2 noches',
+  },
+  {
+    title: 'Excursiones',
+    description: 'Excursiones de día completo al Parque Nacional Iguazú, centros de vida silvestre, minas de piedras preciosas, misiones jesuíticas y el lado brasileño de las cataratas.',
+    icon: '🌿',
+    count: '6 opciones',
+  },
+];
+---
+
+<PageLayout title="Programa del Congreso" description="Explore el programa completo del 11° Congreso Mundial de Guardaparques de la IRF — charlas plenarias, talleres, excursiones y eventos culturales.">
+  <!-- Hero -->
+  <section class="relative h-[350px] sm:h-[400px] bg-gradient-to-r from-wrc-green-900/90 to-wrc-green-800/70">
+    <div class="absolute inset-0 opacity-10">
+      <div class="w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M20%2020.5V18H0v-2h20v-2l-3-3%203-3v-2H0V4h20V1.5L23.5%205%2020%208.5z%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.2%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E')]"></div>
+    </div>
+    <div class="relative h-full flex items-center">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white">
+          Programa del Congreso
+        </h1>
+        <p class="mt-4 text-xl text-white/80 max-w-2xl">
+          Seis días de aprendizaje, colaboración y celebración
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Program Tabs -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <Tabs tabs={programTabs} defaultTab="overview">
+        <!-- Overview Tab -->
+        <div id="panel-overview" role="tabpanel">
+          <h2 class="text-2xl font-heading font-bold text-wrc-green-900 mb-6">
+            Resumen del Programa
+          </h2>
+          <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
+            <table class="w-full">
+              <thead>
+                <tr class="bg-wrc-green-50">
+                  <th class="px-6 py-3 text-left text-sm font-heading font-bold text-wrc-green-900 w-1/3">Día</th>
+                  <th class="px-6 py-3 text-left text-sm font-heading font-bold text-wrc-green-900">Eventos</th>
+                </tr>
+              </thead>
+              <tbody>
+                {overviewSchedule.map((row, i) => (
+                  <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                    <td class="px-6 py-4 text-sm font-semibold text-gray-900 whitespace-nowrap">{row.day}</td>
+                    <td class="px-6 py-4 text-sm text-gray-600">{row.events}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div class="mt-6 text-center">
+            <Button href="#" variant="outline" size="sm">
+              Descargar Programa Completo (PDF)
+            </Button>
+          </div>
+        </div>
+
+        <!-- Detailed Schedule Tab -->
+        <div id="panel-schedule" role="tabpanel" hidden>
+          <h2 class="text-2xl font-heading font-bold text-wrc-green-900 mb-6">
+            Programa Detallado
+          </h2>
+          <div class="space-y-6">
+            {overviewSchedule.map((day) => (
+              <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+                <h3 class="font-heading font-bold text-lg text-wrc-green-900 mb-3">{day.day}</h3>
+                <div class="space-y-3">
+                  {day.events.split(', ').map((event) => (
+                    <div class="flex items-center gap-3 text-gray-600">
+                      <div class="w-2 h-2 rounded-full bg-wrc-green-500 shrink-0"></div>
+                      <span class="text-sm">{event}</span>
+                    </div>
+                  ))}
+                </div>
+                <p class="text-xs text-gray-400 mt-3 italic">Horarios detallados por anunciar</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Activities Tab -->
+        <div id="panel-activities" role="tabpanel" hidden>
+          <h2 class="text-2xl font-heading font-bold text-wrc-green-900 mb-6">
+            Actividades del Congreso
+          </h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {activities.map((activity) => (
+              <div class="group bg-white rounded-xl shadow-md p-6 border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <span class="text-3xl mb-3 block" aria-hidden="true">{activity.icon}</span>
+                <h3 class="font-heading font-bold text-lg text-gray-900 mb-2">{activity.title}</h3>
+                <p class="text-sm text-gray-600 leading-relaxed mb-3">{activity.description}</p>
+                <p class="text-xs text-wrc-green-700 font-semibold">{activity.count}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Field Trips Tab -->
+        <div id="panel-field-trips" role="tabpanel" hidden>
+          <h2 class="text-2xl font-heading font-bold text-wrc-green-900 mb-6">
+            Excursiones
+          </h2>
+          <p class="text-gray-600 mb-8">
+            Elija entre seis opciones de excursión el lunes 21 de abril. Las excursiones están incluidas en la inscripción.
+            Los costos adicionales indicados son para entradas.
+          </p>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {fieldTrips.map((trip) => (
+              <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
+                <div class="aspect-[16/10] bg-gradient-to-br from-wrc-green-100 to-wrc-blue-100 flex items-center justify-center">
+                  <span class="text-wrc-green-400 font-heading font-bold text-sm">{trip.name}</span>
+                </div>
+                <div class="p-5">
+                  <div class="flex items-center gap-2 mb-2">
+                    <span class={`text-xs px-2 py-0.5 rounded-full font-semibold ${trip.country === 'Argentina' ? 'bg-wrc-blue-100 text-wrc-blue-700' : 'bg-wrc-green-100 text-wrc-green-700'}`}>
+                      {trip.country}
+                    </span>
+                    <span class="text-xs text-gray-500">{trip.duration}</span>
+                  </div>
+                  <h3 class="font-heading font-bold text-gray-900 mb-2">{trip.name}</h3>
+                  <p class="text-sm text-gray-600 leading-relaxed mb-3">{trip.description}</p>
+                  <p class="text-sm font-semibold text-wrc-green-700">Entrada: USD ${trip.price}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Tabs>
+    </div>
+  </section>
+</PageLayout>

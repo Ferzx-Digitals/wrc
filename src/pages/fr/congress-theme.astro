@@ -1,0 +1,185 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Button from '../../components/ui/Button.astro';
+import SectionDivider from '../../components/global/SectionDivider.astro';
+import { getLocaleFromUrl } from '../../i18n/utils';
+
+const locale = getLocaleFromUrl(Astro.url);
+const prefix = `/${locale}`;
+
+const streams = [
+  {
+    title: 'Main-d\'œuvre Inclusive et Représentative',
+    description: 'Promouvoir la diversité, l\'équité et l\'inclusion au sein de la profession de garde forestier. Aborder l\'équilibre des genres, la représentation autochtone et garantir que toutes les voix soient entendues dans la conservation.',
+    icon: '🌍',
+  },
+  {
+    title: 'Bien-être et Conditions de Travail',
+    description: 'Améliorer la sécurité, le soutien en santé mentale, la rémunération équitable et les environnements de travail pour les gardes forestiers du monde entier. Aborder les risques et défis auxquels les gardes font face quotidiennement.',
+    icon: '🛡️',
+  },
+  {
+    title: 'Conduite Professionnelle et Éthique',
+    description: 'Établir et maintenir des normes professionnelles élevées, des directives éthiques et des cadres de responsabilité pour les opérations des gardes forestiers à l\'échelle mondiale.',
+    icon: '⚖️',
+  },
+  {
+    title: 'Renforcement des Capacités et Formation',
+    description: 'Développer les compétences, les connaissances et les capacités à travers des programmes de formation, du mentorat et des opportunités de développement professionnel pour les gardes à tous les niveaux.',
+    icon: '📚',
+  },
+  {
+    title: 'Engagement Communautaire et Partenariats',
+    description: 'Construire des relations solides entre les gardes forestiers, les communautés locales, les peuples autochtones et les organisations de conservation pour créer des approches collaboratives de gestion des aires protégées.',
+    icon: '🤝',
+  },
+];
+
+const objectives = [
+  {
+    title: 'Reconnaissance des Gardes et 30x30',
+    description: 'Renforcer la reconnaissance de la profession de garde forestier et s\'aligner sur le Cadre mondial 30x30 pour protéger 30% de la planète d\'ici 2030.',
+    color: 'from-wrc-green-700 to-wrc-green-800',
+  },
+  {
+    title: 'Expériences des Gardes',
+    description: 'Présenter les expériences, les défis et les contributions des gardes forestiers des sept régions de l\'IRF dans le monde entier.',
+    color: 'from-wrc-blue-700 to-wrc-blue-800',
+  },
+  {
+    title: 'Solutions des Gardes',
+    description: 'Développer des solutions pratiques aux défis de conservation régionaux et mondiaux grâce à la collaboration et au partage des connaissances.',
+    color: 'from-wrc-earth-600 to-wrc-earth-700',
+  },
+  {
+    title: 'Déclaration des Gardes',
+    description: 'Produire la Déclaration d\'Iguazu — une déclaration historique soulignant le rôle des gardes forestiers dans la conservation de la nature.',
+    color: 'from-emerald-700 to-emerald-800',
+  },
+];
+
+const topics = [
+  { title: 'Peuples Autochtones et Gardes', description: 'Relier les savoirs traditionnels aux pratiques modernes de conservation.', icon: '🏔️' },
+  { title: 'Approche Une Seule Santé', description: 'Connecter la santé humaine, animale et environnementale à travers le travail des gardes.', icon: '🩺' },
+  { title: 'Implication des Jeunes', description: 'Engager la prochaine génération dans la conservation et la profession de garde forestier.', icon: '🌱' },
+  { title: 'Technologie et Innovation', description: 'Exploiter les outils modernes pour la surveillance, l\'application de la loi et la communication.', icon: '📡' },
+  { title: 'Résilience Climatique', description: 'Adapter les stratégies des gardes pour faire face aux impacts du changement climatique sur les aires protégées.', icon: '🌡️' },
+];
+---
+
+<PageLayout title="Thème du Congrès" description="Découvrez le thème du 11e Congrès Mondial des Gardes Forestiers de l'IRF : Reconnaître les Gardes — Faire avancer la profession pour préserver notre avenir.">
+  <!-- Hero -->
+  <section class="relative h-[350px] sm:h-[400px] bg-gradient-to-r from-wrc-green-900/90 to-wrc-green-800/70">
+    <div class="absolute inset-0 opacity-10">
+      <div class="w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M20%2020.5V18H0v-2h20v-2l-3-3%203-3v-2H0V4h20V1.5L23.5%205%2020%208.5z%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.2%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E')]"></div>
+    </div>
+    <div class="relative h-full flex items-center">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white">
+          Thème du Congrès
+        </h1>
+        <p class="mt-4 text-xl text-white/80 max-w-2xl">
+          Reconnaître les Gardes : Faire avancer la profession pour préserver notre avenir
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Theme Description -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="bg-wrc-green-50 rounded-2xl p-8 md:p-10 mb-12">
+          <h2 class="text-2xl md:text-3xl font-heading font-bold text-wrc-green-900 mb-4">
+            « Reconnaître les Gardes : Faire avancer la profession pour préserver notre avenir »
+          </h2>
+          <p class="text-gray-600 leading-relaxed">
+            Le thème du 11e Congrès Mondial des Gardes Forestiers de l'IRF se concentre sur l'amélioration des conditions de travail,
+            la fourniture de meilleurs équipements et formations, et l'autonomisation des gardes forestiers pour qu'ils jouent
+            leur rôle vital dans la protection de la biodiversité et la construction d'un avenir durable. Les gardes protègent plus de 15%
+            de la surface terrestre et 8% de nos océans — pourtant leurs contributions sont souvent
+            sous-évaluées et leurs besoins négligés.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Thematic Streams -->
+  <section class="py-16 bg-gray-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-center text-wrc-green-900 mb-12">
+        Axes Thématiques
+      </h2>
+      <div class="space-y-12">
+        {streams.map((stream, i) => (
+          <div class={`flex flex-col md:flex-row items-center gap-8 ${i % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
+            <div class="w-full md:w-1/2">
+              <div class="aspect-[16/10] rounded-xl bg-gradient-to-br from-wrc-green-100 to-wrc-blue-100 flex items-center justify-center">
+                <span class="text-6xl" aria-hidden="true">{stream.icon}</span>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2">
+              <h3 class="text-xl font-heading font-bold text-wrc-green-900 mb-3">{stream.title}</h3>
+              <p class="text-gray-600 leading-relaxed">{stream.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <SectionDivider variant="jungle" />
+
+  <!-- Congress Objectives -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+        Objectifs du Congrès
+      </h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {objectives.map((obj) => (
+          <div class={`group relative rounded-xl overflow-hidden bg-gradient-to-br ${obj.color} p-6 min-h-[200px] flex flex-col justify-end cursor-pointer transition-all duration-300 hover:shadow-xl hover:scale-[1.02]`}>
+            <h3 class="font-heading font-bold text-lg text-white mb-2">{obj.title}</h3>
+            <p class="text-sm text-white/80 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-h-0 group-hover:max-h-40 overflow-hidden">
+              {obj.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Topics Grid -->
+  <section class="py-16 bg-gray-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+        Sujets de Discussion
+      </h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {topics.map((topic) => (
+          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+            <span class="text-3xl mb-3 block" aria-hidden="true">{topic.icon}</span>
+            <h3 class="font-heading font-bold text-lg text-gray-900 mb-2">{topic.title}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">{topic.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Submit CTA -->
+  <section class="py-16 bg-gradient-to-r from-wrc-green-800 to-wrc-green-900 text-white text-center">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold mb-4">Partagez Votre Expérience</h2>
+      <p class="text-lg text-white/80 mb-8">
+        Soumettez une expression d'intérêt pour présenter au 11e Congrès Mondial des Gardes Forestiers de l'IRF.
+      </p>
+      <Button href={`${prefix}/submit`} variant="secondary" size="lg">
+        Soumettre une Expression d'Intérêt
+      </Button>
+    </div>
+  </section>
+</PageLayout>

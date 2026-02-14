@@ -1,0 +1,11 @@
+{
+  "regions": [
+    { "name": "Europe", "description": "Represented by the European Ranger Federation, connecting rangers across the continent in conservation efforts.", "representativeOrg": "European Ranger Federation", "order": 1 },
+    { "name": "South America", "description": "Home to the Amazon rainforest and incredible biodiversity, rangers protect some of the world's most vital ecosystems.", "order": 2 },
+    { "name": "North America", "description": "From Arctic tundra to desert canyons, rangers safeguard vast wilderness areas and national parks.", "order": 3 },
+    { "name": "Africa", "description": "Represented by the Game Rangers Association of Africa (GRAA), founded in 1970, with 2,500+ rangers across 20 countries protecting iconic wildlife.", "representativeOrg": "GRAA", "order": 4 },
+    { "name": "Oceania", "description": "Spanning 24 countries and territories across Polynesia, Micronesia, Melanesia, Australia, and New Zealand.", "order": 5 },
+    { "name": "Central America", "description": "From northern Mexico through the Selva Maya Corridor, Mesoamerican Reef, and Caribbean Islands, protecting critical biodiversity hotspots.", "order": 6 },
+    { "name": "Asia", "description": "A region of incomparable richness in biodiversity, with rangers protecting diverse ecosystems from tropical forests to high mountains.", "order": 7 }
+  ]
+}

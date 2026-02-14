@@ -1,0 +1,284 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Button from '../../components/ui/Button.astro';
+import Accordion from '../../components/ui/Accordion.astro';
+import SectionDivider from '../../components/global/SectionDivider.astro';
+import { CONTACT_EMAIL, ORGANIZERS } from '../../utils/constants';
+
+const pressConference = {
+  date: 'Mardi 20 Avril 2027',
+  time: '12:00 - 13:00',
+  location: 'Hotel Amerian Portal del Iguazú',
+  note: 'Un lien de participation à distance sera fourni aux journalistes accrédités',
+};
+
+const pressReleases = [
+  {
+    title: 'Annonce du 11e Congrès Mondial des Gardes Forestiers de l\'IRF',
+    date: 'Février 2026',
+    summary: 'La Fédération Internationale des Gardes Forestiers annonce que le 11e Congrès Mondial se tiendra à Puerto Iguazú, en Argentine.',
+  },
+  {
+    title: 'Ouverture des Inscriptions pour le CMG 2027',
+    date: 'Février 2026',
+    summary: 'L\'inscription en ligne est désormais ouverte pour les gardes forestiers et les professionnels de la conservation du monde entier.',
+  },
+  {
+    title: 'Révélation du Thème du Congrès',
+    date: 'Mars 2026',
+    summary: '« Reconnaître les Gardes Forestiers : Faire progresser la profession pour préserver notre avenir » — le thème du 11e CMG.',
+  },
+  {
+    title: 'Appel à Expressions d\'Intérêt',
+    date: 'Avril 2026',
+    summary: 'Les intervenants et animateurs d\'ateliers sont invités à soumettre des expressions d\'intérêt en anglais, espagnol ou français.',
+  },
+];
+
+const pressFaqs = [
+  {
+    question: 'Qui sont les gardes forestiers ?',
+    answer: 'Les gardes forestiers comptent parmi les travailleurs les plus essentiels de la planète. Ils protègent et gèrent les aires protégées et conservées du monde, couvrant plus de 15 % de la surface terrestre et 8 % de nos océans. On estime qu\'il y a 286 000 gardes forestiers dans le monde.',
+  },
+  {
+    question: 'Pourquoi les gardes forestiers sont-ils importants pour les aires protégées ?',
+    answer: 'Les gardes forestiers sont les défenseurs de première ligne de la biodiversité. Ils effectuent des patrouilles, surveillent la faune, luttent contre le braconnage, gèrent les conflits humains-faune, s\'engagent auprès des communautés, combattent les feux de forêt et éduquent les visiteurs. Sans gardes forestiers, les aires protégées subiraient une dégradation sévère.',
+  },
+  {
+    question: 'Pourquoi les gardes forestiers ont-ils besoin de plus de ressources ?',
+    answer: 'Malgré leur rôle critique, les gardes forestiers travaillent souvent dans de mauvaises conditions avec des salaires inadéquats, un équipement limité, une formation insuffisante et un manque de protections juridiques. Beaucoup font face à des dangers quotidiens, notamment des braconniers armés, des attaques d\'animaux sauvages et des conditions météorologiques extrêmes.',
+  },
+  {
+    question: 'Quels sont les principaux défis auxquels font face les gardes forestiers ?',
+    answer: 'Les défis clés comprennent un financement inadéquat, de mauvaises conditions de travail, un manque de reconnaissance professionnelle, des possibilités de carrière limitées, une formation insuffisante, l\'exposition à la violence et aux traumatismes, ainsi que les impacts croissants du changement climatique sur les aires protégées.',
+  },
+  {
+    question: 'Quel est l\'objectif du Congrès Mondial des Gardes Forestiers ?',
+    answer: 'Le CMG rassemble des gardes forestiers du monde entier pour partager leurs expériences, construire des réseaux, développer des solutions et faire progresser la profession. Chaque congrès produit une déclaration abordant les enjeux clés auxquels font face les gardes forestiers à l\'échelle mondiale.',
+  },
+  {
+    question: 'Pourquoi le CMG est-il important pour le Cadre 30x30 ?',
+    answer: 'Le Cadre Mondial pour la Biodiversité vise à protéger 30 % de la planète d\'ici 2030. Les gardes forestiers sont essentiels pour atteindre cet objectif. Le CMG contribue à développer les capacités et la reconnaissance nécessaires pour que les gardes forestiers remplissent ce rôle élargi.',
+  },
+  {
+    question: 'Quel sera le résultat du 11e CMG ?',
+    answer: 'Le 11e CMG produira la Déclaration d\'Iguazú — une déclaration historique soulignant le rôle des gardes forestiers dans la conservation de la nature. Il générera également des recommandations, des plans d\'action et des partenariats renforcés pour les communautés de gardes forestiers du monde entier.',
+  },
+];
+---
+
+<PageLayout title="Presse et Médias" description="Ressources presse pour le 11e Congrès Mondial des Gardes Forestiers de l'IRF — communiqués de presse, kits médias, galerie de photos et détails de la conférence de presse.">
+  <!-- Hero -->
+  <section class="relative h-[350px] sm:h-[400px] bg-gradient-to-r from-wrc-green-900/90 to-wrc-earth-700/70">
+    <div class="absolute inset-0 opacity-10">
+      <div class="w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M20%2020.5V18H0v-2h20v-2l-3-3%203-3v-2H0V4h20V1.5L23.5%205%2020%208.5z%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.2%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E')]"></div>
+    </div>
+    <div class="relative h-full flex items-center">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white">
+          Presse et Médias
+        </h1>
+        <p class="mt-4 text-xl text-white/80 max-w-2xl">
+          Ressources médias et informations presse pour le 11e Congrès Mondial des Gardes Forestiers de l'IRF
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Press Conference -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-heading font-bold text-wrc-green-900 mb-6">
+          Conférence de Presse
+        </h2>
+        <div class="bg-wrc-green-50 rounded-xl p-6 border border-wrc-green-200">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <p class="text-sm text-gray-500 uppercase tracking-wide font-semibold">Date</p>
+              <p class="text-gray-900 font-heading font-bold">{pressConference.date}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500 uppercase tracking-wide font-semibold">Heure</p>
+              <p class="text-gray-900 font-heading font-bold">{pressConference.time}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500 uppercase tracking-wide font-semibold">Lieu</p>
+              <p class="text-gray-900 font-heading font-bold">{pressConference.location}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500 uppercase tracking-wide font-semibold">Accès à Distance</p>
+              <p class="text-gray-600 text-sm">{pressConference.note}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Press Kit Downloads -->
+  <section class="py-16 bg-gray-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-heading font-bold text-wrc-green-900 mb-4">
+        Kit de Presse
+      </h2>
+      <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+        Téléchargez le kit de presse officiel avec logos, photos et informations de contexte
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href="#" variant="primary">
+          Kit de Presse (Anglais)
+        </Button>
+        <Button href="#" variant="outline">
+          Kit de Presse (Espagnol)
+        </Button>
+        <Button href="#" variant="outline">
+          Kit de Presse (Français)
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <SectionDivider variant="jungle" />
+
+  <!-- Press Releases -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+        Communiqués de Presse
+      </h2>
+      <div class="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {pressReleases.map((release) => (
+          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+            <p class="text-sm text-wrc-green-700 font-semibold mb-2">{release.date}</p>
+            <h3 class="font-heading font-bold text-lg text-gray-900 mb-2">{release.title}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed mb-4">{release.summary}</p>
+            <div class="flex gap-2">
+              <Button href="#" variant="outline" size="sm">EN</Button>
+              <Button href="#" variant="outline" size="sm">ES</Button>
+              <Button href="#" variant="outline" size="sm">FR</Button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Photo Gallery -->
+  <section class="py-16 bg-gray-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-4">
+        Galerie de Photos
+      </h2>
+      <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+        Photos en haute résolution disponibles pour usage éditorial
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-8">
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+          <div class="aspect-square rounded-lg bg-gradient-to-br from-wrc-green-100 to-wrc-blue-100 flex items-center justify-center">
+            <span class="text-wrc-green-400 text-xs font-semibold">Photo {i}</span>
+          </div>
+        ))}
+      </div>
+      <div class="text-center">
+        <Button href="#" variant="primary">
+          Télécharger Toutes les Photos
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <SectionDivider variant="jungle" />
+
+  <!-- Ranger Explainers -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+        <div>
+          <h2 class="text-2xl font-heading font-bold text-wrc-green-900 mb-4">
+            Qui Sont les Gardes Forestiers ?
+          </h2>
+          <p class="text-gray-600 leading-relaxed">
+            Les gardes forestiers comptent parmi les travailleurs les plus essentiels de la planète. On estime qu'il y a
+            286 000 gardes forestiers dans le monde qui protègent et gèrent les aires protégées et conservées.
+            Ils patrouillent de vastes territoires, surveillent les populations de faune, combattent les activités illégales,
+            gèrent les conflits humains-faune, éduquent les visiteurs et s'engagent auprès des communautés locales.
+            Malgré leur rôle critique, les gardes forestiers font souvent face à de mauvaises conditions de travail,
+            des salaires inadéquats et une reconnaissance insuffisante.
+          </p>
+        </div>
+        <div>
+          <h2 class="text-2xl font-heading font-bold text-wrc-green-900 mb-4">
+            Pourquoi les Gardes Sont-ils Importants ?
+          </h2>
+          <p class="text-gray-600 leading-relaxed">
+            Les gardes forestiers sont les défenseurs de première ligne de la biodiversité. Ils protègent plus de 15 % de la
+            surface terrestre et 8 % de nos océans. Alors que le monde s'efforce d'atteindre le Cadre 30x30
+            — protéger 30 % de la planète d'ici 2030 — le rôle des gardes forestiers devient encore plus
+            crucial. Sans gardes forestiers bien formés, bien équipés et bien soutenus,
+            les objectifs de conservation ne peuvent être atteints. Investir dans les gardes forestiers, c'est investir dans
+            l'avenir de notre planète.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Press FAQs -->
+  <section class="py-16 bg-gray-50">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+        FAQ de Presse
+      </h2>
+      <Accordion items={pressFaqs} />
+    </div>
+  </section>
+
+  <SectionDivider variant="jungle" />
+
+  <!-- Organizers -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+        Organisateurs
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-8">
+        {Object.values(ORGANIZERS).map((org) => (
+          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+            <div class="w-14 h-14 rounded-lg bg-wrc-green-100 flex items-center justify-center mb-4">
+              <span class="text-wrc-green-700 font-heading font-bold text-sm">{org.shortName}</span>
+            </div>
+            <h3 class="font-heading font-bold text-lg text-gray-900 mb-2">{org.name}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed mb-3">{org.description}</p>
+            <a href={org.website} class="text-sm text-wrc-green-700 font-semibold hover:underline" target="_blank" rel="noopener">
+              Visiter le Site Web &rarr;
+            </a>
+          </div>
+        ))}
+      </div>
+      <div class="text-center">
+        <Button href="#" variant="outline">
+          Télécharger les Logos
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Press Contact -->
+  <section class="py-12 bg-wrc-green-50 text-center">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-heading font-bold text-wrc-green-900 mb-3">
+        Contact Presse
+      </h2>
+      <p class="text-gray-600 mb-4">
+        Pour les demandes médias, les demandes d'entrevues et l'accréditation presse :
+      </p>
+      <a href={`mailto:${CONTACT_EMAIL}`} class="text-lg text-wrc-green-700 font-heading font-bold hover:underline">
+        {CONTACT_EMAIL}
+      </a>
+    </div>
+  </section>
+</PageLayout>

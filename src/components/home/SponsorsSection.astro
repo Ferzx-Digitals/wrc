@@ -1,0 +1,43 @@
+---
+import { getLocaleFromUrl, t } from '../../i18n/utils';
+
+const locale = getLocaleFromUrl(Astro.url);
+
+const categories = [
+  { title: t('home.sponsors.funders', locale), count: 4 },
+  { title: t('home.sponsors.institutional', locale), count: 6 },
+  { title: t('home.sponsors.ranger', locale), count: 5 },
+];
+---
+
+<section class="py-16 relative overflow-hidden bg-gradient-to-b from-white to-wrc-green-50/30">
+  <div class="absolute inset-0 nature-texture" aria-hidden="true"></div>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+    <h2 class="text-3xl md:text-4xl font-heading font-bold text-center text-wrc-green-900 mb-4">
+      {t('home.sponsors.title', locale)}
+    </h2>
+
+    <!-- Decorative divider -->
+    <div class="flex items-center justify-center gap-2 mb-10" aria-hidden="true">
+      <div class="h-px w-12 bg-wrc-green-300"></div>
+      <svg class="w-5 h-5 text-wrc-green-500" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.2">
+        <path d="M10 18 Q7 12 5 8 Q3 4 6 2 Q8 1 10 4 Q12 1 14 2 Q17 4 15 8 Q13 12 10 18Z" />
+      </svg>
+      <div class="h-px w-12 bg-wrc-green-300"></div>
+    </div>
+
+    {categories.map((category) => (
+      <div class="mb-10">
+        <h3 class="text-lg font-heading font-semibold text-gray-600 text-center mb-6">{category.title}</h3>
+        <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-8">
+          {Array.from({ length: category.count }).map((_, i) => (
+            <div class="w-24 h-16 sm:w-32 sm:h-20 rounded-lg bg-white/80 backdrop-blur-sm shadow-sm border border-wrc-green-100 flex items-center justify-center hover:shadow-md transition-shadow">
+              <span class="text-gray-300 text-xs font-heading">Logo</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

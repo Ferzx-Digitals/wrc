@@ -1,0 +1,10 @@
+{
+  "trips": [
+    { "name": "Parque Nacional Iguazú", "description": "Explore las impresionantes Cataratas del Iguazú y la selva subtropical circundante, Patrimonio de la Humanidad de la UNESCO.", "duration": "Día completo", "price": 16, "country": "Argentina" },
+    { "name": "Güirá Oga Rescate de Fauna", "description": "Visite un centro de rehabilitación de fauna silvestre dedicado al rescate y cuidado de animales nativos heridos.", "duration": "3 horas", "price": 16, "country": "Argentina" },
+    { "name": "Minas de Wanda", "description": "Descubra las famosas minas de piedras semipreciosas de Wanda, conocidas por sus cristales de amatista y cuarzo.", "duration": "4 horas", "price": 20, "country": "Argentina" },
+    { "name": "Misiones Jesuíticas", "description": "Excursión de día completo a las históricas misiones jesuíticas, Patrimonio de la Humanidad de la UNESCO que muestra la historia de la era colonial.", "duration": "Día completo", "price": 16, "country": "Argentina" },
+    { "name": "Parque Nacional Do Iguaçu", "description": "Experimente el lado brasileño de las Cataratas del Iguazú con vistas panorámicas de la Garganta del Diablo.", "duration": "6 horas", "price": 16, "country": "Brazil" },
+    { "name": "Parque Das Aves", "description": "Camine por aviarios que albergan más de 1.300 aves de 130 especies en el Bosque Atlántico.", "duration": "6 horas", "price": 16, "country": "Brazil" }
+  ]
+}

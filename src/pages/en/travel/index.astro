@@ -1,0 +1,149 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+import Button from '../../../components/ui/Button.astro';
+import SectionDivider from '../../../components/global/SectionDivider.astro';
+import { EXTERNAL_LINKS } from '../../../utils/constants';
+import { getLocaleFromUrl } from '../../../i18n/utils';
+
+const locale = getLocaleFromUrl(Astro.url);
+const prefix = `/${locale}`;
+
+const transportOptions = [
+  {
+    title: 'By Air — Cataratas del Iguazu Airport (IGR)',
+    description: 'The closest airport is Aeropuerto Internacional Cataratas del Iguazú (IGR), located approximately 20km from Puerto Iguazu city center. Multiple daily flights from Buenos Aires (1h 50min).',
+    icon: '✈️',
+    details: 'Airlines: Aerolineas Argentinas, Flybondi, JetSMART',
+  },
+  {
+    title: 'Via Brazil — Foz do Iguacu Airport (IGU)',
+    description: 'Foz do Iguaçu International Airport (IGU) on the Brazilian side is another option. Located 30-45 minutes by taxi from Puerto Iguazu across the international bridge.',
+    icon: '🛫',
+    details: 'International connections via Sao Paulo and Rio de Janeiro',
+  },
+  {
+    title: 'By Bus',
+    description: 'Long-distance bus services from Buenos Aires to Puerto Iguazu. Journey takes approximately 18-20 hours. Multiple bus companies operate this route with varying levels of comfort.',
+    icon: '🚌',
+    details: 'Companies: Via Bariloche, Crucero del Norte, Rio Uruguay',
+  },
+  {
+    title: 'By Car',
+    description: 'Drive from Buenos Aires via National Route 12. Total distance approximately 1,300km (16-18 hours). Well-maintained highway through Misiones province.',
+    icon: '🚗',
+    details: 'Route: Buenos Aires → Zarate → Parana → Posadas → Puerto Iguazu',
+  },
+  {
+    title: 'Via Paraguay',
+    description: 'Cross from Ciudad del Este (Paraguay) through the Friendship Bridge to Foz do Iguaçu (Brazil), then cross to Puerto Iguazu (Argentina). Triple Frontier crossing.',
+    icon: '🌉',
+    details: 'Border crossings open 24/7, bring valid passport',
+  },
+];
+---
+
+<PageLayout title="Plan Your Travel" description="Everything you need to know about traveling to Puerto Iguazu, Argentina for the 11th IRF World Ranger Congress.">
+  <!-- Hero -->
+  <section class="relative h-[350px] sm:h-[400px] bg-gradient-to-r from-wrc-blue-700/90 to-wrc-green-800/70">
+    <div class="absolute inset-0 opacity-10">
+      <div class="w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M20%2020.5V18H0v-2h20v-2l-3-3%203-3v-2H0V4h20V1.5L23.5%205%2020%208.5z%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.2%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E')]"></div>
+    </div>
+    <div class="relative h-full flex items-center">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white">
+          Plan Your Travel
+        </h1>
+        <p class="mt-4 text-xl text-white/80 max-w-2xl">
+          Getting to Puerto Iguazu, Argentina — your gateway to the Triple Frontier
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation Tabs -->
+  <nav class="bg-white border-b border-gray-200 sticky top-16 z-30">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex gap-1 overflow-x-auto">
+        <a href={`${prefix}/travel`} class="px-4 py-3 text-sm font-heading font-semibold border-b-2 border-wrc-green-700 text-wrc-green-700 whitespace-nowrap">
+          Logistics
+        </a>
+        <a href={`${prefix}/travel/venue`} class="px-4 py-3 text-sm font-heading font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-700 whitespace-nowrap">
+          Venue & Accommodation
+        </a>
+        <a href={`${prefix}/travel/faqs`} class="px-4 py-3 text-sm font-heading font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-700 whitespace-nowrap">
+          Travel FAQs
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Visa Information -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-heading font-bold text-wrc-green-900 mb-6">
+          Visa Information
+        </h2>
+        <div class="bg-wrc-blue-50 rounded-xl p-6 border border-wrc-blue-200">
+          <div class="flex items-start gap-4">
+            <span class="text-3xl" aria-hidden="true">🛂</span>
+            <div>
+              <h3 class="font-heading font-bold text-wrc-blue-900 mb-2">Check Your Visa Requirements</h3>
+              <p class="text-gray-600 leading-relaxed mb-4">
+                Many nationalities can enter Argentina visa-free or obtain an electronic travel
+                authorization (AVE) online. Check the Argentine visa portal to confirm requirements
+                for your nationality. We recommend starting the visa process well in advance.
+              </p>
+              <Button href={EXTERNAL_LINKS.visaPortal} variant="primary" size="sm">
+                Argentine Visa Portal &rarr;
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Transport Options -->
+  <section class="py-16 bg-gray-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+        Getting to Puerto Iguazu
+      </h2>
+      <div class="space-y-6 max-w-4xl mx-auto">
+        {transportOptions.map((option) => (
+          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100 hover:shadow-lg transition-shadow">
+            <div class="flex items-start gap-4">
+              <span class="text-3xl shrink-0" aria-hidden="true">{option.icon}</span>
+              <div>
+                <h3 class="font-heading font-bold text-lg text-gray-900 mb-2">{option.title}</h3>
+                <p class="text-gray-600 leading-relaxed mb-2">{option.description}</p>
+                <p class="text-sm text-wrc-green-700 font-medium">{option.details}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Airlines -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+        Airlines Serving Iguazu
+      </h2>
+      <div class="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
+        {['Aerolineas Argentinas', 'Flybondi', 'JetSMART'].map((airline) => (
+          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100 text-center">
+            <div class="w-16 h-16 mx-auto rounded-full bg-wrc-blue-100 flex items-center justify-center mb-3">
+              <span class="text-2xl" aria-hidden="true">✈️</span>
+            </div>
+            <p class="font-heading font-bold text-gray-900">{airline}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</PageLayout>

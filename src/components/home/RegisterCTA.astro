@@ -1,0 +1,65 @@
+---
+import { getLocaleFromUrl, t } from '../../i18n/utils';
+
+const locale = getLocaleFromUrl(Astro.url);
+const prefix = `/${locale}`;
+---
+
+<section class="py-20 md:py-28 bg-gradient-to-br from-wrc-green-800 via-wrc-green-900 to-wrc-green-800 text-white relative overflow-hidden">
+  <!-- Waterfall/mist background effect -->
+  <div class="absolute inset-0 mist-overlay" aria-hidden="true"></div>
+
+  <!-- Nature texture overlay -->
+  <div class="absolute inset-0 opacity-[0.06] pointer-events-none" aria-hidden="true">
+    <svg viewBox="0 0 1440 400" class="w-full h-full" preserveAspectRatio="xMidYMid slice" fill="none" stroke="white" stroke-width="0.8">
+      <!-- Water-like flowing lines -->
+      <path d="M0 100 C200 80 400 120 600 100 C800 80 1000 120 1200 100 C1300 90 1400 95 1440 100" />
+      <path d="M0 200 C200 180 400 220 600 200 C800 180 1000 220 1200 200 C1300 190 1400 195 1440 200" />
+      <path d="M0 300 C200 280 400 320 600 300 C800 280 1000 320 1200 300 C1300 290 1400 295 1440 300" />
+      <!-- Leaf accents -->
+      <path d="M200 50 Q190 35 195 20 Q205 10 215 20 Q220 35 210 50Z" />
+      <path d="M800 350 Q790 335 795 320 Q805 310 815 320 Q820 335 810 350Z" />
+      <path d="M1200 60 Q1190 45 1195 30 Q1205 20 1215 30 Q1220 45 1210 60Z" />
+    </svg>
+  </div>
+
+  <!-- Jungle silhouette at top -->
+  <div class="absolute top-0 left-0 right-0 text-wrc-green-800 leading-[0] rotate-180 opacity-40" aria-hidden="true">
+    <svg viewBox="0 0 1440 60" fill="currentColor" class="w-full h-auto" preserveAspectRatio="none">
+      <path d="M0 40 Q60 30 120 36 Q180 22 240 32 Q300 18 360 28 Q420 15 480 25 Q540 12 600 22 Q660 15 720 20 Q780 10 840 18 Q900 12 960 20 Q1020 8 1080 18 Q1140 12 1200 20 Q1260 15 1320 25 Q1380 18 1440 28 V60 H0Z"/>
+    </svg>
+  </div>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center relative z-10">
+    <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading font-bold mb-4 drop-shadow-lg">
+      {t('home.register.title', locale)}
+    </h2>
+    <p class="text-lg text-wrc-green-200 max-w-2xl mx-auto mb-10">
+      {t('home.register.description', locale)}
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a
+        href={`${prefix}/register`}
+        class="inline-flex items-center justify-center px-8 py-4 bg-white text-wrc-green-800 font-heading font-bold text-lg rounded-lg hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+      >
+        {t('common.registerNow', locale)}
+      </a>
+      <a
+        href={`${prefix}/submit`}
+        class="inline-flex items-center justify-center px-8 py-4 border-2 border-white/80 text-white font-heading font-bold text-lg rounded-lg hover:bg-white/15 transition-all backdrop-blur-sm"
+      >
+        {t('common.submitProposal', locale)}
+      </a>
+    </div>
+  </div>
+
+  <!-- Jungle silhouette at bottom -->
+  <div class="absolute bottom-0 left-0 right-0 text-wrc-green-900 leading-[0] opacity-50" aria-hidden="true">
+    <svg viewBox="0 0 1440 60" fill="currentColor" class="w-full h-auto" preserveAspectRatio="none">
+      <path d="M0 40 Q60 30 120 36 Q180 22 240 32 Q300 18 360 28 Q420 15 480 25 Q540 12 600 22 Q660 15 720 20 Q780 10 840 18 Q900 12 960 20 Q1020 8 1080 18 Q1140 12 1200 20 Q1260 15 1320 25 Q1380 18 1440 28 V60 H0Z"/>
+      <!-- Tiny palm accents -->
+      <path d="M300 28 Q302 20 298 14 M298 14 Q294 13 290 16 M298 14 Q302 10 306 13" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.5"/>
+      <path d="M900 20 Q902 12 898 6 M898 6 Q894 5 890 8 M898 6 Q902 2 906 5" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.5"/>
+    </svg>
+  </div>
+</section>

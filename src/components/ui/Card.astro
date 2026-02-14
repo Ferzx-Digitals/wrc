@@ -1,0 +1,39 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  imageAlt?: string;
+  href?: string;
+  class?: string;
+}
+
+const { title, description, image, imageAlt = '', href, class: className = '' } = Astro.props;
+
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag
+  href={href}
+  class:list={[
+    'group block bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg',
+    href && 'hover:-translate-y-1',
+    className,
+  ]}
+>
+  {image && (
+    <div class="aspect-video overflow-hidden bg-gray-100">
+      <img
+        src={image}
+        alt={imageAlt}
+        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+        loading="lazy"
+      />
+    </div>
+  )}
+  <div class="p-5">
+    {title && <h3 class="font-heading font-bold text-lg text-gray-900 mb-2">{title}</h3>}
+    {description && <p class="text-sm text-gray-600 leading-relaxed">{description}</p>}
+    <slot />
+  </div>
+</Tag>

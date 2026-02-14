@@ -1,0 +1,50 @@
+---
+import { getLocaleFromUrl, t } from '../../i18n/utils';
+
+const locale = getLocaleFromUrl(Astro.url);
+
+const objectives = [
+  { titleKey: 'about.objectives.recognition', descKey: 'about.objectives.recognitionDesc', color: 'from-wrc-green-700 to-wrc-green-800' },
+  { titleKey: 'about.objectives.experiences', descKey: 'about.objectives.experiencesDesc', color: 'from-wrc-blue-700 to-wrc-blue-800' },
+  { titleKey: 'about.objectives.solutions', descKey: 'about.objectives.solutionsDesc', color: 'from-wrc-earth-600 to-wrc-earth-700' },
+  { titleKey: 'about.objectives.declaration', descKey: 'about.objectives.declarationDesc', color: 'from-emerald-700 to-emerald-800' },
+];
+---
+
+<!-- Scroll 4: Objectives & WRC Logo -->
+<section class="py-16 bg-gray-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl md:text-4xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+      {t('about.objectives.title', locale)}
+    </h2>
+
+    <!-- Objectives - hover to expand cards -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+      {objectives.map((obj) => (
+        <div class={`group relative rounded-xl overflow-hidden bg-gradient-to-br ${obj.color} p-6 min-h-[200px] flex flex-col justify-end cursor-pointer transition-all duration-300 hover:shadow-xl hover:scale-[1.02]`}>
+          <h3 class="font-heading font-bold text-lg text-white mb-2">{t(obj.titleKey, locale)}</h3>
+          <p class="text-sm text-white/80 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-h-0 group-hover:max-h-40 overflow-hidden">
+            {t(obj.descKey, locale)}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <!-- WRC Logo Section -->
+    <div class="text-center max-w-2xl mx-auto">
+      <h3 class="text-2xl font-heading font-bold text-wrc-green-900 mb-4">
+        {t('about.logo.title', locale)}
+      </h3>
+      <!-- Logo placeholder -->
+      <div class="w-48 h-48 mx-auto rounded-full bg-gradient-to-br from-wrc-green-100 to-wrc-blue-100 flex items-center justify-center mb-6 shadow-lg">
+        <div class="text-center">
+          <p class="text-wrc-green-700 font-heading font-bold text-sm">{t('about.logo.wrc', locale)}</p>
+          <p class="text-wrc-green-600 text-xs mt-1">{t('about.logo.location', locale)}</p>
+        </div>
+      </div>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        {t('about.logo.description', locale)}
+      </p>
+    </div>
+  </div>
+</section>

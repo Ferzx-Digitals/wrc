@@ -1,0 +1,278 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Button from '../../components/ui/Button.astro';
+import SectionDivider from '../../components/global/SectionDivider.astro';
+import CountdownTimer from '../../components/global/CountdownTimer.astro';
+import { REGISTRATION_FEE_USD, MAX_CAPACITY, REGION_CAP, HOST_REGION_CAP, CONTACT_EMAIL } from '../../utils/constants';
+
+const registrationIncludes = [
+  'Acceso completo al congreso (5 días)',
+  'Kit de bienvenida y materiales',
+  'Traducciones simultáneas en sesiones plenarias',
+  'Café, té y almuerzo durante los días del congreso',
+  'Participación en excursiones',
+  'Eventos de noches culturales',
+  'Certificado de Participación',
+];
+
+const cancellationPolicy = [
+  { period: 'Hasta 6 meses antes (Octubre 2026)', refund: '80% de reembolso', color: 'text-green-700 bg-green-50' },
+  { period: 'Hasta 4 meses antes (Diciembre 2026)', refund: '50% de reembolso', color: 'text-yellow-700 bg-yellow-50' },
+  { period: 'Dentro de 2 meses (Febrero 2027+)', refund: 'Sin reembolso', color: 'text-red-700 bg-red-50' },
+];
+
+const paymentMethods = [
+  {
+    title: 'Delegados Argentinos',
+    method: 'Mercado Pago',
+    currency: 'ARS (Peso Argentino)',
+    icon: '🇦🇷',
+    note: 'También se aceptan transferencias bancarias para delegados argentinos y sudamericanos',
+  },
+  {
+    title: 'Delegados Internacionales',
+    method: 'PayPal',
+    currency: 'USD (Dólar Estadounidense)',
+    icon: '🌍',
+    note: 'Recomendamos evitar American Express y Mastercard debido a altas comisiones internacionales',
+  },
+];
+---
+
+<PageLayout title="Inscripción" description="Inscríbase en el 11° Congreso Mundial de Guardaparques de la IRF. $395 USD por persona. Inscripción abierta de febrero 2026 a marzo 2027.">
+  <!-- Hero -->
+  <section class="relative h-[350px] sm:h-[400px] bg-gradient-to-r from-wrc-green-900/90 to-wrc-earth-700/70">
+    <div class="absolute inset-0 opacity-10">
+      <div class="w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M20%2020.5V18H0v-2h20v-2l-3-3%203-3v-2H0V4h20V1.5L23.5%205%2020%208.5z%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.2%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E')]"></div>
+    </div>
+    <div class="relative h-full flex items-center">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white">
+          Inscríbase Ahora
+        </h1>
+        <p class="mt-4 text-xl text-white/80 max-w-2xl">
+          Asegure su lugar en el 11° Congreso Mundial de Guardaparques de la IRF
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-lg mx-auto text-center">
+        <div class="bg-white rounded-2xl shadow-xl p-8 border-2 border-wrc-green-200">
+          <p class="text-sm text-wrc-green-700 font-semibold uppercase tracking-wide mb-2">Inscripción al Congreso</p>
+          <div class="mb-4">
+            <span class="text-5xl font-heading font-extrabold text-gray-900">${REGISTRATION_FEE_USD}</span>
+            <span class="text-gray-500 text-lg ml-1">USD</span>
+          </div>
+          <p class="text-gray-600 text-sm mb-6">
+            Tarifa estándar única para todos los participantes — garantizando equidad e igualdad
+          </p>
+          <ul class="text-left space-y-2 mb-8">
+            {registrationIncludes.map((item) => (
+              <li class="flex items-start gap-3 text-sm">
+                <svg class="w-5 h-5 text-wrc-green-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-gray-700">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="text-xs text-gray-500 mb-6">
+            Período de inscripción: 20 de febrero de 2026 — 31 de marzo de 2027
+          </p>
+          <Button href="#registration-form" variant="primary" size="lg" class="w-full">
+            Inscríbase Ahora
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Payment Methods -->
+  <section class="py-16 bg-gray-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+        Métodos de Pago
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {paymentMethods.map((pm) => (
+          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+            <span class="text-3xl mb-3 block" aria-hidden="true">{pm.icon}</span>
+            <h3 class="font-heading font-bold text-xl text-gray-900 mb-1">{pm.title}</h3>
+            <p class="text-wrc-green-700 font-semibold mb-2">{pm.method} ({pm.currency})</p>
+            <p class="text-sm text-gray-600">{pm.note}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <SectionDivider variant="jungle" />
+
+  <!-- Registration Rules -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+        Información Importante
+      </h2>
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div class="bg-wrc-green-50 rounded-xl p-6">
+          <h3 class="font-heading font-bold text-wrc-green-900 mb-3">Capacidad</h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li>Máximo {MAX_CAPACITY} asistentes en total</li>
+            <li>{REGION_CAP} delegados por región IRF</li>
+            <li>{HOST_REGION_CAP} para la región anfitriona (Argentina)</li>
+          </ul>
+        </div>
+        <div class="bg-wrc-blue-50 rounded-xl p-6">
+          <h3 class="font-heading font-bold text-wrc-blue-900 mb-3">Reglas</h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li>La inscripción es individual y personal</li>
+            <li>No es transferible a otra persona</li>
+            <li>No se permiten inscripciones grupales</li>
+            <li>Formulario de inscripción solo en inglés</li>
+          </ul>
+        </div>
+        <div class="bg-wrc-earth-50 rounded-xl p-6">
+          <h3 class="font-heading font-bold text-wrc-earth-900 mb-3">Cónyuges y Parejas</h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li>Bienvenidos a asistir al congreso</li>
+            <li>Misma tarifa de inscripción de ${REGISTRATION_FEE_USD}</li>
+            <li>Ocupa un lugar de inscripción</li>
+            <li>Pueden reservar alojamiento juntos</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Cancellation Policy -->
+  <section class="py-16 bg-gray-50">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+        Política de Cancelación
+      </h2>
+      <div class="space-y-4">
+        {cancellationPolicy.map((tier) => (
+          <div class={`rounded-xl p-5 ${tier.color}`}>
+            <div class="flex items-center justify-between">
+              <span class="font-medium">{tier.period}</span>
+              <span class="font-heading font-bold">{tier.refund}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <SectionDivider variant="jungle" />
+
+  <!-- Registration Form Shell -->
+  <section id="registration-form" class="py-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-4">
+        Formulario de Inscripción
+      </h2>
+      <p class="text-center text-gray-600 mb-8">
+        Complete el formulario a continuación para inscribirse en el congreso. El formulario está solo en inglés.
+        Use <a href="https://translate.google.com" target="_blank" rel="noopener" class="text-wrc-green-700 underline">Google Translate</a> si lo necesita.
+      </p>
+
+      <form class="space-y-5 bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label for="reg-first-name" class="block text-sm font-medium text-gray-700 mb-1">Nombre *</label>
+            <input type="text" id="reg-first-name" name="firstName" required
+              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-wrc-green-500 focus:border-wrc-green-500"
+              placeholder="Nombre" />
+          </div>
+          <div>
+            <label for="reg-last-name" class="block text-sm font-medium text-gray-700 mb-1">Apellido *</label>
+            <input type="text" id="reg-last-name" name="lastName" required
+              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-wrc-green-500 focus:border-wrc-green-500"
+              placeholder="Apellido" />
+          </div>
+        </div>
+
+        <div>
+          <label for="reg-email" class="block text-sm font-medium text-gray-700 mb-1">Correo Electrónico *</label>
+          <input type="email" id="reg-email" name="email" required
+            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-wrc-green-500 focus:border-wrc-green-500"
+            placeholder="su@correo.com" />
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label for="reg-country" class="block text-sm font-medium text-gray-700 mb-1">País *</label>
+            <input type="text" id="reg-country" name="country" required
+              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-wrc-green-500 focus:border-wrc-green-500"
+              placeholder="Su país" />
+          </div>
+          <div>
+            <label for="reg-region" class="block text-sm font-medium text-gray-700 mb-1">Región IRF *</label>
+            <select id="reg-region" name="region" required
+              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-wrc-green-500 focus:border-wrc-green-500">
+              <option value="">Seleccionar región</option>
+              <option value="africa">África</option>
+              <option value="asia">Asia</option>
+              <option value="europe">Europa</option>
+              <option value="latin-america">América Latina y el Caribe</option>
+              <option value="north-america">América del Norte</option>
+              <option value="oceania">Oceanía</option>
+              <option value="south-asia">Asia del Sur</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="reg-organization" class="block text-sm font-medium text-gray-700 mb-1">Organización / Agencia</label>
+          <input type="text" id="reg-organization" name="organization"
+            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-wrc-green-500 focus:border-wrc-green-500"
+            placeholder="Su organización (opcional)" />
+        </div>
+
+        <div>
+          <label for="reg-type" class="block text-sm font-medium text-gray-700 mb-1">Tipo de Inscripción *</label>
+          <select id="reg-type" name="registrationType" required
+            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-wrc-green-500 focus:border-wrc-green-500">
+            <option value="">Seleccionar tipo</option>
+            <option value="local">Guardaparque Local (Argentina)</option>
+            <option value="international">Guardaparque Internacional</option>
+            <option value="spouse">Cónyuge / Pareja</option>
+          </select>
+        </div>
+
+        <div class="bg-wrc-green-50 rounded-lg p-4 text-center">
+          <p class="text-sm text-gray-600 mb-1">Tarifa de Inscripción</p>
+          <p class="text-3xl font-heading font-extrabold text-wrc-green-900">${REGISTRATION_FEE_USD} USD</p>
+        </div>
+
+        <div class="pt-2">
+          <Button type="submit" variant="primary" size="lg" class="w-full">
+            Proceder al Pago
+          </Button>
+          <p class="text-xs text-gray-500 text-center mt-3">
+            Integración de pago próximamente. Para inscripción anticipada, contacte{' '}
+            <a href={`mailto:${CONTACT_EMAIL}`} class="text-wrc-green-700 underline">{CONTACT_EMAIL}</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Countdown -->
+  <section class="py-16 bg-gradient-to-r from-wrc-green-800 to-wrc-green-900 text-white text-center">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-heading font-bold mb-6">El Congreso Comienza En</h2>
+      <CountdownTimer />
+      <p class="mt-6 text-white/70 text-sm">
+        No espere — los cupos están limitados a {MAX_CAPACITY} delegados
+      </p>
+    </div>
+  </section>
+</PageLayout>

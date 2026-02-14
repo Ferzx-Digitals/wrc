@@ -1,0 +1,51 @@
+---
+import { getLocaleFromUrl, t } from '../../i18n/utils';
+import { CONTACT_EMAIL, ORGANIZERS } from '../../utils/constants';
+
+const locale = getLocaleFromUrl(Astro.url);
+const prefix = `/${locale}`;
+---
+
+<footer class="bg-wrc-green-900 text-white">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- IRF Description -->
+      <div>
+        <h3 class="font-heading font-bold text-lg mb-3">IRF</h3>
+        <p class="text-sm text-wrc-green-200 leading-relaxed">
+          {t('footer.irf.description', locale)}
+        </p>
+      </div>
+
+      <!-- World Ranger Congress Links -->
+      <div>
+        <h3 class="font-heading font-bold text-lg mb-3">{t('footer.congress.title', locale)}</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href={`${prefix}/travel`} class="text-wrc-green-200 hover:text-white transition-colors">{t('footer.congress.travel', locale)}</a></li>
+          <li><a href={`${prefix}/faq`} class="text-wrc-green-200 hover:text-white transition-colors">{t('footer.congress.faq', locale)}</a></li>
+        </ul>
+      </div>
+
+      <!-- Participate -->
+      <div>
+        <h3 class="font-heading font-bold text-lg mb-3">{t('footer.participate.title', locale)}</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href={`${prefix}/submit`} class="text-wrc-green-200 hover:text-white transition-colors">{t('footer.participate.submit', locale)}</a></li>
+          <li><a href={`${prefix}/register`} class="text-wrc-green-200 hover:text-white transition-colors">{t('footer.participate.register', locale)}</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="font-heading font-bold text-lg mb-3">{t('footer.contact.title', locale)}</h3>
+        <a href={`mailto:${CONTACT_EMAIL}`} class="text-sm text-wrc-green-200 hover:text-white transition-colors">
+          {CONTACT_EMAIL}
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-10 pt-8 border-t border-wrc-green-800 text-center text-sm text-wrc-green-300">
+      <p>&copy; {new Date().getFullYear()} International Ranger Federation. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(claude mcp add figma -s user -- npx -y figma-developer-mcp --figma-api-key=figd_E_0vsbXxAnkYneVLq6W4zwdbgWRL-zIlWGK4diRb)",
+      "Bash(unset:*)",
+      "Bash(claude mcp add --help:*)",
+      "Bash(claude mcp --help:*)",
+      "Bash(ls:*)",
+      "Bash(claude mcp add figma --scope user -- npx -y figma-developer-mcp --figma-api-key=figd_E_0vsbXxAnkYneVLq6W4zwdbgWRL-zIlWGK4diRb)",
+      "Bash(claude mcp add figma -- npx -y figma-developer-mcp --figma-api-key=figd_E_0vsbXxAnkYneVLq6W4zwdbgWRL-zIlWGK4diRb)",
+      "Bash(claude mcp:*)",
+      "Bash(claude help:*)",
+      "Bash(CLAUDECODE_PRINT_MODE=0 claude mcp list:*)",
+      "Bash(git -C /Users/subhasishgoswami/Documents/Subhasish-Github/wrc_website init)",
+      "Bash(git -C /Users/subhasishgoswami/Documents/Subhasish-Github/wrc_website status)",
+      "Bash(node --version:*)",
+      "Bash(pnpm:*)",
+      "Bash(npx astro build:*)",
+      "Bash(xargs:*)",
+      "Bash(python3:*)",
+      "Bash(find:*)"
+    ]
+  }
+}

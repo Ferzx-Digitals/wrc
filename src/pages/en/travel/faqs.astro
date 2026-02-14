@@ -1,0 +1,152 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+import Accordion from '../../../components/ui/Accordion.astro';
+import SectionDivider from '../../../components/global/SectionDivider.astro';
+import { getLocaleFromUrl } from '../../../i18n/utils';
+
+const locale = getLocaleFromUrl(Astro.url);
+const prefix = `/${locale}`;
+
+const weatherInfo = [
+  { label: 'Temperature (Highs)', value: '26-28°C (79-82°F)', icon: '🌡️' },
+  { label: 'Temperature (Lows)', value: '17-19°C (63-66°F)', icon: '🌙' },
+  { label: 'Rainfall', value: '150-200mm / 10-12 rainy days', icon: '🌧️' },
+  { label: 'Cloudiness', value: '40-50%', icon: '☁️' },
+  { label: 'Sunrise / Sunset', value: '~6:00-6:20 / ~6:00-6:10', icon: '🌅' },
+  { label: 'Humidity', value: '70-75%', icon: '💧' },
+  { label: 'Wind', value: '10-15 km/h', icon: '💨' },
+];
+
+const practicalInfo = [
+  {
+    question: 'What currency is used in Argentina?',
+    answer: 'The official currency is the Argentine Peso (ARS). US Dollars and Brazilian Reais are commonly accepted in tourist areas of Puerto Iguazu. ATMs are available but may have withdrawal limits. We recommend bringing USD cash as backup.',
+  },
+  {
+    question: 'How can I get a SIM card or mobile data?',
+    answer: 'Argentine mobile carriers include Claro, Movistar, and Personal. Prepaid SIM cards can be purchased at the airport or local shops. WiFi is available at most hotels and the congress venue.',
+  },
+  {
+    question: 'What should I pack?',
+    answer: 'Light, breathable clothing for warm weather. A rain jacket or umbrella (April can be rainy). Comfortable walking shoes for field trips. Insect repellent. Sunscreen and a hat. A light sweater for air-conditioned venues.',
+  },
+  {
+    question: 'Is tap water safe to drink?',
+    answer: 'Tap water in Puerto Iguazu is generally safe but bottled water is readily available and recommended for visitors. The hotel and venue will provide water stations.',
+  },
+  {
+    question: 'What electrical plugs are used?',
+    answer: 'Argentina uses Type C and Type I plugs with 220V / 50Hz. Bring a universal adapter. Most hotels provide adapters on request.',
+  },
+  {
+    question: 'What language is spoken?',
+    answer: 'Spanish is the primary language. English is spoken at tourist venues, hotels, and at the congress. The congress will provide simultaneous translation in English, Spanish, and French during plenary sessions.',
+  },
+];
+
+const emergencyNumbers = [
+  { service: 'Emergency (Police/Fire/Ambulance)', number: '911' },
+  { service: 'Tourist Police', number: '+54 3757 420016' },
+  { service: 'Hospital SAMIC Iguazu', number: '+54 3757 420288' },
+  { service: 'Taxi Puerto Iguazu', number: '+54 3757 422008' },
+  { service: 'Argentine Tourist Info', number: '0800-555-0016' },
+  { service: 'Bus Terminal', number: '+54 3757 423006' },
+];
+---
+
+<PageLayout title="Travel FAQs" description="Practical information for traveling to Puerto Iguazu — weather, currency, WiFi, emergency numbers, and what to pack.">
+  <!-- Hero -->
+  <section class="relative h-[350px] sm:h-[400px] bg-gradient-to-r from-wrc-blue-700/90 to-wrc-green-800/70">
+    <div class="absolute inset-0 opacity-10">
+      <div class="w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M20%2020.5V18H0v-2h20v-2l-3-3%203-3v-2H0V4h20V1.5L23.5%205%2020%208.5z%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.2%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E')]"></div>
+    </div>
+    <div class="relative h-full flex items-center">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white">
+          Travel FAQs
+        </h1>
+        <p class="mt-4 text-xl text-white/80 max-w-2xl">
+          Practical information to prepare for your trip to Puerto Iguazu
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation Tabs -->
+  <nav class="bg-white border-b border-gray-200 sticky top-16 z-30">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex gap-1 overflow-x-auto">
+        <a href={`${prefix}/travel`} class="px-4 py-3 text-sm font-heading font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-700 whitespace-nowrap">
+          Logistics
+        </a>
+        <a href={`${prefix}/travel/venue`} class="px-4 py-3 text-sm font-heading font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-700 whitespace-nowrap">
+          Venue & Accommodation
+        </a>
+        <a href={`${prefix}/travel/faqs`} class="px-4 py-3 text-sm font-heading font-semibold border-b-2 border-wrc-green-700 text-wrc-green-700 whitespace-nowrap">
+          Travel FAQs
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Weather Section -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-4">
+        Weather in April
+      </h2>
+      <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+        Puerto Iguazu in April is warm and subtropical with occasional rain showers
+      </p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        {weatherInfo.map((info) => (
+          <div class="bg-white rounded-xl shadow-sm p-5 border border-gray-100 text-center">
+            <span class="text-2xl block mb-2" aria-hidden="true">{info.icon}</span>
+            <p class="text-xs text-gray-500 uppercase tracking-wide font-semibold mb-1">{info.label}</p>
+            <p class="text-gray-900 font-heading font-bold text-sm">{info.value}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Practical Info Accordion -->
+  <section class="py-16 bg-gray-50">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+        Practical Information
+      </h2>
+      <Accordion items={practicalInfo} />
+    </div>
+  </section>
+
+  <SectionDivider variant="jungle" />
+
+  <!-- Emergency Numbers -->
+  <section class="py-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+        Useful Phone Numbers
+      </h2>
+      <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
+        <table class="w-full">
+          <thead>
+            <tr class="bg-wrc-green-50">
+              <th class="px-6 py-3 text-left text-sm font-heading font-bold text-wrc-green-900">Service</th>
+              <th class="px-6 py-3 text-left text-sm font-heading font-bold text-wrc-green-900">Number</th>
+            </tr>
+          </thead>
+          <tbody>
+            {emergencyNumbers.map((item, i) => (
+              <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                <td class="px-6 py-3 text-sm text-gray-700">{item.service}</td>
+                <td class="px-6 py-3 text-sm font-mono text-wrc-green-700 font-semibold">{item.number}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</PageLayout>

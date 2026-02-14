@@ -1,0 +1,188 @@
+---
+import { getLocaleFromUrl, t } from '../../i18n/utils';
+import SketchDecorations from '../easter-eggs/SketchDecorations.astro';
+
+const locale = getLocaleFromUrl(Astro.url);
+---
+
+<section class="py-16 md:py-24 relative overflow-hidden nature-texture">
+  <SketchDecorations variant="tropical" color="#14532d" />
+
+  <!-- Pencil sketch waterfall — landscape flowing left to right across full section -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+    <svg class="w-full h-full" viewBox="0 0 1400 500" preserveAspectRatio="xMidYMid slice" fill="none" stroke="#14532d" stroke-linecap="round" stroke-linejoin="round" opacity="0.07">
+      <defs>
+        <filter id="wf-sketch">
+          <feTurbulence type="turbulence" baseFrequency="0.04" numOctaves="3" result="n" seed="7" />
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="1.8" />
+        </filter>
+      </defs>
+      <g filter="url(#wf-sketch)">
+
+        <!-- ===== LEFT: Cliff & waterfall source (0–200) ===== -->
+        <!-- Tall cliff -->
+        <path d="M0 0 L0 500" stroke-width="3" opacity="0.5" />
+        <path d="M0 0 Q30 10 50 0" stroke-width="2" opacity="0.6" />
+        <path d="M50 0 Q55 40 52 80 Q48 130 50 180 Q52 220 48 260 Q45 300 50 340 Q52 370 48 400 Q45 440 42 500" stroke-width="2.5" opacity="0.8" />
+        <path d="M42 500 Q30 495 20 500" stroke-width="1.5" opacity="0.6" />
+        <!-- Cliff face textures -->
+        <path d="M8 50 Q20 55 40 60" stroke-width="0.8" opacity="0.5" />
+        <path d="M5 120 Q18 125 38 130" stroke-width="0.8" opacity="0.4" />
+        <path d="M10 200 Q25 205 42 210" stroke-width="0.8" opacity="0.4" />
+        <path d="M8 290 Q22 295 40 300" stroke-width="0.8" opacity="0.35" />
+        <path d="M12 380 Q28 385 44 390" stroke-width="0.8" opacity="0.35" />
+
+        <!-- Waterfall streams falling from cliff top -->
+        <path d="M55 30 Q58 70 54 110 Q50 150 56 190 Q60 230 54 270 Q50 310 55 350 Q58 390 52 430 Q48 470 50 500" stroke-width="2" opacity="0.9" />
+        <path d="M65 25 Q68 65 62 105 Q58 145 64 185 Q70 225 64 265 Q58 305 63 345 Q68 385 62 425 Q56 465 58 500" stroke-width="2.2" opacity="0.85" />
+        <path d="M78 20 Q75 60 80 100 Q84 140 78 180 Q72 220 78 260 Q82 300 76 340 Q72 380 78 420 Q82 460 78 500" stroke-width="1.8" opacity="0.8" />
+        <!-- Thin outer streams -->
+        <path d="M48 40 Q46 80 50 120 Q52 160 48 200 Q44 240 48 280 Q50 320 46 360 Q42 400 45 440 Q46 470 44 500" stroke-width="1" opacity="0.5" />
+        <path d="M88 35 Q90 75 86 115 Q82 155 88 195 Q92 235 86 275 Q82 315 87 355 Q90 395 85 435 Q80 475 82 500" stroke-width="1" opacity="0.5" />
+
+        <!-- Overhanging foliage at cliff top -->
+        <path d="M0 0 Q10 15 25 10 Q40 5 55 15 Q65 22 58 30 Q45 25 30 28 Q15 30 0 25" stroke-width="1.5" opacity="0.7" />
+        <path d="M30 0 Q42 8 55 5 Q68 2 80 12 Q85 20 75 25 Q60 18 45 20 Q35 15 30 8" stroke-width="1.2" opacity="0.6" />
+        <!-- Hanging vine -->
+        <path d="M35 28 Q38 50 34 70 Q30 90 36 110" stroke-width="0.7" opacity="0.4" />
+        <circle cx="36" cy="115" r="2" stroke-width="0.5" opacity="0.3" />
+
+        <!-- ===== MIDDLE-LEFT: River pool & start of flowing river (100–400) ===== -->
+        <!-- Splash pool at waterfall base -->
+        <ellipse cx="68" cy="490" rx="50" ry="12" stroke-width="1.2" opacity="0.5" />
+        <ellipse cx="68" cy="482" rx="35" ry="8" stroke-width="0.8" opacity="0.35" />
+        <!-- Spray/mist -->
+        <circle cx="40" cy="470" r="4" stroke-width="0.6" opacity="0.25" />
+        <circle cx="95" cy="465" r="3" stroke-width="0.6" opacity="0.2" />
+        <circle cx="60" cy="460" r="2.5" stroke-width="0.6" opacity="0.2" />
+        <!-- Mist wisps rising -->
+        <path d="M55 455 Q50 435 58 420 Q62 408 55 395" stroke-width="0.6" opacity="0.2" />
+        <path d="M80 450 Q85 430 78 415 Q72 400 80 388" stroke-width="0.6" opacity="0.18" />
+
+        <!-- Rocks around pool -->
+        <path d="M20 485 Q32 475 48 480 Q55 488 45 495" stroke-width="1.3" opacity="0.5" />
+        <path d="M90 478 Q105 470 118 478 Q125 486 115 492" stroke-width="1.3" opacity="0.5" />
+        <path d="M60 495 Q72 488 85 492 Q90 498 80 500" stroke-width="1" opacity="0.4" />
+
+        <!-- River flowing rightward — upper bank -->
+        <path d="M118 478 Q160 465 210 460 Q270 454 340 450 Q420 446 500 442 Q580 438 660 435 Q740 432 820 430 Q900 428 980 426 Q1060 424 1140 422 Q1250 420 1400 418" stroke-width="1.8" opacity="0.7" />
+        <!-- River flowing rightward — lower bank -->
+        <path d="M115 492 Q155 498 200 500 Q260 500 340 498 Q420 496 500 494 Q580 492 660 490 Q740 488 820 487 Q900 486 980 485 Q1060 484 1140 483 Q1250 482 1400 481" stroke-width="1.8" opacity="0.7" />
+
+        <!-- River current/flow lines -->
+        <path d="M130 485 Q180 478 240 476 Q310 474 380 472 Q460 470 540 468 Q620 466 700 464 Q780 462 860 460 Q940 458 1020 456 Q1100 454 1200 452 L1400 450" stroke-width="0.8" opacity="0.35" />
+        <path d="M140 492 Q190 490 250 488 Q330 486 410 484 Q490 482 570 480 Q650 478 730 476 Q810 474 890 473 Q970 472 1050 471 Q1150 470 1400 468" stroke-width="0.7" opacity="0.3" />
+        <!-- Subtle ripple lines -->
+        <path d="M200 470 Q215 468 230 470 Q245 472 260 470" stroke-width="0.5" opacity="0.3" />
+        <path d="M350 465 Q365 463 380 465 Q395 467 410 465" stroke-width="0.5" opacity="0.25" />
+        <path d="M520 460 Q535 458 550 460 Q565 462 580 460" stroke-width="0.5" opacity="0.25" />
+        <path d="M700 456 Q715 454 730 456 Q745 458 760 456" stroke-width="0.5" opacity="0.2" />
+        <path d="M880 452 Q895 450 910 452 Q925 454 940 452" stroke-width="0.5" opacity="0.2" />
+        <path d="M1050 448 Q1065 446 1080 448 Q1095 450 1110 448" stroke-width="0.5" opacity="0.18" />
+        <path d="M1220 445 Q1235 443 1250 445 Q1265 447 1280 445" stroke-width="0.5" opacity="0.15" />
+
+        <!-- ===== RIVERBANK FOLIAGE — top side ===== -->
+        <!-- Fern cluster left bank -->
+        <path d="M130 448 Q140 435 155 440 Q162 448 150 455 Q140 452 130 455" stroke-width="1" opacity="0.5" />
+        <path d="M135 442 L148 438" stroke-width="0.4" opacity="0.3" />
+        <path d="M138 450 L150 447" stroke-width="0.4" opacity="0.3" />
+
+        <!-- Bush mid-left -->
+        <path d="M250 440 Q260 428 275 432 Q288 438 280 448 Q268 452 255 448 Q248 445 250 440" stroke-width="1" opacity="0.4" />
+
+        <!-- Tree left-center -->
+        <path d="M380 445 L380 350 Q370 335 360 342 Q350 328 355 338 Q360 320 370 325 Q375 310 380 318 Q385 310 390 325 Q400 320 395 338 Q400 328 405 342 Q395 335 380 350" stroke-width="1.2" opacity="0.45" />
+        <!-- Tree trunk texture -->
+        <path d="M378 380 L382 380" stroke-width="0.4" opacity="0.3" />
+        <path d="M377 410 L383 410" stroke-width="0.4" opacity="0.3" />
+
+        <!-- Tall grass clumps -->
+        <path d="M480 438 Q478 420 482 405" stroke-width="0.6" opacity="0.3" />
+        <path d="M484 438 Q486 418 484 400" stroke-width="0.6" opacity="0.3" />
+        <path d="M488 438 Q492 422 488 408" stroke-width="0.6" opacity="0.3" />
+
+        <!-- Monstera leaf -->
+        <path d="M600 430 Q610 415 625 420 Q635 428 625 438 Q615 435 605 438 Q598 435 600 430" stroke-width="0.9" opacity="0.35" />
+        <path d="M612 425 L618 430" stroke-width="0.3" opacity="0.25" />
+
+        <!-- Small tree right-center -->
+        <path d="M760 428 L760 370 Q752 358 748 365 Q744 355 750 360 Q756 348 760 352 Q764 348 770 360 Q776 355 772 365 Q768 358 760 370" stroke-width="1" opacity="0.35" />
+
+        <!-- Fern cluster right -->
+        <path d="M920 424 Q930 412 942 418 Q948 426 938 432 Q928 428 920 430" stroke-width="0.8" opacity="0.3" />
+
+        <!-- Distant bushes far right -->
+        <path d="M1080 420 Q1090 410 1105 414 Q1115 420 1105 428 Q1095 425 1085 426" stroke-width="0.7" opacity="0.25" />
+        <path d="M1200 418 Q1210 408 1225 412 Q1235 418 1225 424 Q1215 421 1205 422" stroke-width="0.7" opacity="0.2" />
+
+        <!-- ===== RIVERBANK FOLIAGE — bottom side ===== -->
+        <!-- Rocks along lower bank -->
+        <path d="M180 498 Q192 492 205 496 Q212 500 202 504" stroke-width="1" opacity="0.4" />
+        <path d="M320 496 Q332 490 345 494 Q350 500 340 502" stroke-width="0.9" opacity="0.35" />
+        <path d="M500 492 Q510 487 522 490 Q528 495 518 498" stroke-width="0.8" opacity="0.3" />
+
+        <!-- Grass tufts bottom bank -->
+        <path d="M420 496 Q418 485 422 475" stroke-width="0.5" opacity="0.25" />
+        <path d="M424 496 Q426 483 424 472" stroke-width="0.5" opacity="0.25" />
+        <path d="M650 490 Q648 480 652 470" stroke-width="0.5" opacity="0.2" />
+        <path d="M654 490 Q656 478 654 468" stroke-width="0.5" opacity="0.2" />
+
+        <!-- ===== ATMOSPHERE — birds, butterfly, mist ===== -->
+        <!-- Birds in sky -->
+        <path d="M300 120 Q310 110 320 115 Q325 112 330 118" stroke-width="0.7" opacity="0.15" />
+        <path d="M550 80 Q558 72 566 76 Q570 73 575 78" stroke-width="0.6" opacity="0.12" />
+        <path d="M850 100 Q858 92 866 96 Q870 93 875 98" stroke-width="0.6" opacity="0.1" />
+
+        <!-- Butterfly near waterfall -->
+        <path d="M160 300 Q150 290 146 296 Q144 304 152 306 Q156 303 160 300" stroke-width="0.6" opacity="0.2" />
+        <path d="M160 300 Q170 290 174 296 Q176 304 168 306 Q164 303 160 300" stroke-width="0.6" opacity="0.2" />
+        <path d="M160 300 L160 308" stroke-width="0.3" opacity="0.15" />
+
+        <!-- Dragonfly over river -->
+        <path d="M700 410 Q690 405 685 408" stroke-width="0.4" opacity="0.15" />
+        <path d="M700 410 Q710 405 715 408" stroke-width="0.4" opacity="0.15" />
+        <path d="M700 410 L700 418" stroke-width="0.3" opacity="0.1" />
+
+        <!-- Far horizon line hinting at distant landscape -->
+        <path d="M900 380 Q950 375 1000 378 Q1060 382 1120 376 Q1180 370 1250 374 Q1320 378 1400 372" stroke-width="0.5" opacity="0.1" />
+        <path d="M1000 370 Q1030 362 1060 366 Q1090 370 1120 364 Q1150 358 1180 362 Q1220 368 1260 362 Q1320 356 1400 360" stroke-width="0.4" opacity="0.08" />
+
+      </g>
+    </svg>
+  </div>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center max-w-3xl mx-auto">
+      <!-- Logo placeholders -->
+      <div class="flex items-center justify-center gap-6 sm:gap-10 mb-10">
+        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-wrc-green-100 border-2 border-wrc-green-200 flex items-center justify-center text-wrc-green-700 font-heading font-bold text-xs shadow-md">IRF</div>
+        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-wrc-green-100 border-2 border-wrc-green-200 flex items-center justify-center text-wrc-green-700 font-heading font-bold text-xs shadow-md">WRC</div>
+        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-wrc-green-100 border-2 border-wrc-green-200 flex items-center justify-center text-wrc-green-700 font-heading font-bold text-xs shadow-md">SIGUNARA</div>
+      </div>
+
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-wrc-green-900 leading-tight">
+        {t('home.welcome.title', locale)}
+      </h2>
+
+      <!-- Decorative divider -->
+      <div class="flex items-center justify-center gap-3 my-6" aria-hidden="true">
+        <svg class="w-8 h-4 text-wrc-green-400" viewBox="0 0 30 15" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M2 8 Q8 2 15 8 Q22 2 28 8" />
+        </svg>
+        <svg class="w-5 h-5 text-wrc-earth-500" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1">
+          <path d="M10 18 Q7 12 5 8 Q3 4 6 2 Q8 1 10 4 Q12 1 14 2 Q17 4 15 8 Q13 12 10 18Z" />
+        </svg>
+        <svg class="w-8 h-4 text-wrc-green-400" viewBox="0 0 30 15" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M2 8 Q8 2 15 8 Q22 2 28 8" />
+        </svg>
+      </div>
+
+      <p class="text-lg sm:text-xl text-wrc-earth-600 font-heading font-semibold italic">
+        "{t('home.welcome.theme', locale)}"
+      </p>
+      <p class="mt-6 text-gray-600 leading-relaxed max-w-2xl mx-auto text-lg">
+        {t('home.welcome.description', locale)}
+      </p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,83 @@
+---
+/**
+ * Cursor leaf particles on desktop
+ * Small leaf SVGs trail the cursor on mousemove.
+ * Only active on desktop (no touch). Respects prefers-reduced-motion.
+ */
+---
+
+<div id="cursor-leaves" aria-hidden="true"></div>
+
+<style>
+  #cursor-leaves {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+  }
+  .leaf-particle {
+    position: absolute;
+    pointer-events: none;
+    will-change: transform, opacity;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #cursor-leaves { display: none !important; }
+  }
+  @media (hover: none) {
+    #cursor-leaves { display: none !important; }
+  }
+</style>
+
+<script>
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isTouchDevice = window.matchMedia('(hover: none)').matches;
+
+  if (!prefersReduced && !isTouchDevice) {
+    const container = document.getElementById('cursor-leaves');
+    if (!container) throw new Error('cursor-leaves container not found');
+
+    const leafColors = ['#22c55e', '#16a34a', '#15803d', '#86efac', '#4ade80'];
+    let throttle = 0;
+
+    function createLeaf(x: number, y: number) {
+      const leaf = document.createElement('div');
+      leaf.className = 'leaf-particle';
+      const size = 6 + Math.random() * 8;
+      const color = leafColors[Math.floor(Math.random() * leafColors.length)];
+      const rotation = Math.random() * 360;
+
+      leaf.innerHTML = `<svg width="${size}" height="${size}" viewBox="0 0 10 10" fill="${color}" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 0 Q8 3 8 5 Q8 8 5 10 Q2 8 2 5 Q2 3 5 0Z" opacity="0.7"/>
+        <line x1="5" y1="2" x2="5" y2="8" stroke="${color}" stroke-width="0.5" opacity="0.5"/>
+      </svg>`;
+
+      leaf.style.left = `${x}px`;
+      leaf.style.top = `${y}px`;
+      leaf.style.transform = `rotate(${rotation}deg)`;
+      leaf.style.opacity = '0.8';
+
+      container.appendChild(leaf);
+
+      const dx = (Math.random() - 0.5) * 60;
+      const dy = 30 + Math.random() * 40;
+      const duration = 800 + Math.random() * 600;
+
+      leaf.animate([
+        { transform: `rotate(${rotation}deg) translate(0, 0)`, opacity: 0.8 },
+        { transform: `rotate(${rotation + 180}deg) translate(${dx}px, ${dy}px)`, opacity: 0 },
+      ], {
+        duration,
+        easing: 'ease-out',
+        fill: 'forwards',
+      }).onfinish = () => leaf.remove();
+    }
+
+    document.addEventListener('mousemove', (e) => {
+      throttle++;
+      if (throttle % 3 !== 0) return;
+      if (container.children.length > 20) return;
+      createLeaf(e.clientX, e.clientY);
+    }, { passive: true });
+  }
+</script>

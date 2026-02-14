@@ -1,0 +1,71 @@
+---
+import { getLocaleFromUrl, t } from '../../i18n/utils';
+
+const locale = getLocaleFromUrl(Astro.url);
+---
+
+<div class="countdown-timer" data-target="2027-04-19T09:00:00-03:00">
+  <div class="flex justify-center gap-4 sm:gap-6 md:gap-8">
+    <div class="flex flex-col items-center">
+      <div class="bg-wrc-green-800 text-white rounded-xl w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex items-center justify-center shadow-lg">
+        <span class="countdown-days text-2xl sm:text-3xl md:text-4xl font-heading font-bold" aria-live="polite">--</span>
+      </div>
+      <span class="mt-2 text-xs sm:text-sm font-medium text-gray-600">{t('countdown.days', locale)}</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <div class="bg-wrc-green-800 text-white rounded-xl w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex items-center justify-center shadow-lg">
+        <span class="countdown-hours text-2xl sm:text-3xl md:text-4xl font-heading font-bold" aria-live="polite">--</span>
+      </div>
+      <span class="mt-2 text-xs sm:text-sm font-medium text-gray-600">{t('countdown.hours', locale)}</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <div class="bg-wrc-green-800 text-white rounded-xl w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex items-center justify-center shadow-lg">
+        <span class="countdown-minutes text-2xl sm:text-3xl md:text-4xl font-heading font-bold" aria-live="polite">--</span>
+      </div>
+      <span class="mt-2 text-xs sm:text-sm font-medium text-gray-600">{t('countdown.minutes', locale)}</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <div class="bg-wrc-green-800 text-white rounded-xl w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex items-center justify-center shadow-lg">
+        <span class="countdown-seconds text-2xl sm:text-3xl md:text-4xl font-heading font-bold" aria-live="polite">--</span>
+      </div>
+      <span class="mt-2 text-xs sm:text-sm font-medium text-gray-600">{t('countdown.seconds', locale)}</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  function padZero(num: number): string {
+    return num.toString().padStart(2, '0');
+  }
+
+  function updateCountdown(el: HTMLElement) {
+    const target = new Date(el.dataset.target!).getTime();
+    const now = Date.now();
+    const diff = target - now;
+
+    if (diff <= 0) return;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60);
+
+    const daysEl = el.querySelector('.countdown-days');
+    const hoursEl = el.querySelector('.countdown-hours');
+    const minutesEl = el.querySelector('.countdown-minutes');
+    const secondsEl = el.querySelector('.countdown-seconds');
+
+    if (daysEl) daysEl.textContent = padZero(days);
+    if (hoursEl) hoursEl.textContent = padZero(hours);
+    if (minutesEl) minutesEl.textContent = padZero(minutes);
+    if (secondsEl) secondsEl.textContent = padZero(seconds);
+  }
+
+  document.querySelectorAll<HTMLElement>('.countdown-timer').forEach((el) => {
+    updateCountdown(el);
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const interval = prefersReducedMotion ? 60000 : 1000;
+    setInterval(() => updateCountdown(el), interval);
+  });
+</script>

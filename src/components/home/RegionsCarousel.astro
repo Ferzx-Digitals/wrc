@@ -1,0 +1,98 @@
+---
+import { getLocaleFromUrl, t } from '../../i18n/utils';
+import SketchDecorations from '../easter-eggs/SketchDecorations.astro';
+
+const locale = getLocaleFromUrl(Astro.url);
+
+const regions = [
+  { name: 'Europe', org: 'European Ranger Federation', color: 'from-blue-800 to-blue-600' },
+  { name: 'South America', org: '', color: 'from-green-800 to-green-600' },
+  { name: 'North America', org: '', color: 'from-indigo-800 to-indigo-600' },
+  { name: 'Africa', org: 'GRAA', color: 'from-amber-800 to-amber-600' },
+  { name: 'Oceania', org: '', color: 'from-cyan-800 to-cyan-600' },
+  { name: 'Central America', org: '', color: 'from-emerald-800 to-emerald-600' },
+  { name: 'Asia', org: '', color: 'from-purple-800 to-purple-600' },
+];
+---
+
+<section class="py-16 md:py-20 relative overflow-hidden bg-gradient-to-b from-wrc-green-50 to-wrc-green-100/50">
+  <!-- World map background silhouette -->
+  <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.04]" aria-hidden="true">
+    <svg viewBox="0 0 1000 500" class="w-[80%] h-auto" fill="#14532d">
+      <!-- Simplified world map continents -->
+      <!-- North America -->
+      <path d="M150 120 Q180 100 220 110 Q240 105 260 115 Q280 120 290 140 Q285 160 270 170 Q255 180 240 175 Q220 185 200 180 Q185 175 175 160 Q165 145 150 120Z"/>
+      <!-- South America -->
+      <path d="M230 220 Q245 210 260 220 Q270 230 275 250 Q278 270 275 290 Q270 310 260 325 Q250 340 242 345 Q235 340 238 320 Q240 300 235 280 Q230 260 228 240 Q228 230 230 220Z"/>
+      <!-- Europe -->
+      <path d="M450 100 Q470 90 490 100 Q505 105 510 120 Q508 135 495 140 Q480 145 465 138 Q450 130 448 115 Q448 108 450 100Z"/>
+      <!-- Africa -->
+      <path d="M460 170 Q480 160 500 170 Q510 185 515 210 Q518 235 512 260 Q505 280 495 295 Q485 305 475 300 Q465 290 462 270 Q458 245 455 220 Q453 195 460 170Z"/>
+      <!-- Asia -->
+      <path d="M540 80 Q580 70 620 85 Q660 80 700 95 Q720 110 730 135 Q725 155 710 165 Q690 175 665 170 Q640 175 615 168 Q590 160 570 150 Q550 140 540 120 Q535 100 540 80Z"/>
+      <!-- Oceania -->
+      <path d="M720 260 Q740 250 760 260 Q775 268 778 280 Q775 295 760 300 Q745 302 730 295 Q718 285 720 260Z"/>
+    </svg>
+  </div>
+
+  <SketchDecorations variant="minimal" color="#14532d" />
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+    <h2 class="text-3xl md:text-4xl font-heading font-bold text-center text-wrc-green-900 mb-4">
+      {t('home.regions.title', locale)}
+    </h2>
+
+    <!-- Decorative divider -->
+    <div class="flex items-center justify-center gap-2 mb-10" aria-hidden="true">
+      <div class="h-px w-12 bg-wrc-green-300"></div>
+      <svg class="w-5 h-5 text-wrc-green-500" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.2">
+        <circle cx="10" cy="10" r="7" />
+        <path d="M10 3 L10 5 M10 15 L10 17 M3 10 L5 10 M15 10 L17 10" />
+      </svg>
+      <div class="h-px w-12 bg-wrc-green-300"></div>
+    </div>
+
+    <div class="swiper regions-carousel">
+      <div class="swiper-wrapper">
+        {regions.map((region) => (
+          <div class="swiper-slide">
+            <div class={`relative h-48 sm:h-56 rounded-xl overflow-hidden bg-gradient-to-br ${region.color} shadow-lg`}>
+              <!-- Nature pattern overlay -->
+              <div class="absolute inset-0 opacity-[0.08]" aria-hidden="true">
+                <svg class="w-full h-full" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
+                  <path d="M20 180 Q25 160 22 140 M22 140 Q18 138 14 142 M22 140 Q20 135 24 132" stroke="white" stroke-width="1.5" fill="none"/>
+                  <path d="M180 170 Q175 150 178 130 M178 130 Q182 128 186 132 M178 130 Q176 125 180 122" stroke="white" stroke-width="1.5" fill="none"/>
+                  <path d="M100 20 Q95 10 88 15 Q82 20 88 25 Q92 27 100 22 Q108 27 112 25 Q118 20 112 15 Q105 10 100 20" stroke="white" stroke-width="1" fill="none"/>
+                </svg>
+              </div>
+              <div class="absolute inset-0 flex flex-col justify-end p-5">
+                <h3 class="text-xl sm:text-2xl font-heading font-bold text-white drop-shadow-md">{region.name}</h3>
+                {region.org && <p class="text-sm text-white/80 mt-1">{region.org}</p>}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="swiper-pagination mt-6"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import Swiper from 'swiper';
+  import { Pagination, Autoplay } from 'swiper/modules';
+
+  new Swiper('.regions-carousel', {
+    modules: [Pagination, Autoplay],
+    slidesPerView: 1.2,
+    spaceBetween: 16,
+    autoplay: { delay: 4000, disableOnInteraction: false },
+    pagination: { el: '.regions-carousel .swiper-pagination', clickable: true },
+    breakpoints: {
+      640: { slidesPerView: 2.2 },
+      1024: { slidesPerView: 3.2 },
+      1280: { slidesPerView: 4 },
+    },
+    a11y: { enabled: true },
+  });
+</script>

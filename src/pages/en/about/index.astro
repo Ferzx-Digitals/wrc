@@ -1,0 +1,27 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+import CongressIntro from '../../../components/about/CongressIntro.astro';
+import WRCDetails from '../../../components/about/WRCDetails.astro';
+import ActivitiesSection from '../../../components/about/ActivitiesSection.astro';
+import ObjectivesSection from '../../../components/about/ObjectivesSection.astro';
+import SectionDivider from '../../../components/global/SectionDivider.astro';
+---
+
+<PageLayout title="About the Congress" description="Learn about the 11th IRF World Ranger Congress in Puerto Iguazu, Argentina. Discover the organizers, activities, objectives, and the Iguazu Declaration.">
+  <!-- Scroll 1: Congress Introduction -->
+  <CongressIntro />
+
+  <SectionDivider variant="jungle" />
+
+  <!-- Scroll 2: 11th WRC Details -->
+  <WRCDetails />
+
+
+  <!-- Scroll 3: Organizers, Activities & Theme -->
+  <ActivitiesSection />
+
+  <SectionDivider variant="jungle" />
+
+  <!-- Scroll 4: Objectives & WRC Logo -->
+  <ObjectivesSection />
+</PageLayout>

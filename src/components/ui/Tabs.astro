@@ -1,0 +1,64 @@
+---
+interface Props {
+  tabs: { id: string; label: string }[];
+  defaultTab?: string;
+  class?: string;
+}
+
+const { tabs, defaultTab, class: className = '' } = Astro.props;
+const activeTab = defaultTab || tabs[0]?.id;
+---
+
+<div class:list={['tabs-container', className]} data-active-tab={activeTab}>
+  <!-- Tab buttons -->
+  <div class="flex border-b border-gray-200 overflow-x-auto" role="tablist">
+    {tabs.map((tab) => (
+      <button
+        role="tab"
+        data-tab={tab.id}
+        aria-selected={tab.id === activeTab ? 'true' : 'false'}
+        aria-controls={`panel-${tab.id}`}
+        class:list={[
+          'px-4 py-3 text-sm font-heading font-semibold whitespace-nowrap border-b-2 transition-colors -mb-px',
+          tab.id === activeTab
+            ? 'border-wrc-green-700 text-wrc-green-700'
+            : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
+        ]}
+      >
+        {tab.label}
+      </button>
+    ))}
+  </div>
+
+  <!-- Tab panels -->
+  <div class="mt-6">
+    <slot />
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.tabs-container').forEach((container) => {
+    const buttons = container.querySelectorAll('[role="tab"]');
+    const panels = container.querySelectorAll('[role="tabpanel"]');
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const tabId = (btn as HTMLElement).dataset.tab;
+
+        buttons.forEach((b) => {
+          const isActive = (b as HTMLElement).dataset.tab === tabId;
+          b.setAttribute('aria-selected', String(isActive));
+          b.classList.toggle('border-wrc-green-700', isActive);
+          b.classList.toggle('text-wrc-green-700', isActive);
+          b.classList.toggle('border-transparent', !isActive);
+          b.classList.toggle('text-gray-500', !isActive);
+        });
+
+        panels.forEach((panel) => {
+          const isActive = (panel as HTMLElement).id === `panel-${tabId}`;
+          (panel as HTMLElement).hidden = !isActive;
+        });
+      });
+    });
+  });
+</script>

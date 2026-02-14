@@ -1,0 +1,176 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Button from '../../components/ui/Button.astro';
+import SectionDivider from '../../components/global/SectionDivider.astro';
+import { EXTERNAL_LINKS } from '../../utils/constants';
+
+const sessionTypes = [
+  {
+    title: 'Charlas Plenarias',
+    description: 'Presentaciones principales por destacados expertos en conservación. Las sesiones abordan fuerza laboral inclusiva, bienestar de guardaparques, conducta profesional y desarrollo de capacidades.',
+    duration: '20-30 minutos',
+    icon: '🎤',
+  },
+  {
+    title: 'Talleres Simultáneos',
+    description: 'Talleres temáticos sobre equidad e igualdad, pueblos indígenas, una salud, participación juvenil, tecnología y más. Sesiones interactivas y prácticas.',
+    duration: '60-90 minutos',
+    icon: '🔬',
+  },
+];
+
+const formFields = [
+  'Nombre completo',
+  'Organización / Agencia',
+  'País',
+  'Región IRF',
+  'Dirección de correo electrónico',
+  'Título de la presentación',
+  'Preferencia de tipo de sesión (Plenaria / Taller)',
+  'Alineación con eje temático',
+  'Resumen (máximo 300 palabras)',
+  'Breve biografía',
+  'Requisitos técnicos',
+];
+---
+
+<PageLayout title="Enviar Expresión de Interés" description="Envíe su expresión de interés para presentar en el 11° Congreso Mundial de Guardaparques de la IRF. Formularios disponibles en inglés, español y francés.">
+  <!-- Hero -->
+  <section class="relative h-[350px] sm:h-[400px] bg-gradient-to-r from-wrc-green-900/90 to-wrc-earth-700/70">
+    <div class="absolute inset-0 opacity-10">
+      <div class="w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M20%2020.5V18H0v-2h20v-2l-3-3%203-3v-2H0V4h20V1.5L23.5%205%2020%208.5z%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.2%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E')]"></div>
+    </div>
+    <div class="relative h-full flex items-center">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white">
+          Envíe Su Interés
+        </h1>
+        <p class="mt-4 text-xl text-white/80 max-w-2xl">
+          Comparta sus experiencias, investigaciones y conocimientos en el Congreso Mundial de Guardaparques
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guidelines -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-heading font-bold text-wrc-green-900 mb-6">
+          Guía para Expresiones de Interés
+        </h2>
+        <div class="space-y-4 text-gray-600 leading-relaxed">
+          <p>
+            El 11° Congreso Mundial de Guardaparques de la IRF invita a guardaparques, profesionales de la conservación, investigadores
+            y líderes comunitarios a enviar expresiones de interés para presentar en el congreso. Damos la bienvenida
+            a presentaciones que se alineen con nuestros ejes temáticos y contribuyan al avance de la profesión de guardaparques.
+          </p>
+          <p>
+            Las presentaciones se aceptan en <strong>inglés, español y francés</strong>. Todas las expresiones de
+            interés serán revisadas por el Comité del Programa del Congreso. Los ponentes seleccionados serán notificados
+            y podrán ser elegibles para apoyo financiero.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Session Types -->
+  <section class="py-16 bg-gray-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+        Tipos de Sesión
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {sessionTypes.map((session) => (
+          <div class="bg-white rounded-xl shadow-md p-8 border border-gray-100">
+            <span class="text-4xl mb-4 block" aria-hidden="true">{session.icon}</span>
+            <h3 class="font-heading font-bold text-xl text-gray-900 mb-2">{session.title}</h3>
+            <p class="text-gray-600 leading-relaxed mb-4">{session.description}</p>
+            <p class="text-sm text-wrc-green-700 font-semibold">Duración: {session.duration}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <SectionDivider variant="jungle" />
+
+  <!-- Form Fields & Thematic Streams -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <!-- Form Fields -->
+        <div>
+          <h2 class="text-2xl font-heading font-bold text-wrc-green-900 mb-6">
+            Lo Que Necesitará
+          </h2>
+          <p class="text-gray-600 mb-4">Prepare la siguiente información antes de iniciar su envío:</p>
+          <ul class="space-y-2">
+            {formFields.map((field) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-wrc-green-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="text-gray-700">{field}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Thematic Streams -->
+        <div>
+          <h2 class="text-2xl font-heading font-bold text-wrc-green-900 mb-6">
+            Ejes Temáticos
+          </h2>
+          <p class="text-gray-600 mb-4">Su envío debe alinearse con uno de estos temas:</p>
+          <div class="space-y-3">
+            {['Fuerza Laboral Inclusiva y Representativa', 'Bienestar y Condiciones Laborales', 'Conducta Profesional y Ética', 'Desarrollo de Capacidades y Formación', 'Participación Comunitaria y Alianzas'].map((stream, i) => (
+              <div class="flex items-center gap-3 bg-wrc-green-50 rounded-lg p-3">
+                <span class="w-8 h-8 rounded-full bg-wrc-green-700 text-white flex items-center justify-center text-sm font-bold shrink-0">{i + 1}</span>
+                <span class="text-wrc-green-900 font-medium text-sm">{stream}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Submit Forms -->
+  <section class="py-16 bg-wrc-green-50">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-heading font-bold text-wrc-green-900 mb-4">
+        Envíe Su Expresión de Interés
+      </h2>
+      <p class="text-gray-600 mb-8">
+        Elija su idioma preferido para acceder al formulario de envío a través de Google Forms.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href={EXTERNAL_LINKS.speakerFormEN} size="lg" variant="primary">
+          Formulario en Inglés
+        </Button>
+        <Button href={EXTERNAL_LINKS.speakerFormES} size="lg" variant="outline">
+          Formulario en Español
+        </Button>
+        <Button href={EXTERNAL_LINKS.speakerFormFR} size="lg" variant="outline">
+          Formulario en Francés
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deadline Banner -->
+  <section class="py-8 bg-wrc-earth-500 text-white text-center">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <p class="text-lg font-heading font-bold">
+        Fecha Límite de Envío: Por Anunciar
+      </p>
+      <p class="text-sm text-white/80 mt-1">
+        Se alienta el envío anticipado. Los presentadores seleccionados serán notificados por correo electrónico.
+      </p>
+    </div>
+  </section>
+</PageLayout>

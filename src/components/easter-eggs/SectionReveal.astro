@@ -1,0 +1,57 @@
+---
+/**
+ * Section fade-in/reveal animations using IntersectionObserver
+ * Lightweight alternative to GSAP ScrollTrigger for section entrance animations.
+ * Respects prefers-reduced-motion.
+ */
+---
+
+<style is:global>
+  .reveal-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .reveal-section.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-section {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReduced) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    // Observe all sections with the reveal class
+    document.querySelectorAll('.reveal-section').forEach((el) => {
+      observer.observe(el);
+    });
+
+    // Also auto-apply to main content sections
+    document.querySelectorAll('main > section:not(:first-child)').forEach((el) => {
+      if (!el.classList.contains('reveal-section')) {
+        el.classList.add('reveal-section');
+        observer.observe(el);
+      }
+    });
+  }
+</script>

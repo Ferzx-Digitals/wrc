@@ -1,0 +1,101 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import HeroCarousel from '../../components/home/HeroCarousel.astro';
+import RegionsCarousel from '../../components/home/RegionsCarousel.astro';
+import WelcomeSection from '../../components/home/WelcomeSection.astro';
+import HistoryTable from '../../components/home/HistoryTable.astro';
+import CongressInfo from '../../components/home/CongressInfo.astro';
+import PresidentMessage from '../../components/home/PresidentMessage.astro';
+import OrganizersCards from '../../components/home/OrganizersCards.astro';
+import TeamCarousel from '../../components/home/TeamCarousel.astro';
+import SponsorsSection from '../../components/home/SponsorsSection.astro';
+import CountdownTimer from '../../components/global/CountdownTimer.astro';
+import SectionDivider from '../../components/global/SectionDivider.astro';
+import RegisterCTA from '../../components/home/RegisterCTA.astro';
+import SketchDecorations from '../../components/easter-eggs/SketchDecorations.astro';
+import { t } from '../../i18n/utils';
+import { VENUE, ORGANIZERS, REGISTRATION_FEE_USD } from '../../utils/constants';
+
+const eventJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "11° Congreso Mundial de Guardaparques de la IRF",
+  "startDate": "2027-04-19",
+  "endDate": "2027-04-23",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": {
+    "@type": "Place",
+    "name": VENUE.name,
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": VENUE.city,
+      "addressRegion": VENUE.state,
+      "addressCountry": "AR",
+    },
+  },
+  "organizer": [
+    { "@type": "Organization", "name": ORGANIZERS.irf.name, "url": ORGANIZERS.irf.website },
+    { "@type": "Organization", "name": ORGANIZERS.sigunara.name, "url": ORGANIZERS.sigunara.website },
+  ],
+  "offers": {
+    "@type": "Offer",
+    "price": String(REGISTRATION_FEE_USD),
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "validFrom": "2026-02-20",
+  },
+  "description": "El 11° Congreso Mundial de Guardaparques de la IRF reúne a más de 600 guardaparques y profesionales de la conservación de todo el mundo.",
+};
+---
+
+<PageLayout title={t('nav.home')} description="Sitio oficial del 11° Congreso Mundial de Guardaparques de la IRF, Puerto Iguazú, Argentina, 19-23 de abril de 2027." jsonLd={eventJsonLd}>
+  <HeroCarousel />
+
+  <RegionsCarousel />
+
+  <SectionDivider variant="jungle" class="bg-wrc-green-50" />
+
+  <WelcomeSection />
+
+  <HistoryTable />
+
+  <CongressInfo />
+
+  <PresidentMessage />
+
+  <OrganizersCards />
+
+  <TeamCarousel />
+
+  <SponsorsSection />
+
+  <!-- Countdown Section with nature/waterfall theme -->
+  <section class="py-16 md:py-20 relative overflow-hidden bg-gradient-to-br from-wrc-green-800 via-wrc-green-900 to-wrc-blue-900">
+    <div class="absolute inset-0 mist-overlay" aria-hidden="true"></div>
+    <div class="absolute inset-0 opacity-[0.06] pointer-events-none" aria-hidden="true">
+      <svg viewBox="0 0 1440 400" class="w-full h-full" preserveAspectRatio="xMidYMid slice" fill="none" stroke="white" stroke-width="0.6">
+        <path d="M200 0 Q202 80 198 160 Q196 240 200 320 Q202 360 200 400" />
+        <path d="M220 0 Q222 80 218 160 Q216 240 220 320 Q222 360 220 400" />
+        <path d="M500 0 Q502 80 498 160 Q496 240 500 320 Q502 360 500 400" />
+        <path d="M520 0 Q522 80 518 160 Q516 240 520 320 Q522 360 520 400" />
+        <path d="M800 0 Q802 80 798 160 Q796 240 800 320 Q802 360 800 400" />
+        <path d="M1100 0 Q1102 80 1098 160 Q1096 240 1100 320 Q1102 360 1100 400" />
+        <circle cx="300" cy="350" r="30" opacity="0.3" />
+        <circle cx="700" cy="380" r="25" opacity="0.3" />
+        <circle cx="1000" cy="360" r="35" opacity="0.3" />
+      </svg>
+    </div>
+    <SketchDecorations variant="waterfall" color="white" />
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-8 drop-shadow-lg">
+        {t('home.countdown.title')}
+      </h2>
+      <CountdownTimer />
+    </div>
+  </section>
+
+  <SectionDivider variant="jungle" />
+
+  <RegisterCTA />
+</PageLayout>

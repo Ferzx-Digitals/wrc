@@ -1,0 +1,284 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import Button from '../../components/ui/Button.astro';
+import Accordion from '../../components/ui/Accordion.astro';
+import SectionDivider from '../../components/global/SectionDivider.astro';
+import { CONTACT_EMAIL, ORGANIZERS } from '../../utils/constants';
+
+const pressConference = {
+  date: 'Martes 20 de Abril de 2027',
+  time: '12:00 - 13:00',
+  location: 'Hotel Amerian Portal del Iguazú',
+  note: 'Se proporcionará enlace de asistencia remota a periodistas acreditados',
+};
+
+const pressReleases = [
+  {
+    title: 'Anuncio del 11° Congreso Mundial de Guardaparques de la IRF',
+    date: 'Febrero 2026',
+    summary: 'La Federación Internacional de Guardaparques anuncia que el 11° Congreso Mundial se realizará en Puerto Iguazú, Argentina.',
+  },
+  {
+    title: 'Se Abre la Inscripción para el CMG 2027',
+    date: 'Febrero 2026',
+    summary: 'La inscripción en línea ya está abierta para guardaparques y profesionales de la conservación de todo el mundo.',
+  },
+  {
+    title: 'Se Revela el Tema del Congreso',
+    date: 'Marzo 2026',
+    summary: '"Reconociendo a los Guardaparques: Avanzando la profesión para salvaguardar nuestro futuro" — el tema del 11° CMG.',
+  },
+  {
+    title: 'Convocatoria de Expresiones de Interés',
+    date: 'Abril 2026',
+    summary: 'Se invita a ponentes y facilitadores de talleres a enviar expresiones de interés en inglés, español o francés.',
+  },
+];
+
+const pressFaqs = [
+  {
+    question: '¿Quiénes son los guardaparques?',
+    answer: 'Los guardaparques son algunos de los trabajadores más esenciales del planeta. Protegen y gestionan las áreas protegidas y conservadas del mundo, cubriendo más del 15% de la superficie terrestre y el 8% de nuestros océanos. Se estima que hay 286.000 guardaparques en todo el mundo.',
+  },
+  {
+    question: '¿Por qué son importantes los guardaparques para las áreas protegidas?',
+    answer: 'Los guardaparques son los defensores de primera línea de la biodiversidad. Realizan patrullas, monitorean la vida silvestre, combaten la caza furtiva, gestionan conflictos humano-fauna, se involucran con las comunidades, combaten incendios forestales y educan a los visitantes. Sin guardaparques, las áreas protegidas sufrirían una degradación severa.',
+  },
+  {
+    question: '¿Por qué los guardaparques necesitan más recursos?',
+    answer: 'A pesar de su papel crítico, los guardaparques a menudo trabajan en condiciones precarias con salarios inadecuados, equipamiento limitado, formación insuficiente y falta de protecciones legales. Muchos enfrentan peligros diarios incluyendo cazadores furtivos armados, ataques de fauna silvestre y condiciones climáticas extremas.',
+  },
+  {
+    question: '¿Cuáles son los principales desafíos que enfrentan los guardaparques?',
+    answer: 'Los desafíos clave incluyen financiamiento inadecuado, malas condiciones laborales, falta de reconocimiento profesional, progresión profesional limitada, formación insuficiente, exposición a violencia y trauma, y los crecientes impactos del cambio climático en las áreas protegidas.',
+  },
+  {
+    question: '¿Cuál es el objetivo del Congreso Mundial de Guardaparques?',
+    answer: 'El CMG reúne a guardaparques de todo el mundo para compartir experiencias, construir redes, desarrollar soluciones y avanzar en la profesión. Cada congreso produce una declaración que aborda los problemas clave que enfrentan los guardaparques a nivel mundial.',
+  },
+  {
+    question: '¿Por qué es importante el CMG para el Marco 30x30?',
+    answer: 'El Marco Global de Biodiversidad busca proteger el 30% del planeta para 2030. Los guardaparques son esenciales para lograr este objetivo. El CMG ayuda a desarrollar la capacidad y el reconocimiento necesarios para que los guardaparques cumplan este rol ampliado.',
+  },
+  {
+    question: '¿Cuál será el resultado del 11° CMG?',
+    answer: 'El 11° CMG producirá la Declaración de Iguazú — una declaración histórica que enfatiza el papel de los guardaparques en la conservación de la naturaleza. También generará recomendaciones, planes de acción y alianzas fortalecidas para las comunidades de guardaparques en todo el mundo.',
+  },
+];
+---
+
+<PageLayout title="Prensa y Medios" description="Recursos de prensa para el 11° Congreso Mundial de Guardaparques de la IRF — comunicados de prensa, kits de medios, galería de fotos y detalles de la conferencia de prensa.">
+  <!-- Hero -->
+  <section class="relative h-[350px] sm:h-[400px] bg-gradient-to-r from-wrc-green-900/90 to-wrc-earth-700/70">
+    <div class="absolute inset-0 opacity-10">
+      <div class="w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M20%2020.5V18H0v-2h20v-2l-3-3%203-3v-2H0V4h20V1.5L23.5%205%2020%208.5z%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.2%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E')]"></div>
+    </div>
+    <div class="relative h-full flex items-center">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white">
+          Prensa y Medios
+        </h1>
+        <p class="mt-4 text-xl text-white/80 max-w-2xl">
+          Recursos de medios e información de prensa para el 11° Congreso Mundial de Guardaparques de la IRF
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Press Conference -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-heading font-bold text-wrc-green-900 mb-6">
+          Conferencia de Prensa
+        </h2>
+        <div class="bg-wrc-green-50 rounded-xl p-6 border border-wrc-green-200">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <p class="text-sm text-gray-500 uppercase tracking-wide font-semibold">Fecha</p>
+              <p class="text-gray-900 font-heading font-bold">{pressConference.date}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500 uppercase tracking-wide font-semibold">Hora</p>
+              <p class="text-gray-900 font-heading font-bold">{pressConference.time}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500 uppercase tracking-wide font-semibold">Lugar</p>
+              <p class="text-gray-900 font-heading font-bold">{pressConference.location}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500 uppercase tracking-wide font-semibold">Acceso Remoto</p>
+              <p class="text-gray-600 text-sm">{pressConference.note}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Press Kit Downloads -->
+  <section class="py-16 bg-gray-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-heading font-bold text-wrc-green-900 mb-4">
+        Kit de Prensa
+      </h2>
+      <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+        Descargue el kit de prensa oficial con logos, fotos e información de contexto
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <Button href="#" variant="primary">
+          Kit de Prensa (Inglés)
+        </Button>
+        <Button href="#" variant="outline">
+          Kit de Prensa (Español)
+        </Button>
+        <Button href="#" variant="outline">
+          Kit de Prensa (Francés)
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <SectionDivider variant="jungle" />
+
+  <!-- Press Releases -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+        Comunicados de Prensa
+      </h2>
+      <div class="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {pressReleases.map((release) => (
+          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+            <p class="text-sm text-wrc-green-700 font-semibold mb-2">{release.date}</p>
+            <h3 class="font-heading font-bold text-lg text-gray-900 mb-2">{release.title}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed mb-4">{release.summary}</p>
+            <div class="flex gap-2">
+              <Button href="#" variant="outline" size="sm">EN</Button>
+              <Button href="#" variant="outline" size="sm">ES</Button>
+              <Button href="#" variant="outline" size="sm">FR</Button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Photo Gallery -->
+  <section class="py-16 bg-gray-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-4">
+        Galería de Fotos
+      </h2>
+      <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+        Fotos en alta resolución disponibles para uso editorial
+      </p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-8">
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+          <div class="aspect-square rounded-lg bg-gradient-to-br from-wrc-green-100 to-wrc-blue-100 flex items-center justify-center">
+            <span class="text-wrc-green-400 text-xs font-semibold">Foto {i}</span>
+          </div>
+        ))}
+      </div>
+      <div class="text-center">
+        <Button href="#" variant="primary">
+          Descargar Todas las Fotos
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <SectionDivider variant="jungle" />
+
+  <!-- Ranger Explainers -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+        <div>
+          <h2 class="text-2xl font-heading font-bold text-wrc-green-900 mb-4">
+            ¿Quiénes Son los Guardaparques?
+          </h2>
+          <p class="text-gray-600 leading-relaxed">
+            Los guardaparques son algunos de los trabajadores más esenciales del planeta. Se estima que hay
+            286.000 guardaparques en todo el mundo que protegen y gestionan áreas protegidas y conservadas.
+            Patrullan vastos territorios, monitorean poblaciones de vida silvestre, combaten actividades ilegales,
+            gestionan conflictos humano-fauna, educan a visitantes e interactúan con comunidades locales.
+            A pesar de su papel crítico, los guardaparques a menudo enfrentan malas condiciones laborales,
+            salarios inadecuados y reconocimiento insuficiente.
+          </p>
+        </div>
+        <div>
+          <h2 class="text-2xl font-heading font-bold text-wrc-green-900 mb-4">
+            ¿Por Qué Son Importantes los Guardaparques?
+          </h2>
+          <p class="text-gray-600 leading-relaxed">
+            Los guardaparques son los defensores de primera línea de la biodiversidad. Protegen más del 15% de la
+            superficie terrestre y el 8% de nuestros océanos. Mientras el mundo trabaja hacia el Marco 30x30
+            — proteger el 30% del planeta para 2030 — el papel de los guardaparques se vuelve aún más
+            crítico. Sin guardaparques bien formados, bien equipados y bien apoyados,
+            los objetivos de conservación no pueden alcanzarse. Invertir en guardaparques es invertir en el
+            futuro de nuestro planeta.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Press FAQs -->
+  <section class="py-16 bg-gray-50">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+        Preguntas Frecuentes de Prensa
+      </h2>
+      <Accordion items={pressFaqs} />
+    </div>
+  </section>
+
+  <SectionDivider variant="jungle" />
+
+  <!-- Organizers -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+        Organizadores
+      </h2>
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-8">
+        {Object.values(ORGANIZERS).map((org) => (
+          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
+            <div class="w-14 h-14 rounded-lg bg-wrc-green-100 flex items-center justify-center mb-4">
+              <span class="text-wrc-green-700 font-heading font-bold text-sm">{org.shortName}</span>
+            </div>
+            <h3 class="font-heading font-bold text-lg text-gray-900 mb-2">{org.name}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed mb-3">{org.description}</p>
+            <a href={org.website} class="text-sm text-wrc-green-700 font-semibold hover:underline" target="_blank" rel="noopener">
+              Visitar Sitio Web &rarr;
+            </a>
+          </div>
+        ))}
+      </div>
+      <div class="text-center">
+        <Button href="#" variant="outline">
+          Descargar Logos
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Press Contact -->
+  <section class="py-12 bg-wrc-green-50 text-center">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-heading font-bold text-wrc-green-900 mb-3">
+        Contacto de Prensa
+      </h2>
+      <p class="text-gray-600 mb-4">
+        Para consultas de medios, solicitudes de entrevistas y acreditación de prensa:
+      </p>
+      <a href={`mailto:${CONTACT_EMAIL}`} class="text-lg text-wrc-green-700 font-heading font-bold hover:underline">
+        {CONTACT_EMAIL}
+      </a>
+    </div>
+  </section>
+</PageLayout>
