@@ -4,47 +4,324 @@ import { getLocaleFromUrl, t } from '../../i18n/utils';
 const locale = getLocaleFromUrl(Astro.url);
 
 const objectives = [
-  { titleKey: 'about.objectives.recognition', descKey: 'about.objectives.recognitionDesc', color: 'from-wrc-green-700 to-wrc-green-800' },
-  { titleKey: 'about.objectives.experiences', descKey: 'about.objectives.experiencesDesc', color: 'from-wrc-blue-700 to-wrc-blue-800' },
-  { titleKey: 'about.objectives.solutions', descKey: 'about.objectives.solutionsDesc', color: 'from-wrc-earth-600 to-wrc-earth-700' },
-  { titleKey: 'about.objectives.declaration', descKey: 'about.objectives.declarationDesc', color: 'from-emerald-700 to-emerald-800' },
+  {
+    titleKey: 'about.objectives.recognition',
+    descKey: 'about.objectives.recognitionDesc',
+    gradient: 'from-wrc-green-700 to-wrc-green-800',
+    iconBg: 'bg-wrc-green-600',
+    number: '01',
+  },
+  {
+    titleKey: 'about.objectives.experiences',
+    descKey: 'about.objectives.experiencesDesc',
+    gradient: 'from-wrc-blue-700 to-wrc-blue-800',
+    iconBg: 'bg-wrc-blue-600',
+    number: '02',
+  },
+  {
+    titleKey: 'about.objectives.solutions',
+    descKey: 'about.objectives.solutionsDesc',
+    gradient: 'from-wrc-earth-600 to-wrc-earth-700',
+    iconBg: 'bg-wrc-earth-500',
+    number: '03',
+  },
+  {
+    titleKey: 'about.objectives.declaration',
+    descKey: 'about.objectives.declarationDesc',
+    gradient: 'from-emerald-700 to-emerald-800',
+    iconBg: 'bg-emerald-600',
+    number: '04',
+  },
 ];
 ---
 
-<!-- Scroll 4: Objectives & WRC Logo -->
-<section class="py-16 bg-gray-50">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <h2 class="text-3xl md:text-4xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+<!-- Congress Objectives: Stacked cascading carousel -->
+<section class="py-16 md:py-24 bg-gray-50 overflow-hidden relative">
+  <!-- Translucent sketch background — Iguazu waterfall, flora & fauna -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+    <svg class="absolute bottom-0 right-0 w-[500px] h-[600px] md:w-[650px] md:h-[750px] lg:w-[800px] lg:h-[900px] opacity-[0.06]" viewBox="0 0 800 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Iguazu-style waterfall cascades -->
+      <g stroke="#166534" stroke-width="1.5" fill="none" opacity="0.7">
+        <!-- Main waterfall cliff -->
+        <path d="M500 0 Q520 30 510 60 Q530 90 520 130 Q540 160 525 200 Q510 230 530 260 Q545 280 530 320 Q515 350 535 380 Q550 400 530 440 Q515 470 535 500"/>
+        <path d="M600 20 Q615 50 605 80 Q625 110 610 150 Q595 180 615 210 Q630 240 615 280 Q600 310 620 340 Q635 360 620 400 Q605 430 625 460 Q640 480 620 520"/>
+        <path d="M700 0 Q710 40 700 80 Q720 110 705 150 Q690 180 710 220 Q725 250 710 290 Q695 320 715 360"/>
+        <!-- Water streams falling -->
+        <path d="M480 260 Q490 300 485 340 Q495 380 480 420 Q470 460 485 500 Q495 540 480 580 Q470 620 485 660 Q495 700 480 740 Q470 780 485 820 Q495 860 480 900" stroke="#3b82f6" stroke-width="2" opacity="0.5"/>
+        <path d="M530 320 Q540 360 535 400 Q545 440 530 480 Q520 520 535 560 Q545 600 530 640 Q520 680 535 720 Q545 760 530 800 Q520 840 530 900" stroke="#60a5fa" stroke-width="1.8" opacity="0.4"/>
+        <path d="M580 280 Q590 320 585 360 Q595 400 580 440 Q570 480 585 520 Q595 560 580 600 Q570 640 585 680 Q595 720 580 760 Q570 800 580 900" stroke="#3b82f6" stroke-width="2.2" opacity="0.45"/>
+        <path d="M640 340 Q650 380 645 420 Q655 460 640 500 Q630 540 645 580 Q655 620 640 660 Q630 700 640 900" stroke="#93c5fd" stroke-width="1.5" opacity="0.35"/>
+        <path d="M710 290 Q720 340 715 380 Q725 420 710 460 Q700 500 715 540 Q725 580 710 620 Q700 660 710 900" stroke="#60a5fa" stroke-width="1.8" opacity="0.4"/>
+      </g>
+      <!-- Mist spray at waterfall base -->
+      <ellipse cx="580" cy="780" rx="160" ry="50" fill="#bfdbfe" opacity="0.15"/>
+      <ellipse cx="620" cy="820" rx="120" ry="35" fill="#dbeafe" opacity="0.12"/>
+      <ellipse cx="540" cy="850" rx="100" ry="30" fill="#bfdbfe" opacity="0.1"/>
+      <!-- Rocky cliff face -->
+      <path d="M450 0 Q460 40 455 80 Q470 130 458 180 Q450 230 465 280 Q475 320 460 370 Q450 420 460 480 Q470 530 455 580 Q445 630 460 680 Q470 720 455 770 Q445 820 460 870 L450 900" stroke="#166534" stroke-width="2.5" fill="none" opacity="0.4"/>
+      <!-- Tropical leaves — bottom right cluster -->
+      <g opacity="0.6">
+        <!-- Large palm frond -->
+        <path d="M750 650 Q720 620 680 610 Q650 608 620 620" stroke="#166534" stroke-width="2" fill="none"/>
+        <path d="M750 650 Q730 640 710 620 Q690 600 660 595" stroke="#166534" stroke-width="1.5" fill="none"/>
+        <path d="M750 650 Q740 670 720 680 Q700 688 670 685" stroke="#166534" stroke-width="1.8" fill="none"/>
+        <path d="M750 650 Q760 670 760 700 Q758 725 745 745" stroke="#166534" stroke-width="1.5" fill="none"/>
+        <!-- Monstera leaf -->
+        <path d="M680 780 Q660 750 640 740 Q610 735 590 750 Q575 768 580 790 Q588 810 610 820 Q635 825 655 815 Q670 800 680 780Z" stroke="#15803d" stroke-width="1.8" fill="#166534" fill-opacity="0.08"/>
+        <path d="M640 760 Q645 775 640 790" stroke="#15803d" stroke-width="1" fill="none"/>
+        <path d="M620 755 Q630 770 625 788" stroke="#15803d" stroke-width="1" fill="none"/>
+        <!-- Fern frond -->
+        <path d="M780 800 Q750 770 720 760 Q690 755 660 765" stroke="#166534" stroke-width="1.5" fill="none"/>
+        <path d="M760 780 L748 770 M750 775 L738 768 M740 772 L728 766 M730 768 L718 764" stroke="#166534" stroke-width="0.8" fill="none"/>
+        <!-- Small leaves -->
+        <path d="M720 850 Q710 835 695 830 Q680 828 670 838 Q668 848 678 855 Q692 860 705 855 Q715 850 720 850Z" stroke="#15803d" stroke-width="1.2" fill="#166534" fill-opacity="0.06"/>
+      </g>
+      <!-- Toucan perched on branch — top right area -->
+      <g opacity="0.5" transform="translate(620, 80)">
+        <!-- Branch -->
+        <path d="M0 100 Q30 95 60 98 Q90 95 120 100 Q140 103 160 98" stroke="#8B6914" stroke-width="2.5" fill="none"/>
+        <!-- Body -->
+        <ellipse cx="80" cy="75" rx="28" ry="22" stroke="#166534" stroke-width="1.5" fill="#166534" fill-opacity="0.06"/>
+        <!-- Head -->
+        <circle cx="110" cy="62" r="14" stroke="#166534" stroke-width="1.5" fill="none"/>
+        <!-- Beak -->
+        <path d="M124 60 Q150 55 165 62 Q155 68 124 66Z" stroke="#D97706" stroke-width="1.2" fill="#D97706" fill-opacity="0.1"/>
+        <!-- Eye -->
+        <circle cx="114" cy="59" r="2.5" fill="#166534" opacity="0.4"/>
+        <!-- Tail feathers -->
+        <path d="M52 78 Q40 85 35 100 Q38 90 50 82" stroke="#166534" stroke-width="1.2" fill="none"/>
+        <path d="M55 82 Q42 92 38 108 Q42 96 54 86" stroke="#166534" stroke-width="1" fill="none"/>
+        <!-- Feet on branch -->
+        <path d="M75 97 L72 100 M78 97 L80 100 M95 95 L93 100 M98 95 L100 100" stroke="#166534" stroke-width="1" fill="none"/>
+      </g>
+      <!-- Butterfly — mid area -->
+      <g opacity="0.45" transform="translate(380, 400)">
+        <!-- Left wing -->
+        <path d="M30 20 Q10 5 5 15 Q0 25 10 35 Q20 40 30 30Z" stroke="#7C3AED" stroke-width="1.2" fill="#7C3AED" fill-opacity="0.06"/>
+        <!-- Right wing -->
+        <path d="M30 20 Q50 5 55 15 Q60 25 50 35 Q40 40 30 30Z" stroke="#7C3AED" stroke-width="1.2" fill="#7C3AED" fill-opacity="0.06"/>
+        <!-- Body -->
+        <line x1="30" y1="15" x2="30" y2="38" stroke="#7C3AED" stroke-width="1" opacity="0.5"/>
+        <!-- Antennae -->
+        <path d="M30 15 Q25 8 22 5" stroke="#7C3AED" stroke-width="0.8" fill="none"/>
+        <path d="M30 15 Q35 8 38 5" stroke="#7C3AED" stroke-width="0.8" fill="none"/>
+      </g>
+      <!-- Small orchid flowers — scattered -->
+      <g opacity="0.4">
+        <circle cx="420" cy="150" r="8" stroke="#EC4899" stroke-width="1" fill="#EC4899" fill-opacity="0.05"/>
+        <circle cx="420" cy="150" r="3" fill="#EC4899" fill-opacity="0.08"/>
+        <path d="M412 150 Q416 144 420 142 Q424 144 428 150" stroke="#EC4899" stroke-width="0.8" fill="none"/>
+        <path d="M412 150 Q416 156 420 158 Q424 156 428 150" stroke="#EC4899" stroke-width="0.8" fill="none"/>
+      </g>
+      <g opacity="0.3" transform="translate(350, 600)">
+        <circle cx="0" cy="0" r="6" stroke="#EC4899" stroke-width="0.8" fill="#EC4899" fill-opacity="0.04"/>
+        <circle cx="0" cy="0" r="2" fill="#EC4899" fill-opacity="0.06"/>
+      </g>
+      <!-- Water splash droplets -->
+      <circle cx="500" cy="700" r="3" fill="#3b82f6" opacity="0.15"/>
+      <circle cx="560" cy="750" r="2" fill="#60a5fa" opacity="0.12"/>
+      <circle cx="650" cy="720" r="4" fill="#3b82f6" opacity="0.1"/>
+      <circle cx="520" cy="820" r="2.5" fill="#93c5fd" opacity="0.12"/>
+      <circle cx="700" cy="680" r="3" fill="#60a5fa" opacity="0.1"/>
+      <circle cx="470" cy="650" r="2" fill="#3b82f6" opacity="0.1"/>
+    </svg>
+
+    <!-- Top-left corner: subtle leaf accent -->
+    <svg class="absolute top-0 left-0 w-[250px] h-[300px] md:w-[320px] md:h-[380px] opacity-[0.05]" viewBox="0 0 320 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Hanging vine with leaves -->
+      <path d="M0 0 Q20 40 15 80 Q10 120 25 160 Q35 200 20 240 Q10 280 25 320 Q35 360 20 380" stroke="#166534" stroke-width="2" fill="none" opacity="0.6"/>
+      <!-- Leaves along vine -->
+      <path d="M15 60 Q35 50 45 60 Q40 72 25 70 Q15 68 15 60Z" stroke="#15803d" stroke-width="1.2" fill="#166534" fill-opacity="0.1"/>
+      <path d="M25 130 Q45 118 55 130 Q48 142 33 140 Q25 138 25 130Z" stroke="#15803d" stroke-width="1.2" fill="#166534" fill-opacity="0.08"/>
+      <path d="M18 210 Q38 198 50 210 Q44 222 28 220 Q18 218 18 210Z" stroke="#15803d" stroke-width="1.2" fill="#166534" fill-opacity="0.1"/>
+      <path d="M28 290 Q48 278 58 290 Q52 302 36 300 Q28 298 28 290Z" stroke="#15803d" stroke-width="1.2" fill="#166534" fill-opacity="0.08"/>
+      <!-- Second vine -->
+      <path d="M80 0 Q70 30 75 60 Q80 90 72 120 Q65 150 78 180 Q85 210 72 240" stroke="#166534" stroke-width="1.5" fill="none" opacity="0.4"/>
+      <path d="M75 45 Q90 38 98 48 Q92 58 80 55 Q75 52 75 45Z" stroke="#15803d" stroke-width="1" fill="#166534" fill-opacity="0.07"/>
+      <path d="M72 140 Q88 130 96 140 Q90 152 76 148 Q72 146 72 140Z" stroke="#15803d" stroke-width="1" fill="#166534" fill-opacity="0.06"/>
+      <!-- Small hummingbird silhouette -->
+      <g opacity="0.5" transform="translate(140, 100)">
+        <path d="M0 10 Q8 0 18 5 Q22 8 20 14 Q18 18 10 16 Q4 14 0 10Z" stroke="#166534" stroke-width="1.2" fill="#166534" fill-opacity="0.06"/>
+        <!-- Wing -->
+        <path d="M10 8 Q20 -2 28 2" stroke="#166534" stroke-width="1" fill="none"/>
+        <!-- Beak -->
+        <path d="M18 9 L30 7" stroke="#166534" stroke-width="0.8"/>
+        <!-- Tail -->
+        <path d="M2 12 Q-5 18 -8 15" stroke="#166534" stroke-width="0.8" fill="none"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+    <h2 class="text-3xl md:text-4xl font-heading font-bold text-center text-wrc-green-900 mb-6">
       {t('about.objectives.title', locale)}
     </h2>
+    <p class="text-center text-gray-500 mb-16 max-w-2xl mx-auto">
+      Hover over each card to explore the key objectives of the 11th World Ranger Congress
+    </p>
 
-    <!-- Objectives - hover to expand cards -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+    <!-- Stacked carousel container -->
+    <div class="objectives-stack-container">
+      <div class="objectives-stack">
+        {objectives.map((obj, index) => (
+          <div
+            class={`stack-card bg-gradient-to-br ${obj.gradient} rounded-2xl shadow-xl text-white`}
+            style={`--i: ${index};`}
+            data-index={index}
+          >
+            <div class="p-8 md:p-10 h-full flex flex-col justify-between relative overflow-hidden">
+              <!-- Background number -->
+              <span class="absolute top-4 right-6 text-[120px] font-heading font-bold text-white/[0.07] leading-none select-none">
+                {obj.number}
+              </span>
+
+              <!-- Content -->
+              <div class="relative z-10">
+                <div class={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${obj.iconBg} text-white/90 mb-6`}>
+                  <span class="text-xl font-heading font-bold">{obj.number}</span>
+                </div>
+                <h3 class="font-heading font-bold text-xl md:text-2xl text-white mb-4 leading-tight">
+                  {t(obj.titleKey, locale)}
+                </h3>
+                <p class="text-white/80 leading-relaxed text-sm md:text-base">
+                  {t(obj.descKey, locale)}
+                </p>
+              </div>
+
+              <!-- Decorative leaf -->
+              <svg class="absolute bottom-4 right-4 w-16 h-16 text-white/10" viewBox="0 0 50 50" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+                <path d="M25 5 Q33 15 35 28 Q33 38 25 45 Q17 38 15 28 Q17 15 25 5Z"/>
+              </svg>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Mobile: Simple vertical cards (fallback) -->
+    <div class="objectives-mobile">
       {objectives.map((obj) => (
-        <div class={`group relative rounded-xl overflow-hidden bg-gradient-to-br ${obj.color} p-6 min-h-[200px] flex flex-col justify-end cursor-pointer transition-all duration-300 hover:shadow-xl hover:scale-[1.02]`}>
-          <h3 class="font-heading font-bold text-lg text-white mb-2">{t(obj.titleKey, locale)}</h3>
-          <p class="text-sm text-white/80 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-h-0 group-hover:max-h-40 overflow-hidden">
-            {t(obj.descKey, locale)}
-          </p>
+        <div class={`bg-gradient-to-br ${obj.gradient} rounded-2xl shadow-lg text-white p-6 mb-4`}>
+          <div class="flex items-start gap-4">
+            <div class={`inline-flex items-center justify-center w-10 h-10 rounded-lg ${obj.iconBg} text-white/90 flex-shrink-0`}>
+              <span class="text-sm font-heading font-bold">{obj.number}</span>
+            </div>
+            <div>
+              <h3 class="font-heading font-bold text-lg text-white mb-2">
+                {t(obj.titleKey, locale)}
+              </h3>
+              <p class="text-white/80 text-sm leading-relaxed">
+                {t(obj.descKey, locale)}
+              </p>
+            </div>
+          </div>
         </div>
       ))}
     </div>
-
-    <!-- WRC Logo Section -->
-    <div class="text-center max-w-2xl mx-auto">
-      <h3 class="text-2xl font-heading font-bold text-wrc-green-900 mb-4">
-        {t('about.logo.title', locale)}
-      </h3>
-      <!-- Logo placeholder -->
-      <div class="w-48 h-48 mx-auto rounded-full bg-gradient-to-br from-wrc-green-100 to-wrc-blue-100 flex items-center justify-center mb-6 shadow-lg">
-        <div class="text-center">
-          <p class="text-wrc-green-700 font-heading font-bold text-sm">{t('about.logo.wrc', locale)}</p>
-          <p class="text-wrc-green-600 text-xs mt-1">{t('about.logo.location', locale)}</p>
-        </div>
-      </div>
-      <p class="text-gray-600 text-sm leading-relaxed">
-        {t('about.logo.description', locale)}
-      </p>
-    </div>
   </div>
 </section>
+
+<style>
+  /* Desktop stacked carousel */
+  .objectives-stack-container {
+    display: none;
+    position: relative;
+    height: 420px;
+    max-width: 1100px;
+    margin: 0 auto;
+    perspective: 1200px;
+  }
+
+  .objectives-stack {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .stack-card {
+    position: absolute;
+    width: 340px;
+    height: 360px;
+    left: calc(50% - 425px + var(--i) * 170px);
+    top: calc(var(--i) * 12px);
+    z-index: calc(4 - var(--i));
+    transform: scale(calc(1 - var(--i) * 0.02));
+    filter: brightness(calc(1 - var(--i) * 0.06));
+    box-shadow:
+      calc(var(--i) * -3px) calc(6 + var(--i) * 4px) calc(12 + var(--i) * 8px) rgba(0, 0, 0, 0.15);
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
+                z-index 0.1s,
+                box-shadow 0.5s ease,
+                filter 0.5s ease;
+    cursor: pointer;
+  }
+
+  .stack-card:hover {
+    transform: translateY(-24px) scale(1.04);
+    z-index: 10;
+    filter: brightness(1.05);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Mobile fallback */
+  .objectives-mobile {
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    .objectives-stack-container {
+      display: block;
+    }
+    .objectives-mobile {
+      display: none;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .stack-card {
+      width: 340px;
+      height: 380px;
+      left: calc(50% - 455px + var(--i) * 190px);
+    }
+    .objectives-stack-container {
+      height: 440px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .stack-card {
+      width: 350px;
+      height: 390px;
+      left: calc(50% - 490px + var(--i) * 210px);
+    }
+    .objectives-stack-container {
+      height: 450px;
+    }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .stack-card {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  // Optional: Click to bring card to front
+  document.querySelectorAll<HTMLElement>('.stack-card').forEach((card) => {
+    card.addEventListener('click', () => {
+      const parent = card.parentElement;
+      if (!parent) return;
+      const cards = parent.querySelectorAll<HTMLElement>('.stack-card');
+
+      // Reset all cards
+      cards.forEach((c) => {
+        c.style.zIndex = String(4 - parseInt(c.dataset.index || '0'));
+      });
+
+      // Bring clicked card to front
+      card.style.zIndex = '10';
+    });
+  });
+</script>

@@ -1,0 +1,67 @@
+---
+import { getLocaleFromUrl, t } from '../../i18n/utils';
+
+const locale = getLocaleFromUrl(Astro.url);
+---
+
+<!-- Message from IRF President -->
+<section class="py-16 md:py-20 bg-wrc-green-900 text-white relative overflow-hidden">
+  <!-- Subtle forest texture overlay -->
+  <div class="absolute inset-0 mist-overlay opacity-30" aria-hidden="true"></div>
+
+  <!-- Nature background pattern -->
+  <div class="absolute inset-0 opacity-[0.05] pointer-events-none" aria-hidden="true">
+    <svg viewBox="0 0 1440 400" class="w-full h-full" preserveAspectRatio="xMidYMid slice" fill="none" stroke="white" stroke-width="0.8">
+      <path d="M100 15 Q106 25 106 35 Q104 45 100 50 Q96 45 94 35 Q94 25 100 15Z" />
+      <path d="M300 315 Q306 325 306 335 Q304 345 300 350 Q296 345 294 335 Q294 325 300 315Z" />
+      <path d="M700 45 Q706 55 706 65 Q704 75 700 80 Q696 75 694 65 Q694 55 700 45Z" />
+      <path d="M1100 265 Q1106 275 1106 285 Q1104 295 1100 300 Q1096 295 1094 285 Q1094 275 1100 265Z" />
+      <path d="M1300 65 Q1306 75 1306 85 Q1304 95 1300 100 Q1296 95 1294 85 Q1294 75 1300 65Z" />
+      <path d="M200 200 Q220 180 240 190 Q260 200 250 220" />
+      <path d="M900 150 Q920 130 940 140 Q960 150 950 170" />
+    </svg>
+  </div>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row gap-10 items-center">
+      <!-- Left side: Title + Message text -->
+      <div class="flex-1 order-2 md:order-1">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-6">
+          {t('about.president.title', locale)}
+        </h2>
+        <blockquote class="text-lg md:text-xl leading-relaxed text-wrc-green-100 italic mb-6">
+          "{t('about.president.quote', locale)}"
+        </blockquote>
+        <div class="mt-4">
+          <p class="font-heading font-bold text-white text-lg">{t('about.president.name', locale)}</p>
+          <p class="text-wrc-green-300 text-sm">{t('about.president.role', locale)}</p>
+        </div>
+      </div>
+
+      <!-- Right side: Circular photo cutout of president -->
+      <div class="relative shrink-0 order-1 md:order-2" data-placeholder="5">
+        <div class="w-44 h-44 md:w-52 md:h-52 lg:w-60 lg:h-60 rounded-full overflow-hidden shadow-2xl ring-4 ring-wrc-green-600/40 relative bg-gradient-to-br from-wrc-green-700 to-wrc-green-800">
+          <!-- Replace with: <img src="/images/about/5-president-photo.jpg" alt="IRF President" class="w-full h-full object-cover" /> -->
+          <svg class="w-full h-full opacity-25" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Person silhouette -->
+            <circle cx="100" cy="72" r="32" fill="white" opacity="0.4"/>
+            <ellipse cx="100" cy="150" rx="48" ry="38" fill="white" opacity="0.3"/>
+          </svg>
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <span class="bg-black/20 text-white/50 text-xs px-3 py-1 rounded-full font-heading backdrop-blur-sm">
+              IMAGE #5
+            </span>
+          </div>
+        </div>
+        <!-- Decorative leaf accent -->
+        <svg class="absolute -bottom-2 -right-2 w-12 h-12 text-wrc-green-500 opacity-40" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+          <path d="M15 3 Q20 10 21 18 Q19 24 15 28 Q11 24 9 18 Q10 10 15 3Z" />
+        </svg>
+        <!-- Second leaf top-left -->
+        <svg class="absolute -top-3 -left-1 w-10 h-10 text-wrc-green-400 opacity-30 rotate-45" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+          <path d="M15 3 Q20 10 21 18 Q19 24 15 28 Q11 24 9 18 Q10 10 15 3Z" />
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>

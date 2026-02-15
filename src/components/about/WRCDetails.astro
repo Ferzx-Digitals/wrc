@@ -7,7 +7,7 @@ import { getLocaleFromUrl, t } from '../../i18n/utils';
 const locale = getLocaleFromUrl(Astro.url);
 ---
 
-<!-- Scroll 2: 11th WRC Details -->
+<!-- Scroll 2: 11th WRC Details with countdown + jaguar -->
 <section class="py-16 bg-wrc-green-50">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-3xl mx-auto mb-12">
@@ -19,7 +19,7 @@ const locale = getLocaleFromUrl(Astro.url);
       </p>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-10 items-start mb-12">
+    <div class="grid md:grid-cols-2 gap-10 items-start mb-16">
       <div class="space-y-4 text-gray-600 leading-relaxed">
         <p>{t('about.wrc.p1', locale)}</p>
         <p set:html={t('about.wrc.p2', locale)} />
@@ -32,10 +32,65 @@ const locale = getLocaleFromUrl(Astro.url);
       />
     </div>
 
-    <!-- Countdown -->
-    <div class="text-center">
-      <h3 class="text-xl font-heading font-bold text-wrc-green-900 mb-6">{t('about.wrc.countdown', locale)}</h3>
-      <CountdownTimer />
+    <!-- Countdown + Jaguar -->
+    <div class="max-w-5xl mx-auto grid md:grid-cols-[1fr_auto] gap-[10%] items-center mt-4">
+      <!-- Left: Title + Countdown -->
+      <div>
+        <h3 class="text-3xl sm:text-4xl font-heading font-bold text-wrc-green-900 mb-8 text-center md:text-left">
+          {t('about.wrc.countdown', locale)}
+        </h3>
+        <div class="countdown-left">
+          <CountdownTimer />
+        </div>
+      </div>
+
+      <!-- Right: Placeholder Image #3: Jaguar photo cutout -->
+      <div class="relative justify-self-center" data-placeholder="3">
+        <div class="w-[280px] h-[270px] lg:w-[360px] lg:h-[340px] rounded-2xl overflow-hidden shadow-xl relative bg-gradient-to-br from-amber-600 via-amber-500 to-yellow-600">
+          <!-- Replace with: <img src="/images/about/3-jaguar-cutout.png" alt="Jaguar" class="w-full h-full object-cover" /> -->
+          <svg class="w-full h-full opacity-30" viewBox="0 0 220 260" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Jaguar face suggestion -->
+            <ellipse cx="110" cy="120" rx="65" ry="55" fill="white" opacity="0.2"/>
+            <!-- Eyes -->
+            <ellipse cx="85" cy="108" rx="12" ry="10" fill="white" opacity="0.3"/>
+            <ellipse cx="135" cy="108" rx="12" ry="10" fill="white" opacity="0.3"/>
+            <circle cx="85" cy="108" r="5" fill="black" opacity="0.2"/>
+            <circle cx="135" cy="108" r="5" fill="black" opacity="0.2"/>
+            <!-- Ears -->
+            <ellipse cx="65" cy="80" rx="18" ry="22" fill="white" opacity="0.15"/>
+            <ellipse cx="155" cy="80" rx="18" ry="22" fill="white" opacity="0.15"/>
+            <!-- Nose -->
+            <path d="M105 125 Q110 120 115 125 Q115 130 110 132 Q105 130 105 125Z" fill="white" opacity="0.2"/>
+            <!-- Spots -->
+            <circle cx="70" cy="140" r="5" fill="black" opacity="0.08"/>
+            <circle cx="90" cy="150" r="4" fill="black" opacity="0.08"/>
+            <circle cx="130" cy="150" r="4" fill="black" opacity="0.08"/>
+            <circle cx="150" cy="140" r="5" fill="black" opacity="0.08"/>
+            <circle cx="110" cy="170" r="4" fill="black" opacity="0.08"/>
+            <circle cx="80" cy="180" r="5" fill="black" opacity="0.08"/>
+            <circle cx="140" cy="180" r="5" fill="black" opacity="0.08"/>
+          </svg>
+          <div class="absolute inset-0 flex items-end justify-center pb-4 pointer-events-none">
+            <span class="bg-black/20 text-white/60 text-xs px-3 py-1 rounded-full font-heading backdrop-blur-sm">
+              IMAGE #3 — Jaguar
+            </span>
+          </div>
+          <!-- Decorative border glow -->
+          <div class="absolute inset-0 rounded-2xl ring-2 ring-amber-400/30 ring-inset"></div>
+        </div>
+        <!-- Leaf accent decoration -->
+        <svg class="absolute -top-3 -right-3 w-12 h-12 text-wrc-green-500 opacity-50" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+          <path d="M20 4 Q28 12 29 22 Q27 30 20 35 Q13 30 11 22 Q12 12 20 4Z"/>
+        </svg>
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  @media (min-width: 768px) {
+    .countdown-left :global(.countdown-timer > div) {
+      justify-content: flex-start;
+    }
+  }
+</style>

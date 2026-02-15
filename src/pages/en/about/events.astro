@@ -1,0 +1,163 @@
+---
+import PageLayout from '../../../layouts/PageLayout.astro';
+import Button from '../../../components/ui/Button.astro';
+import SketchDecorations from '../../../components/easter-eggs/SketchDecorations.astro';
+import { getLocaleFromUrl, t } from '../../../i18n/utils';
+
+const locale = getLocaleFromUrl(Astro.url);
+const prefix = `/${locale}`;
+
+const fieldTripsData = await import('../../../content/field-trips/en.json');
+const fieldTrips = fieldTripsData.trips;
+
+const schedule = [
+  { day: 'Friday 18 April', key: 'events.schedule.arrival', accent: 'wrc-green-200' },
+  { day: 'Saturday 19 April', key: 'events.schedule.day1', accent: 'wrc-green-300' },
+  { day: 'Sunday 20 April', key: 'events.schedule.day2', accent: 'wrc-green-400' },
+  { day: 'Monday 21 April', key: 'events.schedule.day3', accent: 'wrc-earth-300' },
+  { day: 'Tuesday 22 April', key: 'events.schedule.day4', accent: 'wrc-green-400' },
+  { day: 'Wednesday 23 April', key: 'events.schedule.day5', accent: 'wrc-green-500' },
+];
+
+const activities = [
+  { titleKey: 'about.activities.plenary', descKey: 'about.activities.plenaryDesc', countKey: 'events.activities.plenaryCount', icon: '🎤', color: 'from-wrc-green-600 to-wrc-green-800' },
+  { titleKey: 'about.activities.workshops', descKey: 'about.activities.workshopsDesc', countKey: 'events.activities.workshopsCount', icon: '🔬', color: 'from-wrc-blue-600 to-wrc-blue-800' },
+  { titleKey: 'about.activities.discussions', descKey: 'about.activities.discussionsDesc', countKey: 'events.activities.discussionsCount', icon: '💬', color: 'from-wrc-earth-500 to-wrc-earth-700' },
+  { titleKey: 'about.activities.cultural', descKey: 'about.activities.culturalDesc', countKey: 'events.activities.culturalCount', icon: '🎭', color: 'from-emerald-600 to-emerald-800' },
+  { titleKey: 'about.activities.fieldTrips', descKey: 'about.activities.fieldTripsDesc', countKey: 'events.activities.fieldTripsCount', icon: '🌿', color: 'from-wrc-green-700 to-wrc-green-900' },
+];
+---
+
+<PageLayout title={t('events.hero.title', locale)} description="Discover the events and activities at the 11th IRF World Ranger Congress — plenary talks, workshops, field trips, cultural nights, and more.">
+  <!-- Hero -->
+  <section class="relative h-[350px] sm:h-[400px] bg-gradient-to-br from-wrc-green-900 via-wrc-green-800 to-wrc-blue-900 overflow-hidden">
+    <div class="absolute inset-0 mist-overlay" aria-hidden="true"></div>
+    <SketchDecorations variant="tropical" color="white" />
+    <div class="relative h-full flex items-center z-10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white drop-shadow-lg">
+          {t('events.hero.title', locale)}
+        </h1>
+        <p class="mt-4 text-xl text-white/80 max-w-2xl font-heading">
+          {t('events.hero.subtitle', locale)}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Program Overview -->
+  <section class="py-16 md:py-20 bg-white relative overflow-hidden">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-wrc-green-900 mb-4">
+        {t('events.overview.title', locale)}
+      </h2>
+      <p class="text-lg text-gray-600 max-w-3xl mb-12">
+        {t('events.overview.description', locale)}
+      </p>
+
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {schedule.map((item, i) => (
+          <div class="relative bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow p-6 overflow-hidden">
+            <div class={`absolute top-0 left-0 w-1 h-full bg-${item.accent}`}></div>
+            <p class="text-xs font-heading font-bold text-wrc-green-600 uppercase tracking-wider mb-1">
+              {item.day}
+            </p>
+            <p class="text-sm text-gray-700 leading-relaxed">
+              {t(item.key, locale)}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Activities -->
+  <section class="py-16 md:py-20 bg-wrc-green-50/50 relative overflow-hidden nature-texture">
+    <SketchDecorations variant="waterfall" color="#14532d" />
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-wrc-green-900 text-center mb-4">
+        {t('events.activities.title', locale)}
+      </h2>
+      <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+        {t('about.wrc.p3', locale)}
+      </p>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {activities.map((activity) => (
+          <div class="group bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+            <div class={`h-2 bg-gradient-to-r ${activity.color}`}></div>
+            <div class="p-6">
+              <span class="text-3xl mb-3 block" aria-hidden="true">{activity.icon}</span>
+              <h3 class="font-heading font-bold text-lg text-gray-900 mb-2">
+                {t(activity.titleKey, locale)}
+              </h3>
+              <p class="text-sm text-gray-600 leading-relaxed mb-3">
+                {t(activity.descKey, locale)}
+              </p>
+              <p class="text-xs font-heading font-semibold text-wrc-green-700">
+                {t(activity.countKey, locale)}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Field Trips -->
+  <section class="py-16 md:py-20 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-wrc-green-900 mb-4">
+        {t('events.fieldTrips.title', locale)}
+      </h2>
+      <p class="text-lg text-gray-600 max-w-3xl mb-12">
+        {t('events.fieldTrips.description', locale)}
+      </p>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {fieldTrips.map((trip) => (
+          <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
+            <div class="aspect-[16/10] bg-gradient-to-br from-wrc-green-100 to-wrc-blue-100 flex items-center justify-center">
+              <span class="text-wrc-green-400 font-heading font-bold text-sm">{trip.name}</span>
+            </div>
+            <div class="p-5">
+              <div class="flex items-center gap-2 mb-3">
+                <span class={`text-xs px-2 py-0.5 rounded-full font-semibold ${trip.country === 'Argentina' ? 'bg-wrc-blue-100 text-wrc-blue-700' : 'bg-wrc-green-100 text-wrc-green-700'}`}>
+                  {trip.country}
+                </span>
+              </div>
+              <h3 class="font-heading font-bold text-gray-900 mb-2">{trip.name}</h3>
+              <p class="text-sm text-gray-600 leading-relaxed mb-4">{trip.description}</p>
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-gray-500">{t('events.fieldTrips.duration', locale)}: {trip.duration}</span>
+                <span class="font-semibold text-wrc-green-700">{t('events.fieldTrips.entryFee', locale)}: USD ${trip.price}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 md:py-20 bg-gradient-to-br from-wrc-green-800 via-wrc-green-900 to-wrc-blue-900 relative overflow-hidden">
+    <div class="absolute inset-0 mist-overlay" aria-hidden="true"></div>
+    <SketchDecorations variant="waterfall" color="white" />
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-4 drop-shadow-lg">
+        {t('events.cta.title', locale)}
+      </h2>
+      <p class="text-lg text-white/80 max-w-2xl mx-auto mb-8">
+        {t('events.cta.description', locale)}
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <Button href={`${prefix}/register`} variant="primary" size="lg">
+          {t('common.registerNow', locale)}
+        </Button>
+        <Button href={`${prefix}/program`} variant="outline" size="lg" class="!border-white !text-white hover:!bg-white/10">
+          {t('events.viewProgram', locale)}
+        </Button>
+      </div>
+    </div>
+  </section>
+</PageLayout>

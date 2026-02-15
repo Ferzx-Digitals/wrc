@@ -3,25 +3,27 @@ import PageLayout from '../../../layouts/PageLayout.astro';
 import CongressIntro from '../../../components/about/CongressIntro.astro';
 import WRCDetails from '../../../components/about/WRCDetails.astro';
 import ActivitiesSection from '../../../components/about/ActivitiesSection.astro';
+import CongressTheme from '../../../components/about/CongressTheme.astro';
+import AboutPresidentMessage from '../../../components/about/AboutPresidentMessage.astro';
 import ObjectivesSection from '../../../components/about/ObjectivesSection.astro';
-import SectionDivider from '../../../components/global/SectionDivider.astro';
 ---
 
 <PageLayout title="About the Congress" description="Learn about the 11th IRF World Ranger Congress in Puerto Iguazu, Argentina. Discover the organizers, activities, objectives, and the Iguazu Declaration.">
-  <!-- Scroll 1: Congress Introduction -->
+  <!-- Scroll 1: Congress Introduction with ranger background + Iguazu Falls cutout -->
   <CongressIntro />
 
-  <SectionDivider variant="jungle" />
-
-  <!-- Scroll 2: 11th WRC Details -->
+  <!-- Scroll 2: 11th WRC Details with countdown + jaguar -->
   <WRCDetails />
 
-
-  <!-- Scroll 3: Organizers, Activities & Theme -->
+  <!-- Scroll 3: Congress Activities with easter eggs + zigzag cards -->
   <ActivitiesSection />
 
-  <SectionDivider variant="jungle" />
+  <!-- Scroll 4: Congress Theme - 60% image, 40% text -->
+  <CongressTheme />
 
-  <!-- Scroll 4: Objectives & WRC Logo -->
+  <!-- Scroll 5: Message from IRF President -->
+  <AboutPresidentMessage />
+
+  <!-- Scroll 6: Congress Objectives - stacked carousel -->
   <ObjectivesSection />
 </PageLayout>

@@ -1,0 +1,66 @@
+---
+import Button from '../ui/Button.astro';
+import { getLocaleFromUrl, t } from '../../i18n/utils';
+
+const locale = getLocaleFromUrl(Astro.url);
+---
+
+<!-- Congress Theme: 60% image left, 40% text right -->
+<section class="py-16 md:py-20 bg-white overflow-hidden">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row items-stretch gap-0 rounded-2xl overflow-hidden shadow-xl min-h-[400px] lg:min-h-[480px]">
+      <!-- Left side: 60% image cutout -->
+      <div class="relative w-full lg:w-[60%] min-h-[300px] lg:min-h-auto" data-placeholder="4">
+        <div class="absolute inset-0 bg-gradient-to-br from-wrc-green-700 via-wrc-green-600 to-emerald-700">
+          <!-- Replace with: <img src="/images/about/4-congress-theme.jpg" alt="" class="w-full h-full object-cover" /> -->
+          <svg class="w-full h-full opacity-20" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Nature conservation imagery -->
+            <circle cx="400" cy="250" r="120" stroke="white" stroke-width="2" fill="none" opacity="0.3"/>
+            <circle cx="400" cy="250" r="80" stroke="white" stroke-width="1.5" fill="none" opacity="0.2"/>
+            <!-- Tree silhouette -->
+            <rect x="395" y="250" width="10" height="150" fill="white" opacity="0.15"/>
+            <ellipse cx="400" cy="220" rx="80" ry="60" fill="white" opacity="0.1"/>
+            <ellipse cx="370" cy="240" rx="50" ry="40" fill="white" opacity="0.08"/>
+            <ellipse cx="435" cy="235" rx="55" ry="42" fill="white" opacity="0.08"/>
+            <!-- Ranger silhouette -->
+            <g transform="translate(250, 300)" opacity="0.12">
+              <circle cx="10" cy="-15" r="10" fill="white"/>
+              <rect x="3" y="-5" width="14" height="35" rx="4" fill="white"/>
+              <rect x="0" y="30" width="8" height="25" rx="2" fill="white"/>
+              <rect x="12" y="30" width="8" height="25" rx="2" fill="white"/>
+            </g>
+            <g transform="translate(530, 310)" opacity="0.12">
+              <circle cx="10" cy="-15" r="10" fill="white"/>
+              <rect x="3" y="-5" width="14" height="35" rx="4" fill="white"/>
+              <rect x="0" y="30" width="8" height="25" rx="2" fill="white"/>
+              <rect x="12" y="30" width="8" height="25" rx="2" fill="white"/>
+            </g>
+          </svg>
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <span class="bg-black/20 text-white/50 text-sm px-4 py-1.5 rounded-full font-heading backdrop-blur-sm">
+              IMAGE #4 — Congress Theme
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side: 40% text content -->
+      <div class="w-full lg:w-[40%] bg-wrc-green-900 p-8 md:p-10 lg:p-12 flex flex-col justify-center">
+        <h2 class="text-3xl md:text-4xl font-heading font-bold text-white mb-6">
+          {t('about.theme.title', locale)}
+        </h2>
+        <p class="text-xl text-wrc-green-200 font-heading italic mb-4">
+          "{t('about.theme.quote', locale)}"
+        </p>
+        <p class="text-white/75 leading-relaxed mb-8">
+          {t('about.theme.description', locale)}
+        </p>
+        <div>
+          <Button href={`/${locale}/congress-theme`} variant="outline" class="border-white text-white hover:bg-white/10">
+            {t('common.learnMore', locale)}
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -3,51 +3,82 @@ import Button from '../ui/Button.astro';
 import { getLocaleFromUrl, t } from '../../i18n/utils';
 
 const locale = getLocaleFromUrl(Astro.url);
-const prefix = `/${locale}`;
 ---
 
-<!-- Scroll 1: Congress Introduction -->
+<!-- Scroll 1: Congress Introduction with ranger background -->
 <section class="relative">
-  <!-- Hero -->
-  <div class="relative h-[350px] sm:h-[400px] bg-gradient-to-r from-wrc-green-900/90 to-wrc-green-800/70">
-    <div class="absolute inset-0 opacity-10">
-      <div class="w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M20%2020.5V18H0v-2h20v-2l-3-3%203-3v-2H0V4h20V1.5L23.5%205%2020%208.5z%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.2%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E')]"></div>
-    </div>
-    <div class="relative h-full flex items-center">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white">
-          {t('about.hero.title', locale)}
-        </h1>
-        <p class="mt-4 text-xl text-white/80 max-w-2xl">
-          {t('about.hero.subtitle', locale)}
-        </p>
+  <!-- Hero with background photo of rangers walking in jungle -->
+  <div class="relative min-h-screen">
+    <!-- Placeholder Image #1: Rangers walking in jungle background -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-wrc-green-900 via-wrc-green-800 to-emerald-900">
+        <!-- Replace this div with: <img src="/images/about/1-rangers-jungle.jpg" alt="" class="w-full h-full object-cover" /> -->
+        <div class="absolute inset-0 opacity-20">
+          <svg class="w-full h-full" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Jungle canopy suggestion -->
+            <ellipse cx="200" cy="100" rx="120" ry="80" fill="white" opacity="0.1"/>
+            <ellipse cx="500" cy="80" rx="150" ry="90" fill="white" opacity="0.08"/>
+            <ellipse cx="900" cy="120" rx="130" ry="85" fill="white" opacity="0.1"/>
+            <ellipse cx="1200" cy="90" rx="140" ry="80" fill="white" opacity="0.07"/>
+            <!-- Ranger silhouettes walking -->
+            <g transform="translate(600, 350)" opacity="0.15">
+              <rect x="0" y="0" width="12" height="45" rx="3" fill="white"/>
+              <circle cx="6" cy="-8" r="8" fill="white"/>
+              <rect x="30" y="5" width="12" height="40" rx="3" fill="white"/>
+              <circle cx="36" cy="-3" r="8" fill="white"/>
+              <rect x="60" y="2" width="12" height="43" rx="3" fill="white"/>
+              <circle cx="66" cy="-6" r="8" fill="white"/>
+              <rect x="-30" y="8" width="12" height="37" rx="3" fill="white"/>
+              <circle cx="-24" cy="0" r="8" fill="white"/>
+            </g>
+            <!-- Tree trunks -->
+            <rect x="100" y="200" width="8" height="500" fill="white" opacity="0.05"/>
+            <rect x="400" y="180" width="10" height="520" fill="white" opacity="0.04"/>
+            <rect x="1100" y="220" width="9" height="480" fill="white" opacity="0.05"/>
+            <rect x="1350" y="190" width="8" height="510" fill="white" opacity="0.04"/>
+          </svg>
+        </div>
+      </div>
+      <div class="absolute bottom-0 left-0 right-0 h-32 text-center pt-8">
+        <span class="inline-block bg-black/20 text-white/40 text-sm px-4 py-1.5 rounded-full font-heading backdrop-blur-sm">
+          IMAGE #1 — Rangers walking through jungle
+        </span>
       </div>
     </div>
-  </div>
 
-  <!-- Content -->
-  <div class="py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-2 gap-10 items-center">
-        <div>
-          <h2 class="text-2xl sm:text-3xl font-heading font-bold text-wrc-green-900 mb-6">
-            {t('about.intro.title', locale)}
-          </h2>
-          <div class="space-y-4 text-gray-600 leading-relaxed">
-            <p>{t('about.intro.p1', locale)}</p>
-            <p>{t('about.intro.p2', locale)}</p>
+    <!-- Dark gradient overlay for readability -->
+    <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 h-full min-h-screen flex items-center">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full py-16">
+        <div class="max-w-2xl">
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white leading-tight drop-shadow-lg">
+            {t('about.hero.title', locale)}
+          </h1>
+          <p class="mt-4 text-xl sm:text-2xl text-white/85 font-light">
+            {t('about.hero.subtitle', locale)}
+          </p>
+
+          <div class="mt-10">
+            <h2 class="text-2xl sm:text-3xl font-heading font-bold text-white">
+              {t('about.intro.title', locale)}
+            </h2>
+            <div class="mt-4 space-y-4 text-white/80 leading-relaxed text-lg">
+              <p>{t('about.intro.p1', locale)}</p>
+              <p>{t('about.intro.p2', locale)}</p>
+            </div>
           </div>
-          <div class="mt-6">
-            <Button href="#" variant="primary">
+
+          <div class="mt-8">
+            <Button href="#" variant="primary" size="lg">
               {t('common.downloadAgenda', locale)}
             </Button>
           </div>
         </div>
-        <!-- Photo placeholder -->
-        <div class="aspect-[4/3] rounded-xl bg-gradient-to-br from-wrc-green-100 to-wrc-green-200 flex items-center justify-center">
-          <span class="text-wrc-green-400 font-heading font-bold">Ranger Photo</span>
-        </div>
       </div>
     </div>
   </div>
+
 </section>

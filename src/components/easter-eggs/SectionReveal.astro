@@ -46,8 +46,8 @@
       observer.observe(el);
     });
 
-    // Also auto-apply to main content sections
-    document.querySelectorAll('main > section:not(:first-child)').forEach((el) => {
+    // Also auto-apply to main content sections (supports both direct and #main-content wrapped layouts)
+    document.querySelectorAll('main > section:not(:first-child), #main-content > section, #main-content > div > section').forEach((el) => {
       if (!el.classList.contains('reveal-section')) {
         el.classList.add('reveal-section');
         observer.observe(el);

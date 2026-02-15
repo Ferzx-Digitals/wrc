@@ -1,144 +1,159 @@
 ---
 import { getLocaleFromUrl, t } from '../../i18n/utils';
+import Button from '../ui/Button.astro';
 
 const locale = getLocaleFromUrl(Astro.url);
+const prefix = `/${locale}`;
 
 const slides = [
   {
     title: t('home.hero.slide1.title', locale),
     subtitle: t('home.hero.slide1.subtitle', locale),
     description: t('home.hero.slide1.description', locale),
-    // Replace with actual image path when available: /images/hero/iguazu-falls.jpg
-    bg: 'from-wrc-green-900/90 via-wrc-green-800/70 to-wrc-green-900/80',
-    overlay: 'bg-gradient-to-r from-wrc-green-900/85 via-wrc-green-900/50 to-transparent',
+    bg: 'from-wrc-green-900 via-wrc-green-800 to-wrc-green-900',
   },
   {
     title: t('home.hero.slide2.title', locale),
     subtitle: t('home.hero.slide2.subtitle', locale),
     description: t('home.hero.slide2.description', locale),
-    // Replace with actual image path: /images/hero/jungle-canopy.jpg
-    bg: 'from-wrc-green-900/90 via-wrc-blue-900/70 to-wrc-green-800/80',
-    overlay: 'bg-gradient-to-r from-wrc-blue-900/85 via-wrc-blue-900/50 to-transparent',
+    bg: 'from-wrc-green-900 via-wrc-blue-900 to-wrc-green-800',
   },
   {
     title: t('home.hero.slide3.title', locale),
     subtitle: t('home.hero.slide3.subtitle', locale),
     description: t('home.hero.slide3.description', locale),
-    // Replace with actual image path: /images/hero/rangers.jpg
-    bg: 'from-wrc-earth-800/90 via-wrc-green-900/70 to-wrc-earth-700/80',
-    overlay: 'bg-gradient-to-r from-wrc-earth-800/85 via-wrc-earth-800/50 to-transparent',
+    bg: 'from-wrc-earth-800 via-wrc-green-900 to-wrc-earth-700',
   },
 ];
-
-const prefix = `/${locale}`;
 ---
 
-<section class="relative bg-wrc-green-50">
-  <div class="swiper hero-carousel">
+<section id="hero-section" class="fixed top-0 left-0 w-full h-[100dvh] z-[1]">
+  <h1 class="sr-only">{t('home.hero.slide1.title', locale)}</h1>
+
+  <!-- Full-page Fade Carousel -->
+  <div class="swiper hero-carousel w-full h-full">
     <div class="swiper-wrapper">
-      {slides.map((slide, i) => (
+      {slides.map((slide) => (
         <div class="swiper-slide">
-          <div class={`relative h-[500px] sm:h-[550px] md:h-[600px] lg:h-[700px] bg-gradient-to-br ${slide.bg}`}>
-            <!-- Nature-themed background pattern (waterfall mist effect) -->
-            <div class="absolute inset-0 mist-overlay">
-              <!-- Organic texture pattern -->
-              <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22 opacity=%220.5%22/%3E%3C/svg%3E'); background-size: 200px 200px;"></div>
-            </div>
-
-            <!-- Gradient overlay for text readability -->
-            <div class={`absolute inset-0 ${slide.overlay}`}></div>
-
-            <!-- Decorative sketch elements -->
-            <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-              <!-- Leaf sketch top-right -->
-              <svg class="absolute top-[10%] right-[5%] w-24 h-24 md:w-36 md:h-36 opacity-[0.08] sketch-float" viewBox="0 0 80 80" fill="none" stroke="white" stroke-width="1">
-                <path d="M40 70 Q35 55 28 42 Q20 30 25 18 Q30 10 40 15 Q50 10 55 18 Q60 30 52 42 Q45 55 40 70Z" />
-                <path d="M40 70 L40 15" stroke-dasharray="3 3" opacity="0.5" />
-                <path d="M34 48 Q28 45 24 48" /><path d="M46 48 Q52 45 56 48" />
-                <path d="M32 35 Q26 32 22 35" /><path d="M48 35 Q54 32 58 35" />
-              </svg>
-
-              <!-- Butterfly bottom-left -->
-              <svg class="absolute bottom-[20%] left-[5%] w-16 h-16 md:w-24 md:h-24 opacity-[0.06] sketch-float-delayed" viewBox="0 0 60 60" fill="none" stroke="white" stroke-width="1">
-                <path d="M30 15 Q20 5 10 15 Q5 25 15 30 Q20 32 30 30" />
-                <path d="M30 15 Q40 5 50 15 Q55 25 45 30 Q40 32 30 30" />
-                <path d="M30 30 Q25 40 20 48" /><path d="M30 30 Q35 40 40 48" />
+          <div class={`relative w-full h-full bg-gradient-to-br ${slide.bg}`}>
+            <!-- Placeholder for actual image -->
+            <div class="absolute inset-0 flex items-center justify-center opacity-10">
+              <svg class="w-20 h-20 md:w-28 md:h-28 text-white" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
+                <path d="M2 6a2 2 0 012-2h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"/>
+                <path d="M2 16l5-5a2 2 0 012.8 0L14 15"/>
+                <path d="M14 13l2-2a2 2 0 012.8 0L22 14"/>
+                <circle cx="8" cy="9" r="2"/>
               </svg>
             </div>
 
-            <!-- Content -->
-            <div class="relative h-full flex items-center z-10">
-              <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
-                <div class="max-w-xl">
-                  <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold text-white leading-tight drop-shadow-lg">
-                    {slide.title}
-                  </h1>
-                  <p class="mt-3 text-lg sm:text-xl text-white/90 font-heading font-semibold drop-shadow-md">
-                    {slide.subtitle}
-                  </p>
-                  <p class="mt-4 text-base sm:text-lg text-white/80 leading-relaxed drop-shadow">
-                    {slide.description}
-                  </p>
-                  <div class="mt-8 flex gap-4">
-                    <a href={`${prefix}/register`} class="inline-flex items-center px-7 py-3.5 bg-white text-wrc-green-800 font-heading font-bold rounded-lg hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-                      {t('common.registerNow', locale)}
-                    </a>
-                    <a href={`${prefix}/about`} class="inline-flex items-center px-7 py-3.5 border-2 border-white/80 text-white font-heading font-bold rounded-lg hover:bg-white/15 transition-all backdrop-blur-sm">
-                      {t('common.learnMore', locale)}
-                    </a>
-                  </div>
+            <!-- Dark gradient overlay for text readability -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10"></div>
+
+            <!-- Slide content -->
+            <div class="absolute inset-0 flex items-center z-10">
+              <div class="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16 w-full">
+                <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold text-white leading-tight drop-shadow-lg max-w-4xl">
+                  {slide.title}
+                </h2>
+                <p class="mt-3 text-lg sm:text-xl md:text-2xl text-white/90 font-heading font-semibold drop-shadow-md">
+                  {slide.subtitle}
+                </p>
+                <p class="mt-2 text-sm sm:text-base md:text-lg text-white/70 max-w-2xl">
+                  {slide.description}
+                </p>
+                <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                  <Button href={`${prefix}/register`} variant="primary" size="lg">
+                    {t('common.registerNow', locale)}
+                  </Button>
+                  <Button href={`${prefix}/about`} variant="outline" size="lg" class="!border-white !text-white hover:!bg-white/10">
+                    {t('common.learnMore', locale)}
+                  </Button>
                 </div>
               </div>
-            </div>
-
-            <!-- Bottom wave transition -->
-            <div class="absolute bottom-0 left-0 right-0 leading-[0] z-10" aria-hidden="true">
-              <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" preserveAspectRatio="none">
-                <path d="M0 60 C180 30 360 80 540 50 C720 20 900 70 1080 40 C1200 22 1320 55 1440 35 V100 H0Z" fill="#f0fdf4" opacity="0.15"/>
-                <path d="M0 70 C200 45 400 85 600 55 C800 30 1000 75 1200 50 C1320 38 1400 60 1440 48 V100 H0Z" fill="#f0fdf4" opacity="0.3"/>
-                <path d="M0 80 C240 60 480 90 720 65 C960 42 1200 80 1440 60 V100 H0Z" fill="#f0fdf4"/>
-              </svg>
             </div>
           </div>
         </div>
       ))}
     </div>
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
+
+    <!-- Pagination -->
+    <div class="swiper-pagination hero-pagination"></div>
+  </div>
+
+  <!-- Bottom wave SVG — small on left, gradually bigger on right -->
+  <div class="absolute bottom-0 left-0 right-0 z-20 leading-[0]">
+    <svg viewBox="0 0 1440 180" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 150 C120 143 240 155 360 140 C480 128 600 145 720 125 C840 105 960 128 1080 98 C1200 72 1320 100 1440 60 V180 H0Z" fill="white" opacity="0.15"/>
+      <path d="M0 156 C120 150 240 160 360 148 C480 138 600 152 720 135 C840 120 960 140 1080 114 C1200 92 1320 118 1440 80 V180 H0Z" fill="white" opacity="0.3"/>
+      <path d="M0 163 C120 158 240 166 360 158 C480 150 600 162 720 148 C840 136 960 152 1080 132 C1200 114 1320 136 1440 100 V180 H0Z" fill="white" opacity="0.6"/>
+      <path d="M0 170 C120 166 240 172 360 167 C480 162 600 170 720 160 C840 152 960 164 1080 150 C1200 138 1320 154 1440 125 V180 H0Z" fill="white"/>
+    </svg>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-2 left-1/2 -translate-x-1/2 z-30 animate-bounce opacity-50" aria-hidden="true">
+    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
   </div>
 </section>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
 <script>
   import Swiper from 'swiper';
-  import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
+  import { Pagination, Autoplay, EffectFade } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/effect-fade';
+  import 'swiper/css/pagination';
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   new Swiper('.hero-carousel', {
-    modules: [Navigation, Pagination, Autoplay, EffectFade],
+    modules: [Pagination, Autoplay, EffectFade],
     effect: 'fade',
+    fadeEffect: { crossFade: true },
     autoplay: prefersReducedMotion ? false : { delay: 5000, disableOnInteraction: false },
-    pagination: { el: '.swiper-pagination', clickable: true },
-    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    pagination: { el: '.hero-pagination', clickable: true },
     loop: true,
     a11y: { enabled: true },
   });
+
+  // GSAP parallax on scroll
+  if (!prefersReducedMotion) {
+    import('gsap').then(({ gsap }) => {
+      import('gsap/ScrollTrigger').then(({ ScrollTrigger }) => {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.to('#hero-section', {
+          scale: 0.92,
+          opacity: 0.4,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '#hero-section',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true,
+          },
+        });
+      });
+    });
+  }
 </script>
 
 <style>
-  .swiper-button-prev,
-  .swiper-button-next {
-    color: white !important;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  /* Pagination dots */
+  .hero-pagination {
+    position: absolute !important;
+    bottom: 8rem !important;
+    z-index: 25;
   }
-  .swiper-pagination-bullet {
+  :global(.hero-pagination .swiper-pagination-bullet) {
     background: white !important;
-    opacity: 0.5;
+    opacity: 0.4;
+    width: 10px;
+    height: 10px;
+    transition: opacity 0.3s, transform 0.3s;
   }
-  .swiper-pagination-bullet-active {
+  :global(.hero-pagination .swiper-pagination-bullet-active) {
     opacity: 1;
+    transform: scale(1.3);
   }
 </style>

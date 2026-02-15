@@ -150,3 +150,33 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   z-index: 2;
 }
+
+/* Fixed hero + scroll overlap pattern */
+#hero-section {
+  will-change: transform;
+}
+
+#main-content {
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 640px) {
+  #main-content {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+}
+
+@media print {
+  #hero-section {
+    position: relative !important;
+    height: auto !important;
+  }
+  #main-content {
+    z-index: auto !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+}
