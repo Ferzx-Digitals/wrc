@@ -1,7 +1,21 @@
 ---
 import { getLocaleFromUrl, t } from '../../i18n/utils';
+import { EXTERNAL_LINKS } from '../../utils/constants';
 
 const locale = getLocaleFromUrl(Astro.url);
+const prefix = `/${locale}`;
+
+const sponsorRangerLink = locale === 'es'
+  ? EXTERNAL_LINKS.sponsorRangerES
+  : locale === 'fr'
+    ? EXTERNAL_LINKS.sponsorRangerFR
+    : EXTERNAL_LINKS.sponsorRangerEN;
+
+const sponsorRangerLabel = locale === 'es'
+  ? 'Patrocinar a un Guardaparque'
+  : locale === 'fr'
+    ? 'Parrainer un Garde Forestier'
+    : 'Sponsor a Ranger';
 
 const categories = [
   { title: t('home.sponsors.funders', locale), count: 4 },
@@ -45,5 +59,20 @@ const categories = [
         </div>
       </div>
     ))}
+
+    <!-- Sponsor a Ranger CTA -->
+    <div class="mt-10 text-center">
+      <a
+        href={sponsorRangerLink}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-wrc-green-700 text-white font-heading font-bold text-sm hover:bg-wrc-green-800 transition-colors shadow-md"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+        </svg>
+        {sponsorRangerLabel}
+      </a>
+    </div>
   </div>
 </section>

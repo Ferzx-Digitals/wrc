@@ -41,6 +41,15 @@ export const EXTERNAL_LINKS = {
   speakerFormEN: 'https://forms.gle/RrtDG25QgkR74G7XA',
   speakerFormES: 'https://forms.gle/UqKG7UiEYSnyUbTX8',
   speakerFormFR: 'https://forms.gle/35CoibZnsHGJ1dfi8',
+  fundingEoiEN: 'https://forms.gle/MTJmr4A3Nogk8GhV8',
+  fundingEoiES: 'https://forms.gle/MGVH2c7QQtg9Cvtk9',
+  fundingEoiFR: 'https://forms.gle/FGjVWNEqAmNVs55g7',
+  sponsorRangerEN: 'https://forms.gle/bYpTj2FcLtTkxsPb9',
+  sponsorRangerES: 'https://forms.gle/L7Ep5gy3X34wV9yq5',
+  sponsorRangerFR: 'https://forms.gle/uUXRXC3qZE8A5QzT9',
+  sponsorshipProspectusEN: 'https://tinyurl.com/3tpck2mu',
+  sponsorshipProspectusES: 'https://tinyurl.com/2s9jyz6d',
+  sponsorshipProspectusFR: 'https://tinyurl.com/mr3em86r',
   /**
    * Contact form: custom UI submits to Google Forms (no iframe).
    * Submit URL: use /formResponse (not /viewform). Form ID is in your form’s embed URL: .../d/e/FORM_ID/viewform...
