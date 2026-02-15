@@ -55,8 +55,9 @@ const formFields = [
   </section>
 
   <!-- Guidelines -->
-  <section class="py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <section class="relative py-16 overflow-hidden">
+    <img src="/images/home/28.png" alt="" aria-hidden="true" class="absolute bottom-0 left-0 w-full h-auto pointer-events-none" style="opacity: 0.35;" />
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl mx-auto">
         <h2 class="text-3xl font-heading font-bold text-wrc-green-900 mb-6">
           Guía para Expresiones de Interés
@@ -97,11 +98,12 @@ const formFields = [
     </div>
   </section>
 
-  <SectionDivider variant="jungle" />
+  <SectionDivider variant="jungle" class="bg-gray-50" />
 
   <!-- Form Fields & Thematic Streams -->
-  <section class="py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <section class="relative py-16 overflow-hidden">
+    <img src="/images/home/29.png" alt="" aria-hidden="true" class="absolute bottom-0 left-0 w-full h-auto opacity-100 pointer-events-none" />
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
         <!-- Form Fields -->
         <div>
@@ -151,10 +153,10 @@ const formFields = [
         Elija su idioma preferido para acceder al formulario de envío a través de Google Forms.
       </p>
       <div class="flex flex-wrap justify-center gap-4">
-        <Button href={EXTERNAL_LINKS.speakerFormEN} size="lg" variant="primary">
+        <Button href={EXTERNAL_LINKS.speakerFormEN} size="lg" variant="outline">
           Formulario en Inglés
         </Button>
-        <Button href={EXTERNAL_LINKS.speakerFormES} size="lg" variant="outline">
+        <Button href={EXTERNAL_LINKS.speakerFormES} size="lg" variant="primary">
           Formulario en Español
         </Button>
         <Button href={EXTERNAL_LINKS.speakerFormFR} size="lg" variant="outline">

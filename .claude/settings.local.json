@@ -22,7 +22,8 @@
       "Bash(curl:*)",
       "Bash(file:*)",
       "Bash(npm run build:*)",
-      "Bash(npx astro check:*)"
+      "Bash(npx astro check:*)",
+      "Bash(zip:*)"
     ]
   }
 }

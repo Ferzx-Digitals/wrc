@@ -55,8 +55,9 @@ const formFields = [
   </section>
 
   <!-- Guidelines -->
-  <section class="py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <section class="relative py-16 overflow-hidden">
+    <img src="/images/home/28.png" alt="" aria-hidden="true" class="absolute bottom-0 left-0 w-full h-auto pointer-events-none" style="opacity: 0.35;" />
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl mx-auto">
         <h2 class="text-3xl font-heading font-bold text-wrc-green-900 mb-6">
           Guide pour les Expressions d'Intérêt
@@ -97,11 +98,12 @@ const formFields = [
     </div>
   </section>
 
-  <SectionDivider variant="jungle" />
+  <SectionDivider variant="jungle" class="bg-gray-50" />
 
   <!-- Form Fields & Thematic Streams -->
-  <section class="py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <section class="relative py-16 overflow-hidden">
+    <img src="/images/home/29.png" alt="" aria-hidden="true" class="absolute bottom-0 left-0 w-full h-auto opacity-100 pointer-events-none" />
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
         <div>
           <h2 class="text-2xl font-heading font-bold text-wrc-green-900 mb-6">
@@ -148,13 +150,13 @@ const formFields = [
         Choisissez votre langue préférée pour accéder au formulaire de soumission via Google Forms.
       </p>
       <div class="flex flex-wrap justify-center gap-4">
-        <Button href={EXTERNAL_LINKS.speakerFormEN} size="lg" variant="primary">
+        <Button href={EXTERNAL_LINKS.speakerFormEN} size="lg" variant="outline">
           Formulaire en Anglais
         </Button>
         <Button href={EXTERNAL_LINKS.speakerFormES} size="lg" variant="outline">
           Formulaire en Espagnol
         </Button>
-        <Button href={EXTERNAL_LINKS.speakerFormFR} size="lg" variant="outline">
+        <Button href={EXTERNAL_LINKS.speakerFormFR} size="lg" variant="primary">
           Formulaire en Français
         </Button>
       </div>
