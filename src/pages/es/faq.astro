@@ -47,9 +47,13 @@ const categories = [
     </div>
   </section>
 
+  <!-- 21.png decorative strip -->
+  <div class="relative overflow-hidden">
+    <img src="/images/home/22.png" alt="" aria-hidden="true" class="absolute -right-16 top-0 h-full w-auto opacity-15 pointer-events-none" />
+
   <!-- FAQ Content -->
-  <section class="py-16">
-    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+  <section class="relative py-16">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
       <!-- Category Filters -->
       <div class="flex flex-wrap gap-2 mb-8" id="faq-categories">
         {categories.map((cat) => (
@@ -68,9 +72,9 @@ const categories = [
       </div>
 
       <!-- FAQ Items -->
-      <div id="faq-list" class="space-y-2" role="list">
+      <div id="faq-list" class="columns-1 md:columns-2 gap-4" role="list">
         {faqItems.map((item) => (
-          <details class="group border border-gray-200 rounded-lg overflow-hidden faq-item" data-category={item.category} role="listitem">
+          <details class="group border border-gray-200 rounded-lg overflow-hidden faq-item break-inside-avoid mb-4" data-category={item.category} role="listitem">
             <summary class="flex items-center justify-between cursor-pointer px-5 py-4 font-heading font-semibold text-gray-800 hover:bg-gray-50 transition-colors list-none">
               <span class="pr-4">{item.question}</span>
               <svg
@@ -116,6 +120,7 @@ const categories = [
       </div>
     </div>
   </section>
+  </div>
 </PageLayout>
 
 <script>
@@ -156,6 +161,7 @@ const categories = [
         b.classList.toggle('text-white', isActive);
         b.classList.toggle('bg-gray-100', !isActive);
         b.classList.toggle('text-gray-600', !isActive);
+        b.classList.toggle('hover:bg-gray-200', !isActive);
       });
       filterFAQs();
     });

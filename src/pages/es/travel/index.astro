@@ -44,10 +44,9 @@ const transportOptions = [
 
 <PageLayout title="Planifique Su Viaje" description="Todo lo que necesita saber sobre cómo viajar a Puerto Iguazú, Argentina para el 11° Congreso Mundial de Guardaparques de la IRF.">
   <!-- Hero -->
-  <section class="relative h-[350px] sm:h-[400px] bg-gradient-to-r from-wrc-blue-700/90 to-wrc-green-800/70">
-    <div class="absolute inset-0 opacity-10">
-      <div class="w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M20%2020.5V18H0v-2h20v-2l-3-3%203-3v-2H0V4h20V1.5L23.5%205%2020%208.5z%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.2%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E')]"></div>
-    </div>
+  <section class="relative h-[350px] sm:h-[400px]">
+    <img src="/images/titles/travel.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-black/50"></div>
     <div class="relative h-full flex items-center">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
         <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white">
@@ -63,7 +62,7 @@ const transportOptions = [
   <!-- Navigation Tabs -->
   <nav class="bg-white border-b border-gray-200 sticky top-16 z-30">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex gap-1 overflow-x-auto">
+      <div class="flex justify-center gap-1 overflow-x-auto">
         <a href={`${prefix}/travel`} class="px-4 py-3 text-sm font-heading font-semibold border-b-2 border-wrc-green-700 text-wrc-green-700 whitespace-nowrap">
           Logística
         </a>
@@ -78,8 +77,9 @@ const transportOptions = [
   </nav>
 
   <!-- Visa Information -->
-  <section class="py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <section class="relative py-16 overflow-hidden">
+    <img src="/images/home/18.png" alt="" aria-hidden="true" class="absolute right-10 -top-10 h-80 w-auto opacity-50 pointer-events-none rotate-45" />
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl mx-auto">
         <h2 class="text-3xl font-heading font-bold text-wrc-green-900 mb-6">
           Información de Visas
@@ -104,43 +104,84 @@ const transportOptions = [
     </div>
   </section>
 
+  <!-- 19.png divider -->
+  <div class="relative h-48 overflow-hidden">
+    <img src="/images/home/19.png" alt="" aria-hidden="true" class="absolute left-0 top-0 h-full w-auto object-cover object-left opacity-50 pointer-events-none" />
+  </div>
 
   <!-- Transport Options -->
-  <section class="py-16 bg-gray-50">
+  <section class="relative -mt-32 py-16 overflow-visible">
+    <img src="/images/home/21.png" alt="" aria-hidden="true" class="absolute -right-20 -bottom-20 h-48 w-auto opacity-50 pointer-events-none z-10" />
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+      <h2 class="text-3xl font-heading font-bold text-right text-wrc-green-900 mb-8 max-w-4xl mx-auto">
         Cómo Llegar a Puerto Iguazú
       </h2>
-      <div class="space-y-6 max-w-4xl mx-auto">
-        {transportOptions.map((option) => (
-          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100 hover:shadow-lg transition-shadow">
-            <div class="flex items-start gap-4">
-              <span class="text-3xl shrink-0" aria-hidden="true">{option.icon}</span>
-              <div>
-                <h3 class="font-heading font-bold text-lg text-gray-900 mb-2">{option.title}</h3>
-                <p class="text-gray-600 leading-relaxed mb-2">{option.description}</p>
-                <p class="text-sm text-wrc-green-700 font-medium">{option.details}</p>
-              </div>
+      <div class="max-w-4xl mx-auto">
+        <!-- Tabs -->
+        <div class="flex justify-end gap-2 mb-6 overflow-x-auto pb-2">
+          {transportOptions.map((option, i) => (
+            <button
+              data-tab={i}
+              class:list={[
+                'transport-tab flex items-center gap-2 px-4 py-2 rounded-full font-heading font-semibold text-sm whitespace-nowrap transition-all cursor-pointer',
+                i === 0 ? 'bg-wrc-green-700 text-white shadow-md' : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'
+              ]}
+            >
+              <span aria-hidden="true">{option.icon}</span>
+              <span class="hidden sm:inline">{option.title.split('—')[0].split('—')[0].trim()}</span>
+            </button>
+          ))}
+        </div>
+        <!-- Content -->
+        <div class="relative min-h-[280px]">
+          {transportOptions.map((option, i) => (
+            <div data-panel={i} class:list={['transport-panel absolute inset-0 bg-white rounded-xl shadow-md p-8 border border-gray-100 text-center transition-opacity duration-200', i !== 0 && 'opacity-0 pointer-events-none']}>
+              <span class="text-4xl block mb-3" aria-hidden="true">{option.icon}</span>
+              <h3 class="font-heading font-bold text-xl text-gray-900 mb-3">{option.title}</h3>
+              <p class="text-gray-600 leading-relaxed mb-3 max-w-2xl mx-auto">{option.description}</p>
+              <p class="text-sm text-wrc-green-700 font-medium">{option.details}</p>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
+      <script>
+        document.querySelectorAll('.transport-tab').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const idx = btn.dataset.tab;
+            document.querySelectorAll('.transport-tab').forEach(t => {
+              t.className = t.className.replace(/bg-wrc-green-700 text-white shadow-md|bg-white text-gray-600 hover:bg-gray-100 border border-gray-200/g, '');
+              t.classList.add(...(t.dataset.tab === idx ? ['bg-wrc-green-700','text-white','shadow-md'] : ['bg-white','text-gray-600','hover:bg-gray-100','border','border-gray-200']));
+            });
+            document.querySelectorAll('.transport-panel').forEach(p => {
+              const isActive = p.dataset.panel === idx;
+              p.classList.toggle('opacity-0', !isActive);
+              p.classList.toggle('pointer-events-none', !isActive);
+            });
+          });
+        });
+      </script>
     </div>
   </section>
 
   <!-- Airlines -->
-  <section class="py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <section class="relative py-16 overflow-hidden">
+    <img src="/images/home/20.png" alt="" aria-hidden="true" class="absolute -left-64 bottom-8 h-64 w-auto opacity-50 pointer-events-none" />
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
         Aerolíneas que Sirven Iguazú
       </h2>
       <div class="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
-        {['Aerolíneas Argentinas', 'Flybondi', 'JetSMART'].map((airline) => (
-          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100 text-center">
-            <div class="w-16 h-16 mx-auto rounded-full bg-wrc-blue-100 flex items-center justify-center mb-3">
-              <span class="text-2xl" aria-hidden="true">✈️</span>
-            </div>
-            <p class="font-heading font-bold text-gray-900">{airline}</p>
+        {[
+          { name: 'Aerolíneas Argentinas', logo: '/images/airlines/aerolineas-argentinas.png', url: 'https://www.aerolineas.com.ar' },
+          { name: 'Flybondi', logo: '/images/airlines/flybondi.png', url: 'https://www.flybondi.com' },
+          { name: 'JetSMART', logo: '/images/airlines/jetsmart.png', url: 'https://www.jetsmart.com' },
+        ].map((airline) => (
+          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100 text-center flex flex-col items-center">
+            <img src={airline.logo} alt={`${airline.name} logo`} class="w-16 h-16 object-contain mb-3" />
+            <p class="font-heading font-bold text-gray-900 mb-3">{airline.name}</p>
+            <Button href={airline.url} variant="outline" size="sm">
+              Visitar Sitio Web &rarr;
+            </Button>
           </div>
         ))}
       </div>

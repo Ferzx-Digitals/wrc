@@ -16,7 +16,7 @@ const pressReleases = [
   {
     title: '11th IRF World Ranger Congress Announced',
     date: 'February 2026',
-    summary: 'The International Ranger Federation announces the 11th World Ranger Congress will be held in Puerto Iguazu, Argentina.',
+    summary: 'The International Ranger Federation announces the 11th World Ranger Congress will be held in Argentina.',
   },
   {
     title: 'Registration Opens for WRC 2027',
@@ -140,7 +140,7 @@ const pressFaqs = [
     </div>
   </section>
 
-  <SectionDivider variant="jungle" />
+  <SectionDivider variant="jungle" class="bg-gray-50" />
 
   <!-- Press Releases -->
   <section class="py-16">
@@ -190,7 +190,7 @@ const pressFaqs = [
     </div>
   </section>
 
-  <SectionDivider variant="jungle" />
+  <SectionDivider variant="jungle" class="bg-gray-50" />
 
   <!-- Ranger Explainers -->
   <section class="py-16">
@@ -229,15 +229,18 @@ const pressFaqs = [
 
   <!-- Press FAQs -->
   <section class="py-16 bg-gray-50">
-    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
         Press FAQs
       </h2>
-      <Accordion items={pressFaqs} />
+      <div class="grid md:grid-cols-2 gap-4">
+        <Accordion items={pressFaqs.slice(0, 4)} />
+        <Accordion items={pressFaqs.slice(4)} />
+      </div>
     </div>
   </section>
 
-  <SectionDivider variant="jungle" />
+  <SectionDivider variant="jungle" class="bg-gray-50" />
 
   <!-- Organizers -->
   <section class="py-16">

@@ -18,7 +18,11 @@
       "Bash(npx astro build:*)",
       "Bash(xargs:*)",
       "Bash(python3:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(curl:*)",
+      "Bash(file:*)",
+      "Bash(npm run build:*)",
+      "Bash(npx astro check:*)"
     ]
   }
 }
