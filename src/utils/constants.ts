@@ -39,6 +39,22 @@ export const EXTERNAL_LINKS = {
   speakerFormEN: 'https://forms.gle/RrtDG25QgkR74G7XA',
   speakerFormES: 'https://forms.gle/UqKG7UiEYSnyUbTX8',
   speakerFormFR: 'https://forms.gle/35CoibZnsHGJ1dfi8',
+  /**
+   * Contact form: custom UI submits to Google Forms (no iframe).
+   * Submit URL: use /formResponse (not /viewform). Form ID is in your form’s embed URL: .../d/e/FORM_ID/viewform...
+   */
+  contactFormSubmitUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScO3OZ-kGDl9gHg6SsaO66NLq4wVgrH5q9tA4mNtdN70FIkfQ/formResponse',
+  /**
+   * Google Form field entry IDs. Get them from your form: ⋮ → Get pre-filled link → fill each field → copy URL.
+   * The URL contains entry.XXXXXXXX for each field; use those numbers here (with "entry." prefix).
+   * Order in the form must match: first question → name, second → email, third → subject, fourth → message.
+   */
+  contactFormEntryIds: {
+    name: 'entry.1457525771',
+    email: 'entry.64269221',
+    subject: 'entry.1082339542',
+    message: 'entry.48183676',
+  },
 };
 
 export const NAV_ITEMS = [
