@@ -1,43 +1,99 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
+import Button from '../../../components/ui/Button.astro';
 import MapEmbed from '../../../components/ui/MapEmbed.astro';
 import SectionDivider from '../../../components/global/SectionDivider.astro';
-import { VENUE, HOTEL } from '../../../utils/constants';
+import { VENUE } from '../../../utils/constants';
 import { getLocaleFromUrl } from '../../../i18n/utils';
 
 const locale = getLocaleFromUrl(Astro.url);
 const prefix = `/${locale}`;
 
-const accommodationIncludes = [
-  'Chambre d\'hôtel (18-24 avril 2027)',
-  'Petit-déjeuner quotidien',
-  'Dîner quotidien',
-  'Accès aux événements en soirée',
-  'Transport depuis et vers l\'aéroport',
-  'Kit de bienvenue',
-  'Accès complet au congrès',
-  'Traductions simultanées en séances plénières',
-  'Service café et thé',
-  'Déjeuner pendant les jours du congrès',
-  'Excursions',
+const featuredHotels = [
+  {
+    name: 'Hotel Amerian Portal del Iguazu',
+    stars: 5,
+    rooms: 117,
+    address: 'Av. Tres Fronteras 780, Puerto Iguazu',
+    features: ['2 Restaurants', '2 Bars', 'Spa et Bien-être', 'Vues sur la Triple Frontière', 'Hôtel du Lieu du Congrès'],
+    mapUrl: 'https://maps.app.goo.gl/6RD7UotVJshHRrfr8',
+  },
+  {
+    name: 'Iguazu Grand Resort Spa & Casino',
+    stars: 5,
+    rooms: 122,
+    address: 'Ruta 12 Km 1640, Puerto Iguazu',
+    features: ['Casino', 'Spa Complet', 'Piscine et Jardins', 'Terrain de Golf', 'Vues sur le Fleuve'],
+    mapUrl: 'https://maps.app.goo.gl/iguazugrand',
+  },
+  {
+    name: 'Loi Suites Iguazu Hotel',
+    stars: 5,
+    rooms: 162,
+    address: 'Selva Iryapu S/N, Puerto Iguazu',
+    features: ['Cadre de Forêt Tropicale', 'Piscine à Débordement', 'Spa', 'Sentiers Nature', 'Éco-Luxe'],
+    mapUrl: 'https://maps.app.goo.gl/loisuites',
+  },
 ];
 
-const hotelFeatures = [
-  { label: 'Classement 5 Étoiles', icon: '⭐' },
-  { label: '117 Chambres', icon: '🏨' },
-  { label: '2 Restaurants', icon: '🍽️' },
-  { label: '2 Bars', icon: '🍸' },
-  { label: 'Spa et Bien-être', icon: '💆' },
-  { label: 'Vues sur la Triple Frontière', icon: '🌅' },
+const additionalHotels = [
+  { name: 'Mercure Iguazu Hotel Iru', stars: 5, rooms: 134, location: 'Ruta 12, Puerto Iguazu' },
+  { name: 'Panoramic Grand Iguazu', stars: 4, rooms: 97, location: 'Paraguay 372, Puerto Iguazu' },
+  { name: 'Saint George Hotel', stars: 3, rooms: 60, location: 'Av. Córdoba 148, Puerto Iguazu' },
+  { name: 'Hotel Jardín de Iguazu', stars: 3, rooms: 60, location: 'Av. Córdoba 441, Puerto Iguazu' },
+  { name: 'Jasy Hotel', stars: 2, rooms: 39, location: 'San Lorenzo 154, Puerto Iguazu' },
+];
+
+const basicPackageItems = [
+  'Chutes d\'Iguazú — Côté Argentin',
+  'Hito Tres Fronteras (Monument de la Triple Frontière)',
+  'Visite de la Ville de Puerto Iguazú',
+  'Visite du Parc Aripuca',
+];
+
+const paidTours = [
+  { name: 'Chutes d\'Iguazú — Côté Brésilien', price: 45, description: 'Excursion d\'une journée complète côté brésilien des chutes avec vues panoramiques.' },
+  { name: 'Parc des Oiseaux (Parque das Aves)', price: 20, description: 'Volière interactive avec plus de 1 400 oiseaux de 150 espèces.' },
+  { name: 'Chutes d\'Iguazú + Parc des Oiseaux Combo', price: 55, description: 'Visite combinée des chutes brésiliennes et du Parc des Oiseaux en une journée.' },
+  { name: 'Barrage d\'Itaipu', price: 45, description: 'Visitez le plus grand barrage hydroélectrique du monde à la frontière Brésil-Paraguay.' },
+  { name: 'Promenade au Clair de Lune — Chutes', price: 50, description: 'Promenade nocturne guidée pour voir les chutes illuminées par la lumière de la lune.' },
+  { name: 'Mines de Wanda', price: 35, description: 'Mines de pierres semi-précieuses avec visites guidées souterraines.' },
+];
+
+const taxInfo = [
+  {
+    title: 'Remboursement de TVA pour les Touristes',
+    description: 'Les touristes étrangers séjournant dans des hôtels enregistrés en Argentine peuvent demander un remboursement de la TVA (IVA) de 21% sur l\'hébergement. Demandez le formulaire de remboursement au check-out de l\'hôtel et traitez-le à l\'aéroport avant le départ.',
+    icon: '🧾',
+  },
+  {
+    title: 'Taxe de Réciprocité',
+    description: 'Les citoyens de certains pays (ex. Australie, Canada) peuvent devoir payer une taxe de réciprocité avant de voyager en Argentine. Consultez le site web de l\'immigration argentine pour les exigences actuelles applicables à votre nationalité.',
+    icon: '📋',
+  },
+];
+
+const bookingContacts = [
+  {
+    name: 'Full Service EVT (Agence de Voyage Officielle)',
+    email: 'fullserviceevt@gmail.com',
+    phone: '+54 3757 423721',
+    description: 'Agence de voyage officielle du congrès pour les réservations d\'hôtel, forfaits touristiques et transferts.',
+  },
+  {
+    name: 'Bureau du Congrès IRF',
+    email: 'wrc@internationalrangers.org',
+    phone: '',
+    description: 'Questions générales sur le congrès et support d\'inscription.',
+  },
 ];
 ---
 
-<PageLayout title="Lieu et Hébergement" description="Découvrez le lieu du congrès Centro de Eventos y Convenciones del Iguazú et l'Hôtel Amerian Portal del Iguazú.">
+<PageLayout title="Lieu et Hébergement" description="Lieu du congrès, options d'hôtel, forfaits touristiques et informations pratiques de voyage pour le 11e Congrès Mondial des Gardes Forestiers à Puerto Iguazú.">
   <!-- Hero -->
-  <section class="relative h-[350px] sm:h-[400px] bg-gradient-to-r from-wrc-blue-700/90 to-wrc-green-800/70">
-    <div class="absolute inset-0 opacity-10">
-      <div class="w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M20%2020.5V18H0v-2h20v-2l-3-3%203-3v-2H0V4h20V1.5L23.5%205%2020%208.5z%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.2%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E')]"></div>
-    </div>
+  <section class="relative h-[350px] sm:h-[400px]">
+    <img src="/images/titles/venue.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-black/50"></div>
     <div class="relative h-full flex items-center">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
         <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white">
@@ -53,7 +109,7 @@ const hotelFeatures = [
   <!-- Navigation Tabs -->
   <nav class="bg-white border-b border-gray-200 sticky top-16 z-30">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex gap-1 overflow-x-auto">
+      <div class="flex justify-center gap-1 overflow-x-auto">
         <a href={`${prefix}/travel`} class="px-4 py-3 text-sm font-heading font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-700 whitespace-nowrap">
           Logistique
         </a>
@@ -103,74 +159,191 @@ const hotelFeatures = [
 
   <SectionDivider variant="jungle" />
 
-  <!-- Hotel Section -->
+  <!-- Featured Hotels -->
   <section class="py-16 bg-gray-50">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-4">
-        Hébergement Officiel
+        Hôtels en Vedette
       </h2>
       <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
-        Les délégués du congrès séjourneront à l'{HOTEL.name}
+        Options d'hébergement premium à proximité du lieu du congrès
       </p>
-
-      <!-- Hotel Info Card -->
-      <div class="bg-white rounded-2xl shadow-lg overflow-hidden max-w-4xl mx-auto mb-12">
-        <div class="grid md:grid-cols-2">
-          <!-- Photo Placeholder -->
-          <div class="aspect-[4/3] md:aspect-auto bg-gradient-to-br from-wrc-blue-100 to-wrc-green-100 flex items-center justify-center">
-            <span class="text-wrc-green-400 font-heading font-bold">Photo de l'Hôtel</span>
-          </div>
-          <div class="p-8">
-            <h3 class="text-2xl font-heading font-bold text-gray-900 mb-2">{HOTEL.name}</h3>
-            <p class="text-wrc-green-700 font-semibold mb-4">{'⭐'.repeat(HOTEL.stars)} Hôtel {HOTEL.stars} Étoiles</p>
-            <p class="text-gray-600 text-sm leading-relaxed mb-4">
-              {HOTEL.address}
-            </p>
-            <div class="grid grid-cols-2 gap-3">
-              {hotelFeatures.map((feature) => (
-                <div class="flex items-center gap-2 text-sm">
-                  <span aria-hidden="true">{feature.icon}</span>
-                  <span class="text-gray-700">{feature.label}</span>
-                </div>
-              ))}
+      <div class="grid md:grid-cols-3 gap-6">
+        {featuredHotels.map((hotel) => (
+          <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 flex flex-col">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-heading font-bold text-lg text-gray-900">{hotel.name}</h3>
             </div>
+            <p class="text-wrc-green-700 font-semibold text-sm mb-1">
+              {'⭐'.repeat(hotel.stars)} {hotel.stars} Étoiles
+            </p>
+            <p class="text-sm text-gray-500 mb-4">{hotel.rooms} chambres · {hotel.address}</p>
+            <ul class="space-y-1.5 mb-5 flex-1">
+              {hotel.features.map((f) => (
+                <li class="flex items-center gap-2 text-sm text-gray-600">
+                  <svg class="w-4 h-4 text-wrc-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <Button href={hotel.mapUrl} variant="outline" size="sm">
+              Voir sur la Carte &rarr;
+            </Button>
           </div>
-        </div>
-      </div>
-
-      <!-- Additional Hotels Notice -->
-      <div class="bg-wrc-earth-50 rounded-xl p-6 border border-wrc-earth-200 max-w-4xl mx-auto">
-        <p class="text-wrc-earth-800 text-sm text-center">
-          <strong>Note :</strong> Deux options d'hôtel supplémentaires sont en cours d'organisation et seront annoncées prochainement.
-          Consultez cette page pour les mises à jour sur les hébergements alternatifs.
-        </p>
+        ))}
       </div>
     </div>
   </section>
 
-
-  <!-- Accommodation Package -->
-  <section class="py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <!-- Additional Hotels -->
+  <section class="relative py-16 overflow-hidden">
+    <img src="/images/home/10.png" alt="" aria-hidden="true" class="absolute right-0 top-0 h-60 w-auto opacity-50 pointer-events-none" />
+    <div class="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
-        Ce qui est Inclus
+        Options d'Hôtel Supplémentaires
       </h2>
-      <div class="max-w-2xl mx-auto">
-        <div class="bg-wrc-green-50 rounded-2xl p-8">
-          <ul class="space-y-3">
-            {accommodationIncludes.map((item) => (
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-wrc-green-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span class="text-gray-700">{item}</span>
-              </li>
+      <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
+        <table class="w-full">
+          <thead>
+            <tr class="bg-wrc-green-50">
+              <th class="px-6 py-3 text-left text-sm font-heading font-bold text-wrc-green-900">Hôtel</th>
+              <th class="px-4 py-3 text-center text-sm font-heading font-bold text-wrc-green-900">Étoiles</th>
+              <th class="px-4 py-3 text-center text-sm font-heading font-bold text-wrc-green-900">Chambres</th>
+              <th class="px-6 py-3 text-left text-sm font-heading font-bold text-wrc-green-900 hidden sm:table-cell">Emplacement</th>
+            </tr>
+          </thead>
+          <tbody>
+            {additionalHotels.map((hotel, i) => (
+              <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                <td class="px-6 py-3 text-sm font-semibold text-gray-700">{hotel.name}</td>
+                <td class="px-4 py-3 text-sm text-center text-gray-600">{'⭐'.repeat(hotel.stars)}</td>
+                <td class="px-4 py-3 text-sm text-center text-gray-600">{hotel.rooms}</td>
+                <td class="px-6 py-3 text-sm text-gray-500 hidden sm:table-cell">{hotel.location}</td>
+              </tr>
             ))}
-          </ul>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <SectionDivider variant="jungle" />
+
+  <!-- Tour Packages -->
+  <section class="relative py-16 bg-gray-50 overflow-hidden">
+    <img src="/images/home/25.png" alt="" aria-hidden="true" class="absolute left-0 top-1/3 -translate-y-1/2 h-64 w-auto opacity-30 pointer-events-none" />
+    <img src="/images/home/14.png" alt="" aria-hidden="true" class="absolute right-0 bottom-0 h-96 w-auto opacity-50 pointer-events-none" style="transform: scaleY(1.3) scale(1.1);" />
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-4">
+        Forfaits Touristiques
+      </h2>
+      <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+        Explorez Iguazú et ses environs avec des excursions organisées
+      </p>
+
+      <!-- Basic Package (Included) -->
+      <div class="bg-wrc-green-50 rounded-2xl p-8 border border-wrc-green-200 max-w-3xl mx-auto mb-12">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-wrc-green-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Inclus</span>
+          <h3 class="font-heading font-bold text-xl text-wrc-green-900">Forfait Touristique de Base</h3>
         </div>
-        <p class="text-center text-gray-500 text-sm mt-6">
-          Dates : 18-24 avril 2027 (arrivée le 18 avril, départ le 24 avril)
-        </p>
+        <p class="text-gray-600 text-sm mb-4">Les excursions suivantes sont incluses dans votre inscription au congrès :</p>
+        <ul class="grid sm:grid-cols-2 gap-3">
+          {basicPackageItems.map((item) => (
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-wrc-green-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-gray-700 text-sm">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Paid Tours -->
+      <h3 class="font-heading font-bold text-xl text-center text-wrc-green-900 mb-6">
+        Tours Optionnels (Coût Supplémentaire)
+      </h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+        {paidTours.map((tour) => (
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 relative">
+            <span class="absolute top-4 right-4 bg-wrc-earth-100 text-wrc-earth-800 text-xs font-bold px-2 py-1 rounded-full">
+              USD ${tour.price}
+            </span>
+            <h4 class="font-heading font-bold text-gray-900 mb-2 pr-16">{tour.name}</h4>
+            <p class="text-sm text-gray-600 leading-relaxed">{tour.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Transfers -->
+  <section class="relative py-16 overflow-hidden">
+    <img src="/images/home/23.png" alt="" aria-hidden="true" class="absolute -right-20 bottom-4 h-48 w-auto opacity-30 pointer-events-none" />
+    <img src="/images/home/24.png" alt="" aria-hidden="true" class="absolute top-4 h-72 w-auto opacity-30 pointer-events-none -scale-x-100" style="left: 3.75rem;" />
+    <div class="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+        Transferts
+      </h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="bg-wrc-green-50 rounded-xl p-6 border border-wrc-green-200 text-center">
+          <span class="text-2xl block mb-2" aria-hidden="true">✈️</span>
+          <h3 class="font-heading font-bold text-wrc-green-900 mb-2">Transferts Aéroport</h3>
+          <p class="text-sm text-gray-600">Inclus dans votre inscription au congrès. Service de navette entre l'Aéroport Cataratas del Iguazú (IGR) et les hôtels du congrès.</p>
+        </div>
+        <div class="bg-wrc-blue-50 rounded-xl p-6 border border-wrc-blue-200 text-center">
+          <span class="text-2xl block mb-2" aria-hidden="true">🚐</span>
+          <h3 class="font-heading font-bold text-wrc-blue-900 mb-2">Transferts Côté Brésilien</h3>
+          <p class="text-sm text-gray-600">Transfert vers le côté brésilien des chutes : <strong>USD $25/personne</strong> (minimum 10 passagers).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tax Information -->
+  <section class="py-16 bg-gray-50">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+        Informations Fiscales
+      </h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        {taxInfo.map((info) => (
+          <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <span class="text-2xl block mb-2" aria-hidden="true">{info.icon}</span>
+            <h3 class="font-heading font-bold text-gray-900 mb-2">{info.title}</h3>
+            <p class="text-sm text-gray-600 leading-relaxed">{info.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Contacts -->
+  <section class="py-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
+        Réservations et Contact
+      </h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        {bookingContacts.map((contact) => (
+          <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 text-center">
+            <h3 class="font-heading font-bold text-gray-900 mb-2">{contact.name}</h3>
+            <p class="text-sm text-gray-600 mb-4">{contact.description}</p>
+            <div class="space-y-1">
+              <a href={`mailto:${contact.email}`} class="block text-sm text-wrc-green-700 font-semibold hover:underline">
+                {contact.email}
+              </a>
+              {contact.phone && (
+                <a href={`tel:${contact.phone.replace(/\s/g, '')}`} class="block text-sm text-gray-600 font-mono">
+                  {contact.phone}
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>

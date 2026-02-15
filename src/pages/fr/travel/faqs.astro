@@ -8,8 +8,7 @@ const locale = getLocaleFromUrl(Astro.url);
 const prefix = `/${locale}`;
 
 const weatherInfo = [
-  { label: 'Température (Maximales)', value: '26-28°C (79-82°F)', icon: '🌡️' },
-  { label: 'Température (Minimales)', value: '17-19°C (63-66°F)', icon: '🌙' },
+  { label: 'Température', value: '17-28°C (63-82°F)', icon: '🌡️' },
   { label: 'Précipitations', value: '150-200mm / 10-12 jours de pluie', icon: '🌧️' },
   { label: 'Nébulosité', value: '40-50%', icon: '☁️' },
   { label: 'Lever / Coucher du soleil', value: '~6:00-6:20 / ~6:00-6:10', icon: '🌅' },
@@ -56,16 +55,15 @@ const emergencyNumbers = [
 
 <PageLayout title="FAQ Voyage" description="Informations pratiques pour voyager à Puerto Iguazú — météo, monnaie, WiFi, numéros d'urgence et quoi emporter.">
   <!-- Hero -->
-  <section class="relative h-[350px] sm:h-[400px] bg-gradient-to-r from-wrc-blue-700/90 to-wrc-green-800/70">
-    <div class="absolute inset-0 opacity-10">
-      <div class="w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M20%2020.5V18H0v-2h20v-2l-3-3%203-3v-2H0V4h20V1.5L23.5%205%2020%208.5z%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.2%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E')]"></div>
-    </div>
+  <section class="relative h-[350px] sm:h-[400px]">
+    <img src="/images/titles/travel-faq.jpg" alt="" class="absolute inset-0 w-full h-full object-cover -scale-x-100" style="object-position: 30% 70%;" />
+    <div class="absolute inset-0 bg-black/50"></div>
     <div class="relative h-full flex items-center">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full text-right">
         <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white">
           FAQ Voyage
         </h1>
-        <p class="mt-4 text-xl text-white/80 max-w-2xl">
+        <p class="mt-4 text-xl text-white/80 max-w-2xl ml-auto">
           Informations pratiques pour préparer votre voyage à Puerto Iguazú
         </p>
       </div>
@@ -75,7 +73,7 @@ const emergencyNumbers = [
   <!-- Navigation Tabs -->
   <nav class="bg-white border-b border-gray-200 sticky top-16 z-30">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex gap-1 overflow-x-auto">
+      <div class="flex justify-center gap-1 overflow-x-auto">
         <a href={`${prefix}/travel`} class="px-4 py-3 text-sm font-heading font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-700 whitespace-nowrap">
           Logistique
         </a>
@@ -90,15 +88,16 @@ const emergencyNumbers = [
   </nav>
 
   <!-- Weather Section -->
-  <section class="py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <section class="relative py-16 overflow-hidden">
+    <img src="/images/home/16.png" alt="" aria-hidden="true" class="absolute left-0 top-0 h-full w-auto object-cover object-left opacity-50 pointer-events-none" />
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-4">
         Météo en Avril
       </h2>
       <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
         Puerto Iguazú en avril est chaud et subtropical avec des averses occasionnelles
       </p>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
         {weatherInfo.map((info) => (
           <div class="bg-white rounded-xl shadow-sm p-5 border border-gray-100 text-center">
             <span class="text-2xl block mb-2" aria-hidden="true">{info.icon}</span>
@@ -113,19 +112,23 @@ const emergencyNumbers = [
 
   <!-- Practical Info Accordion -->
   <section class="py-16 bg-gray-50">
-    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
         Informations Pratiques
       </h2>
-      <Accordion items={practicalInfo} />
+      <div class="grid md:grid-cols-2 gap-4">
+        <Accordion items={practicalInfo.slice(0, 3)} />
+        <Accordion items={practicalInfo.slice(3)} />
+      </div>
     </div>
   </section>
 
-  <SectionDivider variant="jungle" />
+  <SectionDivider variant="jungle" class="bg-gray-50" />
 
   <!-- Emergency Numbers -->
-  <section class="py-16">
-    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+  <section class="relative py-16 overflow-hidden">
+    <img src="/images/home/17.png" alt="" aria-hidden="true" class="absolute right-0 bottom-0 h-full w-auto object-cover object-right-bottom opacity-30 pointer-events-none" />
+    <div class="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
         Numéros de Téléphone Utiles
       </h2>
