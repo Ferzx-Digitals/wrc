@@ -86,8 +86,7 @@ const categories = [
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </summary>
-            <div class="px-5 pb-4 text-gray-600 leading-relaxed text-sm">
-              {item.answer}
+            <div class="px-5 pb-4 text-gray-600 leading-relaxed text-sm [&_a]:text-wrc-green-700 [&_a]:font-semibold [&_a]:underline" set:html={item.answer}>
             </div>
           </details>
         ))}

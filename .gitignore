@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# large downloads (host externally)
+public/downloads/wrc-photo-gallery.zip

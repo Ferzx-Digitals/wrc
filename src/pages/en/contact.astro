@@ -25,6 +25,7 @@ const contactCards = [
     description: 'Interested in sponsoring the congress? Get the sponsorship prospectus.',
     email: CONTACT_EMAIL,
     icon: '🤝',
+    prospectusUrl: EXTERNAL_LINKS.sponsorshipProspectusEN,
   },
   {
     title: 'Press & Media',
@@ -164,9 +165,16 @@ const teamMembers = [
                   <div>
                     <h3 class="font-heading font-bold text-gray-900 mb-1">{card.title}</h3>
                     <p class="text-sm text-gray-600 mb-2">{card.description}</p>
-                    <a href={`mailto:${card.email}`} class="text-sm text-wrc-green-700 font-semibold hover:underline">
-                      {card.email}
-                    </a>
+                    <div class="flex flex-wrap items-center gap-3">
+                      <a href={`mailto:${card.email}`} class="text-sm text-wrc-green-700 font-semibold hover:underline">
+                        {card.email}
+                      </a>
+                      {card.prospectusUrl && (
+                        <a href={card.prospectusUrl} target="_blank" rel="noopener" class="text-sm text-wrc-green-700 font-semibold hover:underline">
+                          Download Prospectus &rarr;
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
