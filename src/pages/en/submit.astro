@@ -35,17 +35,19 @@ const formFields = [
 ---
 
 <PageLayout title="Submit Expression of Interest" description="Submit your expression of interest to present at the 11th IRF World Ranger Congress. Forms available in English, Spanish, and French.">
-  <!-- Hero -->
-  <section class="relative h-[350px] sm:h-[400px] bg-gradient-to-r from-wrc-green-900/90 to-wrc-earth-700/70">
-    <div class="absolute inset-0 opacity-10">
-      <div class="w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M20%2020.5V18H0v-2h20v-2l-3-3%203-3v-2H0V4h20V1.5L23.5%205%2020%208.5z%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.2%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E')]"></div>
+  <!-- Hero: same banner style as Congress introduction / Events -->
+  <section class="relative h-[350px] sm:h-[400px] lg:h-[45vh] xl:h-[50vh] overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden">
+      <img src="/images/submit/Banner.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
     </div>
-    <div class="relative h-full flex items-center">
+    <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/20" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/25 to-transparent" aria-hidden="true"></div>
+    <div class="absolute inset-0 flex items-center z-10">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white leading-tight drop-shadow-lg">
           Submit Your Interest
         </h1>
-        <p class="mt-4 text-xl text-white/80 max-w-2xl">
+        <p class="mt-4 text-xl sm:text-2xl text-white/85 font-light max-w-2xl">
           Share your experiences, research, and insights at the World Ranger Congress
         </p>
       </div>

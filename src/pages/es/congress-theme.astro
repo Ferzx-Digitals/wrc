@@ -12,26 +12,31 @@ const streams = [
     title: 'Fuerza Laboral Inclusiva y Representativa',
     description: 'Promover la diversidad, la equidad y la inclusión dentro de la profesión de guardaparques. Abordar el equilibrio de género, la representación indígena y asegurar que todas las voces sean escuchadas en la conservación.',
     icon: '🌍',
+    image: 'inclusive-and-representative-workforce.jpg',
   },
   {
     title: 'Bienestar y Condiciones Laborales',
     description: 'Mejorar la seguridad, el apoyo a la salud mental, la compensación justa y los entornos de trabajo para guardaparques en todo el mundo. Abordar los riesgos y desafíos que enfrentan los guardaparques diariamente.',
     icon: '🛡️',
+    image: 'welfare-and-working-conditions.jpg',
   },
   {
     title: 'Conducta Profesional y Ética',
     description: 'Establecer y mantener altos estándares profesionales, directrices éticas y marcos de responsabilidad para las operaciones de guardaparques a nivel mundial.',
     icon: '⚖️',
+    image: 'professional-conduct-and-ethics.jpg',
   },
   {
     title: 'Desarrollo de Capacidades y Formación',
     description: 'Desarrollar habilidades, conocimientos y capacidades a través de programas de formación, mentoría y oportunidades de desarrollo profesional para guardaparques en todos los niveles.',
     icon: '📚',
+    image: 'capacity-building-and-training.jpg',
   },
   {
     title: 'Participación Comunitaria y Alianzas',
     description: 'Construir relaciones sólidas entre guardaparques, comunidades locales, pueblos indígenas y organizaciones de conservación para crear enfoques colaborativos en la gestión de áreas protegidas.',
     icon: '🤝',
+    image: 'community-engagement-and-partnerships.jpg',
   },
 ];
 
@@ -40,21 +45,25 @@ const objectives = [
     title: 'Reconocimiento de Guardaparques y 30x30',
     description: 'Mejorar el reconocimiento de la profesión de guardaparques y alinearse con el Marco Global 30x30 para proteger el 30% del planeta para 2030.',
     color: 'from-wrc-green-700 to-wrc-green-800',
+    image: 'ranger-recognition.jpg',
   },
   {
     title: 'Experiencias de Guardaparques',
     description: 'Mostrar las experiencias, desafíos y contribuciones de guardaparques de las siete regiones de la IRF en todo el mundo.',
     color: 'from-wrc-blue-700 to-wrc-blue-800',
+    image: 'ranger-experiences.jpg',
   },
   {
     title: 'Soluciones de Guardaparques',
     description: 'Desarrollar soluciones prácticas para los desafíos de conservación regionales y globales a través de la colaboración y el intercambio de conocimientos.',
     color: 'from-wrc-earth-600 to-wrc-earth-700',
+    image: 'ranger-solutions.jpg',
   },
   {
     title: 'Declaración de Guardaparques',
     description: 'Producir la Declaración de Iguazú — una declaración histórica que enfatiza el papel de los guardaparques en la conservación de la naturaleza.',
     color: 'from-emerald-700 to-emerald-800',
+    image: 'ranger-declaration.jpg',
   },
 ];
 
@@ -68,17 +77,19 @@ const topics = [
 ---
 
 <PageLayout title="Tema del Congreso" description="Explore el tema del 11° Congreso Mundial de Guardaparques de la IRF: Reconociendo a los Guardaparques — Avanzando la profesión para salvaguardar nuestro futuro.">
-  <!-- Hero -->
-  <section class="relative h-[350px] sm:h-[400px] bg-gradient-to-r from-wrc-green-900/90 to-wrc-green-800/70">
-    <div class="absolute inset-0 opacity-10">
-      <div class="w-full h-full bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M20%2020.5V18H0v-2h20v-2l-3-3%203-3v-2H0V4h20V1.5L23.5%205%2020%208.5z%22%20fill%3D%22%23fff%22%20fill-opacity%3D%220.2%22%20fill-rule%3D%22evenodd%22%2F%3E%3C%2Fsvg%3E')]"></div>
+  <!-- Hero: same banner style as Congress introduction / Events -->
+  <section class="relative h-[350px] sm:h-[400px] lg:h-[45vh] xl:h-[50vh] overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden">
+      <img src="/images/congress-theme/Banner.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
     </div>
-    <div class="relative h-full flex items-center">
+    <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/20" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/25 to-transparent" aria-hidden="true"></div>
+    <div class="absolute inset-0 flex items-center z-10">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold text-white leading-tight drop-shadow-lg">
           Tema del Congreso
         </h1>
-        <p class="mt-4 text-xl text-white/80 max-w-2xl">
+        <p class="mt-4 text-xl sm:text-2xl text-white/85 font-light max-w-2xl">
           Reconociendo a los Guardaparques: Avanzando la profesión para salvaguardar nuestro futuro
         </p>
       </div>
@@ -116,8 +127,8 @@ const topics = [
         {streams.map((stream, i) => (
           <div class={`flex flex-col md:flex-row items-center gap-8 ${i % 2 === 1 ? 'md:flex-row-reverse' : ''}`}>
             <div class="w-full md:w-1/2">
-              <div class="aspect-[16/10] rounded-xl bg-gradient-to-br from-wrc-green-100 to-wrc-blue-100 flex items-center justify-center">
-                <span class="text-6xl" aria-hidden="true">{stream.icon}</span>
+              <div class="aspect-[16/10] rounded-xl overflow-hidden bg-wrc-green-100">
+                <img src={`/images/congress-theme/${stream.image}`} alt="" class="w-full h-full object-cover" />
               </div>
             </div>
             <div class="w-full md:w-1/2">
@@ -140,11 +151,15 @@ const topics = [
       </h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {objectives.map((obj) => (
-          <div class={`group relative rounded-xl overflow-hidden bg-gradient-to-br ${obj.color} p-6 min-h-[200px] flex flex-col justify-end cursor-pointer transition-all duration-300 hover:shadow-xl hover:scale-[1.02]`}>
-            <h3 class="font-heading font-bold text-lg text-white mb-2">{obj.title}</h3>
-            <p class="text-sm text-white/80 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-h-0 group-hover:max-h-40 overflow-hidden">
-              {obj.description}
-            </p>
+          <div class="group relative rounded-xl overflow-hidden min-h-[200px] flex flex-col justify-end cursor-pointer transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
+            <img src={`/images/congress-theme/${obj.image}`} alt="" class="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
+            <div class={`absolute inset-0 bg-gradient-to-br ${obj.color} opacity-75`} aria-hidden="true"></div>
+            <div class="relative z-10 p-6">
+              <h3 class="font-heading font-bold text-lg text-white mb-2">{obj.title}</h3>
+              <p class="text-sm text-white/80 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300 max-h-0 group-hover:max-h-40 overflow-hidden">
+                {obj.description}
+              </p>
+            </div>
           </div>
         ))}
       </div>
