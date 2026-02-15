@@ -9,46 +9,14 @@ const locale = getLocaleFromUrl(Astro.url);
 <section class="relative">
   <!-- Hero with background photo of rangers walking in jungle -->
   <div class="relative min-h-screen">
-    <!-- Placeholder Image #1: Rangers walking in jungle background -->
+    <!-- Background: Banner.jpg (no effects) -->
     <div class="absolute inset-0 overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-br from-wrc-green-900 via-wrc-green-800 to-emerald-900">
-        <!-- Replace this div with: <img src="/images/about/1-rangers-jungle.jpg" alt="" class="w-full h-full object-cover" /> -->
-        <div class="absolute inset-0 opacity-20">
-          <svg class="w-full h-full" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <!-- Jungle canopy suggestion -->
-            <ellipse cx="200" cy="100" rx="120" ry="80" fill="white" opacity="0.1"/>
-            <ellipse cx="500" cy="80" rx="150" ry="90" fill="white" opacity="0.08"/>
-            <ellipse cx="900" cy="120" rx="130" ry="85" fill="white" opacity="0.1"/>
-            <ellipse cx="1200" cy="90" rx="140" ry="80" fill="white" opacity="0.07"/>
-            <!-- Ranger silhouettes walking -->
-            <g transform="translate(600, 350)" opacity="0.15">
-              <rect x="0" y="0" width="12" height="45" rx="3" fill="white"/>
-              <circle cx="6" cy="-8" r="8" fill="white"/>
-              <rect x="30" y="5" width="12" height="40" rx="3" fill="white"/>
-              <circle cx="36" cy="-3" r="8" fill="white"/>
-              <rect x="60" y="2" width="12" height="43" rx="3" fill="white"/>
-              <circle cx="66" cy="-6" r="8" fill="white"/>
-              <rect x="-30" y="8" width="12" height="37" rx="3" fill="white"/>
-              <circle cx="-24" cy="0" r="8" fill="white"/>
-            </g>
-            <!-- Tree trunks -->
-            <rect x="100" y="200" width="8" height="500" fill="white" opacity="0.05"/>
-            <rect x="400" y="180" width="10" height="520" fill="white" opacity="0.04"/>
-            <rect x="1100" y="220" width="9" height="480" fill="white" opacity="0.05"/>
-            <rect x="1350" y="190" width="8" height="510" fill="white" opacity="0.04"/>
-          </svg>
-        </div>
-      </div>
-      <div class="absolute bottom-0 left-0 right-0 h-32 text-center pt-8">
-        <span class="inline-block bg-black/20 text-white/40 text-sm px-4 py-1.5 rounded-full font-heading backdrop-blur-sm">
-          IMAGE #1 — Rangers walking through jungle
-        </span>
-      </div>
+      <img src="/images/congress-introduction/Banner.jpg" alt="" class="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
     </div>
 
-    <!-- Dark gradient overlay for readability -->
-    <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20"></div>
+    <!-- Dark gradient overlay for text visibility -->
+    <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/20" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/25 to-transparent" aria-hidden="true"></div>
 
     <!-- Content -->
     <div class="relative z-10 h-full min-h-screen flex items-center">

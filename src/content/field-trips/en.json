@@ -1,10 +1,10 @@
 {
   "trips": [
-    { "name": "Iguazu National Park", "description": "Explore the stunning Iguazu Falls and surrounding subtropical rainforest, a UNESCO World Heritage Site.", "duration": "Full day", "price": 16, "country": "Argentina" },
-    { "name": "Guira Oga Wildlife Rescue", "description": "Visit a wildlife rehabilitation center dedicated to rescuing and caring for injured native animals.", "duration": "3 hours", "price": 16, "country": "Argentina" },
-    { "name": "Minas de Wanda", "description": "Discover the famous semi-precious gemstone mines of Wanda, known for amethyst and quartz crystals.", "duration": "4 hours", "price": 20, "country": "Argentina" },
-    { "name": "Jesuitical Missions", "description": "Full-day excursion to the historic Jesuit missions, a UNESCO World Heritage Site showcasing colonial-era history.", "duration": "Full day", "price": 16, "country": "Argentina" },
-    { "name": "Parque Nacional Do Iguaçu", "description": "Experience the Brazilian side of Iguazu Falls with panoramic views of the Devil's Throat.", "duration": "6 hours", "price": 16, "country": "Brazil" },
-    { "name": "Parque Das Aves", "description": "Walk through aviaries housing over 1,300 birds of 130 species in the Atlantic Forest.", "duration": "6 hours", "price": 16, "country": "Brazil" }
+    { "name": "Iguazu National Park", "description": "Explore the stunning Iguazu Falls and surrounding subtropical rainforest, a UNESCO World Heritage Site.", "duration": "Full day", "price": 16, "country": "Argentina", "image": "Iguazu National Park.jpg" },
+    { "name": "Guira Oga Wildlife Rescue", "description": "Visit a wildlife rehabilitation center dedicated to rescuing and caring for injured native animals.", "duration": "3 hours", "price": 16, "country": "Argentina", "image": "Guira Oga Wildlife Rescue.jpg" },
+    { "name": "Minas de Wanda", "description": "Discover the famous semi-precious gemstone mines of Wanda, known for amethyst and quartz crystals.", "duration": "4 hours", "price": 20, "country": "Argentina", "image": "Minas de Wanda.jpg" },
+    { "name": "Jesuitical Missions", "description": "Full-day excursion to the historic Jesuit missions, a UNESCO World Heritage Site showcasing colonial-era history.", "duration": "Full day", "price": 16, "country": "Argentina", "image": "Jesuitical Missions.jpg" },
+    { "name": "Parque Nacional Do Iguaçu", "description": "Experience the Brazilian side of Iguazu Falls with panoramic views of the Devil's Throat.", "duration": "6 hours", "price": 16, "country": "Brazil", "image": "Parque Nacional Do Iguaçu.jpg" },
+    { "name": "Parque Das Aves", "description": "Walk through aviaries housing over 1,300 birds of 130 species in the Atlantic Forest.", "duration": "6 hours", "price": 16, "country": "Brazil", "image": "Parque Das Aves.jpg" }
   ]
 }
