@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
 import Button from '../../../components/ui/Button.astro';
+import Button from '../../../components/ui/Button.astro';
 import MapEmbed from '../../../components/ui/MapEmbed.astro';
 import SectionDivider from '../../../components/global/SectionDivider.astro';
 import { VENUE } from '../../../utils/constants';
@@ -9,6 +10,55 @@ import { getLocaleFromUrl } from '../../../i18n/utils';
 const locale = getLocaleFromUrl(Astro.url);
 const prefix = `/${locale}`;
 
+const featuredHotels = [
+  {
+    name: 'Hotel Amerian Portal del Iguazu',
+    stars: 5,
+    rooms: 117,
+    address: 'Av. Tres Fronteras 780, Puerto Iguazu',
+    features: ['2 Restaurantes', '2 Bares', 'Spa y Bienestar', 'Vistas a la Triple Frontera', 'Hotel Sede del Congreso'],
+    mapUrl: 'https://maps.app.goo.gl/6RD7UotVJshHRrfr8',
+  },
+  {
+    name: 'Iguazu Grand Resort Spa & Casino',
+    stars: 5,
+    rooms: 122,
+    address: 'Ruta 12 Km 1640, Puerto Iguazu',
+    features: ['Casino', 'Spa Completo', 'Piscina y Jardines', 'Campo de Golf', 'Vistas al Río'],
+    mapUrl: 'https://maps.app.goo.gl/iguazugrand',
+  },
+  {
+    name: 'Loi Suites Iguazu Hotel',
+    stars: 5,
+    rooms: 162,
+    address: 'Selva Iryapu S/N, Puerto Iguazu',
+    features: ['Entorno Selvático', 'Piscina Infinita', 'Spa', 'Senderos Naturales', 'Eco-Lujo'],
+    mapUrl: 'https://maps.app.goo.gl/loisuites',
+  },
+];
+
+const additionalHotels = [
+  { name: 'Mercure Iguazu Hotel Iru', stars: 5, rooms: 134, location: 'Ruta 12, Puerto Iguazu' },
+  { name: 'Panoramic Grand Iguazu', stars: 4, rooms: 97, location: 'Paraguay 372, Puerto Iguazu' },
+  { name: 'Saint George Hotel', stars: 3, rooms: 60, location: 'Av. Córdoba 148, Puerto Iguazu' },
+  { name: 'Hotel Jardín de Iguazu', stars: 3, rooms: 60, location: 'Av. Córdoba 441, Puerto Iguazu' },
+  { name: 'Jasy Hotel', stars: 2, rooms: 39, location: 'San Lorenzo 154, Puerto Iguazu' },
+];
+
+const basicPackageItems = [
+  'Cataratas del Iguazú — Lado Argentino',
+  'Hito Tres Fronteras',
+  'City Tour Puerto Iguazú',
+  'Visita al Parque Aripuca',
+];
+
+const paidTours = [
+  { name: 'Cataratas del Iguazú — Lado Brasileño', price: 45, description: 'Excursión de día completo al lado brasileño de las cataratas con vistas panorámicas.' },
+  { name: 'Parque de las Aves (Parque das Aves)', price: 20, description: 'Aviario interactivo con más de 1.400 aves de 150 especies.' },
+  { name: 'Cataratas + Parque de las Aves Combo', price: 55, description: 'Visita combinada a las cataratas brasileñas y al Parque de las Aves en un día.' },
+  { name: 'Represa de Itaipú', price: 45, description: 'Visite la represa hidroeléctrica más grande del mundo en la frontera Brasil-Paraguay.' },
+  { name: 'Paseo de Luna Llena — Cataratas', price: 50, description: 'Caminata nocturna guiada para ver las cataratas iluminadas por la luz de la luna.' },
+  { name: 'Minas de Wanda', price: 35, description: 'Minas de piedras semipreciosas con recorridos guiados subterráneos.' },
 const featuredHotels = [
   {
     name: 'Hotel Amerian Portal del Iguazu',
@@ -322,9 +372,8 @@ const bookingContacts = [
   </section>
 
   <!-- Booking Contacts -->
-  <section class="relative py-16 overflow-hidden">
-    <img src="/images/home/26.png" alt="" aria-hidden="true" class="absolute right-0 bottom-0 h-60 w-auto opacity-50 pointer-events-none" />
-    <div class="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+  <section class="py-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
         Reservas y Contacto
       </h2>

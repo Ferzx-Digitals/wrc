@@ -10,6 +10,7 @@ const objectives = [
     gradient: 'from-wrc-green-700 to-wrc-green-800',
     iconBg: 'bg-wrc-green-600',
     number: '01',
+    image: 'Ranger Recognition.jpg',
   },
   {
     titleKey: 'about.objectives.experiences',
@@ -17,6 +18,7 @@ const objectives = [
     gradient: 'from-wrc-blue-700 to-wrc-blue-800',
     iconBg: 'bg-wrc-blue-600',
     number: '02',
+    image: 'Ranger Experiences.jpg',
   },
   {
     titleKey: 'about.objectives.solutions',
@@ -24,6 +26,7 @@ const objectives = [
     gradient: 'from-wrc-earth-600 to-wrc-earth-700',
     iconBg: 'bg-wrc-earth-500',
     number: '03',
+    image: 'Ranger Solutions.jpg',
   },
   {
     titleKey: 'about.objectives.declaration',
@@ -31,6 +34,7 @@ const objectives = [
     gradient: 'from-emerald-700 to-emerald-800',
     iconBg: 'bg-emerald-600',
     number: '04',
+    image: 'Ranger Declaration.jpg',
   },
 ];
 ---
@@ -170,16 +174,15 @@ const objectives = [
       <div class="objectives-stack">
         {objectives.map((obj, index) => (
           <div
-            class={`stack-card bg-gradient-to-br ${obj.gradient} rounded-2xl shadow-xl text-white`}
+            class={`stack-card rounded-2xl shadow-xl text-white relative overflow-hidden`}
             style={`--i: ${index};`}
             data-index={index}
           >
-            <div class="p-8 md:p-10 h-full flex flex-col justify-between relative overflow-hidden">
-              <!-- Background number -->
-              <span class="absolute top-4 right-6 text-[120px] font-heading font-bold text-white/[0.07] leading-none select-none">
-                {obj.number}
-              </span>
-
+            <!-- Background image (visible through gradient) -->
+            <img src={`/images/congress-introduction/${encodeURIComponent(obj.image)}`} alt="" class="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
+            <!-- Semi-transparent gradient so card color shows and image shows through -->
+            <div class={`absolute inset-0 bg-gradient-to-br ${obj.gradient} opacity-75`} aria-hidden="true"></div>
+            <div class="p-8 md:p-10 h-full flex flex-col justify-between relative z-10">
               <!-- Content -->
               <div class="relative z-10">
                 <div class={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${obj.iconBg} text-white/90 mb-6`}>
@@ -206,8 +209,10 @@ const objectives = [
     <!-- Mobile: Simple vertical cards (fallback) -->
     <div class="objectives-mobile">
       {objectives.map((obj) => (
-        <div class={`bg-gradient-to-br ${obj.gradient} rounded-2xl shadow-lg text-white p-6 mb-4`}>
-          <div class="flex items-start gap-4">
+        <div class={`rounded-2xl shadow-lg text-white p-6 mb-4 relative overflow-hidden min-h-[140px]`}>
+          <img src={`/images/congress-introduction/${encodeURIComponent(obj.image)}`} alt="" class="absolute inset-0 w-full h-full object-cover" aria-hidden="true" />
+          <div class={`absolute inset-0 bg-gradient-to-br ${obj.gradient} opacity-75`} aria-hidden="true"></div>
+          <div class="flex items-start gap-4 relative z-10">
             <div class={`inline-flex items-center justify-center w-10 h-10 rounded-lg ${obj.iconBg} text-white/90 flex-shrink-0`}>
               <span class="text-sm font-heading font-bold">{obj.number}</span>
             </div>

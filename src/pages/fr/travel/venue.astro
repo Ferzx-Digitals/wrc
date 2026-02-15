@@ -1,6 +1,7 @@
 ---
 import PageLayout from '../../../layouts/PageLayout.astro';
 import Button from '../../../components/ui/Button.astro';
+import Button from '../../../components/ui/Button.astro';
 import MapEmbed from '../../../components/ui/MapEmbed.astro';
 import SectionDivider from '../../../components/global/SectionDivider.astro';
 import { VENUE } from '../../../utils/constants';
@@ -9,6 +10,83 @@ import { getLocaleFromUrl } from '../../../i18n/utils';
 const locale = getLocaleFromUrl(Astro.url);
 const prefix = `/${locale}`;
 
+const featuredHotels = [
+  {
+    name: 'Hotel Amerian Portal del Iguazu',
+    stars: 5,
+    rooms: 117,
+    address: 'Av. Tres Fronteras 780, Puerto Iguazu',
+    features: ['2 Restaurants', '2 Bars', 'Spa et Bien-être', 'Vues sur la Triple Frontière', 'Hôtel du Lieu du Congrès'],
+    mapUrl: 'https://maps.app.goo.gl/6RD7UotVJshHRrfr8',
+  },
+  {
+    name: 'Iguazu Grand Resort Spa & Casino',
+    stars: 5,
+    rooms: 122,
+    address: 'Ruta 12 Km 1640, Puerto Iguazu',
+    features: ['Casino', 'Spa Complet', 'Piscine et Jardins', 'Terrain de Golf', 'Vues sur le Fleuve'],
+    mapUrl: 'https://maps.app.goo.gl/iguazugrand',
+  },
+  {
+    name: 'Loi Suites Iguazu Hotel',
+    stars: 5,
+    rooms: 162,
+    address: 'Selva Iryapu S/N, Puerto Iguazu',
+    features: ['Cadre de Forêt Tropicale', 'Piscine à Débordement', 'Spa', 'Sentiers Nature', 'Éco-Luxe'],
+    mapUrl: 'https://maps.app.goo.gl/loisuites',
+  },
+];
+
+const additionalHotels = [
+  { name: 'Mercure Iguazu Hotel Iru', stars: 5, rooms: 134, location: 'Ruta 12, Puerto Iguazu' },
+  { name: 'Panoramic Grand Iguazu', stars: 4, rooms: 97, location: 'Paraguay 372, Puerto Iguazu' },
+  { name: 'Saint George Hotel', stars: 3, rooms: 60, location: 'Av. Córdoba 148, Puerto Iguazu' },
+  { name: 'Hotel Jardín de Iguazu', stars: 3, rooms: 60, location: 'Av. Córdoba 441, Puerto Iguazu' },
+  { name: 'Jasy Hotel', stars: 2, rooms: 39, location: 'San Lorenzo 154, Puerto Iguazu' },
+];
+
+const basicPackageItems = [
+  'Chutes d\'Iguazú — Côté Argentin',
+  'Hito Tres Fronteras (Monument de la Triple Frontière)',
+  'Visite de la Ville de Puerto Iguazú',
+  'Visite du Parc Aripuca',
+];
+
+const paidTours = [
+  { name: 'Chutes d\'Iguazú — Côté Brésilien', price: 45, description: 'Excursion d\'une journée complète côté brésilien des chutes avec vues panoramiques.' },
+  { name: 'Parc des Oiseaux (Parque das Aves)', price: 20, description: 'Volière interactive avec plus de 1 400 oiseaux de 150 espèces.' },
+  { name: 'Chutes d\'Iguazú + Parc des Oiseaux Combo', price: 55, description: 'Visite combinée des chutes brésiliennes et du Parc des Oiseaux en une journée.' },
+  { name: 'Barrage d\'Itaipu', price: 45, description: 'Visitez le plus grand barrage hydroélectrique du monde à la frontière Brésil-Paraguay.' },
+  { name: 'Promenade au Clair de Lune — Chutes', price: 50, description: 'Promenade nocturne guidée pour voir les chutes illuminées par la lumière de la lune.' },
+  { name: 'Mines de Wanda', price: 35, description: 'Mines de pierres semi-précieuses avec visites guidées souterraines.' },
+];
+
+const taxInfo = [
+  {
+    title: 'Remboursement de TVA pour les Touristes',
+    description: 'Les touristes étrangers séjournant dans des hôtels enregistrés en Argentine peuvent demander un remboursement de la TVA (IVA) de 21% sur l\'hébergement. Demandez le formulaire de remboursement au check-out de l\'hôtel et traitez-le à l\'aéroport avant le départ.',
+    icon: '🧾',
+  },
+  {
+    title: 'Taxe de Réciprocité',
+    description: 'Les citoyens de certains pays (ex. Australie, Canada) peuvent devoir payer une taxe de réciprocité avant de voyager en Argentine. Consultez le site web de l\'immigration argentine pour les exigences actuelles applicables à votre nationalité.',
+    icon: '📋',
+  },
+];
+
+const bookingContacts = [
+  {
+    name: 'Full Service EVT (Agence de Voyage Officielle)',
+    email: 'fullserviceevt@gmail.com',
+    phone: '+54 3757 423721',
+    description: 'Agence de voyage officielle du congrès pour les réservations d\'hôtel, forfaits touristiques et transferts.',
+  },
+  {
+    name: 'Bureau du Congrès IRF',
+    email: 'wrc@internationalrangers.org',
+    phone: '',
+    description: 'Questions générales sur le congrès et support d\'inscription.',
+  },
 const featuredHotels = [
   {
     name: 'Hotel Amerian Portal del Iguazu',
@@ -322,9 +400,8 @@ const bookingContacts = [
   </section>
 
   <!-- Booking Contacts -->
-  <section class="relative py-16 overflow-hidden">
-    <img src="/images/home/26.png" alt="" aria-hidden="true" class="absolute right-0 bottom-0 h-60 w-auto opacity-50 pointer-events-none" />
-    <div class="relative mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+  <section class="py-16">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
         Réservations et Contact
       </h2>
