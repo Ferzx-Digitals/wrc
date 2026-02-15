@@ -89,22 +89,16 @@ const activities = [
             Resumen del Programa
           </h2>
           <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
-            <table class="w-full">
-              <thead>
-                <tr class="bg-wrc-green-50">
-                  <th class="px-6 py-3 text-left text-sm font-heading font-bold text-wrc-green-900 w-1/3">Día</th>
-                  <th class="px-6 py-3 text-left text-sm font-heading font-bold text-wrc-green-900">Eventos</th>
-                </tr>
-              </thead>
-              <tbody>
-                {overviewSchedule.map((row, i) => (
-                  <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                    <td class="px-6 py-4 text-sm font-semibold text-gray-900 whitespace-nowrap">{row.day}</td>
-                    <td class="px-6 py-4 text-sm text-gray-600">{row.events}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <div class="grid grid-cols-[1fr_2fr]">
+              <div class="px-6 py-3 bg-wrc-green-50 text-sm font-heading font-bold text-wrc-green-900">Día</div>
+              <div class="px-6 py-3 bg-wrc-green-50 text-sm font-heading font-bold text-wrc-green-900">Eventos</div>
+              {overviewSchedule.map((row, i) => (
+                <>
+                  <div class={`px-6 py-4 text-sm font-semibold text-gray-900 ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`} style="border-left: 4px solid #22c55e;">{row.day}</div>
+                  <div class={`px-6 py-4 text-sm text-gray-600 ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>{row.events}</div>
+                </>
+              ))}
+            </div>
           </div>
           <div class="mt-6 text-center">
             <Button href="#" variant="outline" size="sm">

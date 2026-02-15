@@ -8,172 +8,44 @@ const prefix = `/${locale}`;
 
 <!-- Puerto Iguazu Welcomes You section -->
 <section class="relative overflow-hidden bg-gradient-to-b from-wrc-green-50 to-wrc-green-100/50">
+  <!-- Background image starting from left edge -->
+  <img src="/images/home/8-iguazu-map.png" alt="Iguazu region" class="absolute inset-0 w-full h-full object-contain object-left opacity-30" />
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative z-10">
     <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
 
-      <!-- Left: Iguazu Falls background with text overlay -->
-      <div class="relative rounded-2xl overflow-hidden shadow-xl min-h-[400px] md:min-h-[480px] flex items-end" data-placeholder="8">
-        <!-- Background image placeholder -->
-        <div class="absolute inset-0 bg-gradient-to-br from-wrc-blue-800 via-wrc-blue-600 to-cyan-700">
-          <!-- Replace with: <img src="/images/home/8-iguazu-falls.jpg" alt="Iguazu Falls" class="w-full h-full object-cover" /> -->
-          <svg class="w-full h-full opacity-20" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <!-- Cliff edge -->
-            <path d="M0 120 Q50 100 100 115 Q150 90 200 108 Q250 95 300 112 Q350 100 400 118 V0 H0Z" fill="white" opacity="0.12"/>
-            <!-- Water streams -->
-            <path d="M60 118 Q58 180 62 240 Q60 300 58 360 Q57 420 60 500" stroke="white" stroke-width="3" fill="none" opacity="0.2"/>
-            <path d="M140 108 Q142 170 138 230 Q140 290 142 350 Q140 420 138 500" stroke="white" stroke-width="4" fill="none" opacity="0.22"/>
-            <path d="M200 110 Q198 175 202 240 Q200 305 198 370 Q200 440 200 500" stroke="white" stroke-width="3.5" fill="none" opacity="0.2"/>
-            <path d="M280 112 Q282 175 278 240 Q280 305 282 370 Q280 440 278 500" stroke="white" stroke-width="3" fill="none" opacity="0.18"/>
-            <path d="M350 115 Q348 180 352 245 Q350 310 348 375 Q350 445 350 500" stroke="white" stroke-width="2.5" fill="none" opacity="0.15"/>
-            <!-- Mist -->
-            <ellipse cx="200" cy="400" rx="180" ry="40" fill="white" opacity="0.08"/>
-          </svg>
-        </div>
-
-        <!-- Dark gradient overlay for text readability -->
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20"></div>
-
-        <!-- Text content on top of image -->
-        <div class="relative z-10 p-6 md:p-10 text-white">
-          <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading font-bold leading-tight mb-2 drop-shadow-lg">
+      <!-- Left: Text content on top of image -->
+      <div class="relative min-h-[400px] md:min-h-[480px] flex items-end">
+        <div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold leading-tight mb-2 text-wrc-green-900">
             {t('home.iguazu.title', locale)}
           </h2>
-          <p class="text-xl sm:text-2xl font-heading font-semibold text-white/90 mb-5 drop-shadow-md">
+          <p class="text-xl sm:text-2xl font-heading font-bold text-wrc-green-700 mb-5">
             {t('home.iguazu.subtitle', locale)}
           </p>
-          <p class="text-white/80 leading-relaxed mb-3 text-sm md:text-base max-w-lg">
+          <p class="text-gray-700 font-semibold leading-relaxed mb-3 text-sm md:text-base max-w-lg">
             {t('home.iguazu.p1', locale)}
           </p>
-          <p class="text-white/80 leading-relaxed mb-6 text-sm md:text-base max-w-lg">
+          <p class="text-gray-700 font-semibold leading-relaxed mb-6 text-sm md:text-base max-w-lg">
             {t('home.iguazu.p2', locale)}
           </p>
-          <a href={`${prefix}/about`} class="inline-flex items-center justify-center px-6 py-3 font-heading font-semibold rounded-lg text-base bg-white text-wrc-green-800 hover:bg-wrc-green-50 transition-colors duration-200 shadow-lg">
+          <a href={`${prefix}/about`} class="inline-flex items-center justify-center px-6 py-3 font-heading font-semibold rounded-lg text-base bg-wrc-green-800 text-white hover:bg-wrc-green-900 transition-colors duration-200 shadow-lg">
             {t('common.learnMore', locale)}
           </a>
-        </div>
-
-        <!-- Placeholder label -->
-        <div class="absolute top-4 right-4 pointer-events-none z-10">
-          <span class="bg-black/20 text-white/50 text-xs px-3 py-1 rounded-full font-heading backdrop-blur-sm">
-            IMAGE #8 — Iguazu Falls
-          </span>
         </div>
       </div>
 
       <!-- Right: Animated illustrated map of Iguazu region -->
-      <div class="relative rounded-2xl overflow-hidden shadow-xl min-h-[400px] md:min-h-[480px] bg-gradient-to-br from-emerald-50 via-green-50 to-blue-50 border border-wrc-green-200/50" data-placeholder="9">
-        <!-- Replace with: <img src="/images/home/9-iguazu-map.png" alt="Illustrated map of the Iguazu Triple Frontier region" class="w-full h-full object-cover" /> -->
-        <!-- SVG placeholder map -->
-        <svg class="w-full h-full" viewBox="0 0 500 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Animated map of the Iguazu Triple Frontier region">
-          <!-- Background fill -->
-          <rect width="500" height="600" fill="#f0fdf4"/>
-
-          <!-- Paraguay territory (top) -->
-          <path d="M15 15 Q80 10 150 18 Q220 12 280 20 Q320 25 340 40 Q345 60 340 80 Q320 90 280 85 Q220 78 160 75 Q100 72 60 68 Q35 60 22 48 Q15 35 15 15Z" fill="#fef9c3" stroke="#ca8a04" stroke-width="1.5" opacity="0.7">
-            <animate attributeName="opacity" values="0;0.7" dur="1s" fill="freeze"/>
-          </path>
-          <text x="160" y="48" font-size="16" fill="#92400e" font-weight="600" text-anchor="middle" class="font-heading" opacity="0.8">Paraguay</text>
-
-          <!-- Argentina territory (left & center) -->
-          <path d="M15 50 Q50 60 100 72 Q160 78 220 82 Q280 88 330 95 Q340 110 340 140 Q335 200 320 260 Q300 340 270 400 Q240 460 200 510 Q160 540 110 530 Q70 510 45 470 Q25 420 18 360 Q12 280 15 200 Q15 130 15 50Z" fill="#bbf7d0" stroke="#16a34a" stroke-width="2" opacity="0.7">
-            <animate attributeName="opacity" values="0;0.7" dur="1s" begin="0.3s" fill="freeze"/>
-          </path>
-          <text x="130" y="300" font-size="18" fill="#166534" font-weight="700" text-anchor="middle" class="font-heading" opacity="0.8">Argentina</text>
-
-          <!-- Brazil territory (right) -->
-          <path d="M345 40 Q390 30 440 35 Q475 50 488 90 Q495 140 490 200 Q485 270 475 330 Q460 380 435 410 Q400 430 370 410 Q350 380 340 340 Q330 280 335 220 Q338 160 340 110 Q342 80 345 40Z" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5" opacity="0.7">
-            <animate attributeName="opacity" values="0;0.7" dur="1s" begin="0.6s" fill="freeze"/>
-          </path>
-          <text x="420" y="220" font-size="18" fill="#1e40af" font-weight="700" text-anchor="middle" class="font-heading" opacity="0.8">Brazil</text>
-
-          <!-- Parana River (Argentina-Paraguay border) -->
-          <path d="M15 55 Q60 65 120 72 Q200 80 280 88 Q320 92 340 100" stroke="#60a5fa" stroke-width="4" fill="none" opacity="0.6" stroke-linecap="round">
-            <animate attributeName="stroke-dasharray" values="0 800;800 0" dur="2.5s" begin="1s" fill="freeze"/>
-          </path>
-
-          <!-- Iguazu River (Argentina-Brazil border) -->
-          <path d="M340 140 Q355 148 370 160 Q385 175 395 195 Q405 215 415 240 Q425 265 435 290" stroke="#60a5fa" stroke-width="3.5" fill="none" opacity="0.6" stroke-linecap="round">
-            <animate attributeName="stroke-dasharray" values="0 500;500 0" dur="2.5s" begin="1.5s" fill="freeze"/>
-          </path>
-
-          <!-- River labels -->
-          <text x="180" y="68" font-size="10" fill="#2563eb" font-style="italic" text-anchor="middle" opacity="0.6" transform="rotate(-3, 180, 68)">Parana River</text>
-          <text x="405" y="200" font-size="10" fill="#2563eb" font-style="italic" text-anchor="middle" opacity="0.6" transform="rotate(55, 405, 200)">Iguazu River</text>
-
-          <!-- Triple Frontier marker -->
-          <text x="340" y="115" font-size="9" fill="#6b7280" font-style="italic" text-anchor="middle" opacity="0.5">Triple Frontier</text>
-
-          <!-- Iguazu Falls marker with pulse -->
-          <g>
-            <circle cx="375" cy="170" r="12" fill="#ef4444" opacity="0.15">
-              <animate attributeName="r" values="12;22;12" dur="2s" begin="2.5s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="0.2;0.05;0.2" dur="2s" begin="2.5s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="375" cy="170" r="7" fill="#ef4444" opacity="0.7">
-              <animate attributeName="opacity" values="0;0.7" dur="0.5s" begin="2.5s" fill="freeze"/>
-            </circle>
-            <circle cx="375" cy="170" r="3" fill="white">
-              <animate attributeName="opacity" values="0;1" dur="0.5s" begin="2.5s" fill="freeze"/>
-            </circle>
-          </g>
-          <text x="375" y="152" font-size="11" fill="#dc2626" font-weight="700" text-anchor="middle" class="font-heading">
-            <tspan>Iguazu Falls</tspan>
-          </text>
-
-          <!-- Puerto Iguazu city marker -->
-          <g>
-            <circle cx="300" cy="200" r="5" fill="#166534" opacity="0.8">
-              <animate attributeName="opacity" values="0;0.8" dur="0.5s" begin="2s" fill="freeze"/>
-            </circle>
-            <circle cx="300" cy="200" r="2" fill="white">
-              <animate attributeName="opacity" values="0;1" dur="0.5s" begin="2s" fill="freeze"/>
-            </circle>
-          </g>
-          <text x="270" y="192" font-size="11" fill="#166534" font-weight="600" class="font-heading" text-anchor="end">Puerto</text>
-          <text x="270" y="205" font-size="11" fill="#166534" font-weight="600" class="font-heading" text-anchor="end">Iguazu</text>
-
-          <!-- National Park shading hint -->
-          <ellipse cx="340" cy="250" rx="60" ry="80" fill="#166534" opacity="0.06" stroke="#166534" stroke-width="0.8" stroke-dasharray="4 3">
-            <animate attributeName="opacity" values="0;0.06" dur="1s" begin="2s" fill="freeze"/>
-          </ellipse>
-          <text x="340" y="280" font-size="8" fill="#166534" opacity="0.4" text-anchor="middle" font-style="italic">National Park</text>
-
-          <!-- Small decorative trees along borders -->
-          <g opacity="0.25">
-            <circle cx="80" cy="150" r="6" fill="#16a34a"/><circle cx="95" cy="160" r="5" fill="#15803d"/>
-            <circle cx="60" cy="200" r="5" fill="#16a34a"/><circle cx="50" cy="250" r="6" fill="#15803d"/>
-            <circle cx="55" cy="310" r="5" fill="#16a34a"/><circle cx="70" cy="370" r="4" fill="#15803d"/>
-            <circle cx="320" cy="300" r="5" fill="#16a34a"/><circle cx="335" cy="320" r="6" fill="#15803d"/>
-            <circle cx="350" cy="350" r="5" fill="#16a34a"/><circle cx="360" cy="230" r="4" fill="#15803d"/>
-          </g>
-
-          <!-- Compass rose -->
-          <g transform="translate(460, 540)" opacity="0.4">
-            <circle cx="0" cy="0" r="18" fill="white" stroke="#166534" stroke-width="0.8"/>
-            <text x="0" y="-5" font-size="10" fill="#166534" font-weight="700" text-anchor="middle">N</text>
-            <line x1="0" y1="-15" x2="0" y2="-9" stroke="#166534" stroke-width="1.2"/>
-            <line x1="0" y1="9" x2="0" y2="15" stroke="#166534" stroke-width="0.6"/>
-            <line x1="-15" y1="0" x2="-9" y2="0" stroke="#166534" stroke-width="0.6"/>
-            <line x1="9" y1="0" x2="15" y2="0" stroke="#166534" stroke-width="0.6"/>
-          </g>
-
-          <!-- Scale bar -->
-          <g transform="translate(30, 560)" opacity="0.35">
-            <line x1="0" y1="0" x2="60" y2="0" stroke="#166534" stroke-width="1.5"/>
-            <line x1="0" y1="-4" x2="0" y2="4" stroke="#166534" stroke-width="1"/>
-            <line x1="60" y1="-4" x2="60" y2="4" stroke="#166534" stroke-width="1"/>
-            <text x="30" y="12" font-size="8" fill="#166534" text-anchor="middle">~50 km</text>
-          </g>
-        </svg>
-
-        <!-- Placeholder label -->
-        <div class="absolute bottom-4 right-4 pointer-events-none z-10">
-          <span class="bg-white/60 text-wrc-green-600/50 text-xs px-3 py-1 rounded-full font-heading backdrop-blur-sm">
-            IMAGE #9 — Animated Map
-          </span>
-        </div>
+      <div class="relative min-h-[400px] md:min-h-[480px] flex items-center justify-center">
+        <img src="/images/home/9-iguazu-map.png" alt="Illustrated map of the Iguazu Triple Frontier region" class="w-full h-full object-contain opacity-90 iguazu-map-fade" />
       </div>
 
     </div>
   </div>
 </section>
+
+<style>
+  .iguazu-map-fade {
+    mask-image: radial-gradient(ellipse 70% 70% at center, black 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 70% at center, black 40%, transparent 100%);
+  }
+</style>

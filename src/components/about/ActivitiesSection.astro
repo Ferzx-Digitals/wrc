@@ -4,58 +4,19 @@ import { getLocaleFromUrl, t } from '../../i18n/utils';
 const locale = getLocaleFromUrl(Astro.url);
 
 const activities = [
-  { titleKey: 'about.activities.plenary', descKey: 'about.activities.plenaryDesc', icon: '🎤', color: 'wrc-green-700' },
-  { titleKey: 'about.activities.workshops', descKey: 'about.activities.workshopsDesc', icon: '🔬', color: 'wrc-blue-700' },
-  { titleKey: 'about.activities.discussions', descKey: 'about.activities.discussionsDesc', icon: '💬', color: 'wrc-earth-600' },
-  { titleKey: 'about.activities.cultural', descKey: 'about.activities.culturalDesc', icon: '🎭', color: 'emerald-700' },
-  { titleKey: 'about.activities.fieldTrips', descKey: 'about.activities.fieldTripsDesc', icon: '🌿', color: 'wrc-green-800' },
+  { titleKey: 'about.activities.plenary', descKey: 'about.activities.plenaryDesc', icon: '🎤', hex: '#15803d' },
+  { titleKey: 'about.activities.workshops', descKey: 'about.activities.workshopsDesc', icon: '🔬', hex: '#1d4ed8' },
+  { titleKey: 'about.activities.discussions', descKey: 'about.activities.discussionsDesc', icon: '💬', hex: '#92400e' },
+  { titleKey: 'about.activities.cultural', descKey: 'about.activities.culturalDesc', icon: '🎭', hex: '#047857' },
+  { titleKey: 'about.activities.fieldTrips', descKey: 'about.activities.fieldTripsDesc', icon: '🌿', hex: '#166534' },
 ];
 ---
 
 <!-- Congress Activities: Easter eggs left column + Zigzag cards right -->
 <section class="py-16 md:py-20 bg-white relative overflow-hidden">
-  <!-- Waterfall sketch background - left side, flowing left to right -->
-  <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true" data-placeholder="6">
-    <div class="absolute inset-0 bg-gradient-to-r from-wrc-blue-50/60 via-wrc-blue-50/30 to-transparent">
-      <!-- Replace with: <img src="/images/about/6-waterfall-sketch.png" alt="" class="w-full h-full object-cover object-left opacity-15" /> -->
-      <svg class="w-full h-full opacity-[0.08]" viewBox="0 0 800 1200" preserveAspectRatio="xMinYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Rocky cliff left edge -->
-        <path d="M0 0 Q30 20 50 10 Q80 30 60 60 Q40 80 55 120 Q70 150 50 180 Q30 200 45 240 Q60 270 40 300 Q20 330 35 360 Q55 390 40 420 Q25 450 40 480 Q55 510 35 540 Q20 570 40 600 Q60 630 45 660 Q30 690 45 720 Q60 750 40 780 Q25 810 40 840 Q55 870 35 900 Q20 930 40 960 Q55 990 40 1020 Q30 1050 45 1080 Q60 1110 40 1140 Q25 1170 40 1200 L0 1200Z" fill="#166534" opacity="0.3"/>
-        <!-- Water streams flowing left to right -->
-        <g opacity="0.5">
-          <path d="M60 80 Q120 85 200 75 Q300 65 400 80 Q500 95 600 70 Q700 55 800 75" stroke="#3b82f6" stroke-width="3" fill="none" opacity="0.3"/>
-          <path d="M50 180 Q130 190 220 175 Q320 160 420 185 Q520 200 620 170 Q720 150 800 165" stroke="#60a5fa" stroke-width="2.5" fill="none" opacity="0.25"/>
-          <path d="M55 300 Q140 310 240 295 Q340 280 440 305 Q540 315 640 290 Q740 275 800 285" stroke="#3b82f6" stroke-width="3" fill="none" opacity="0.3"/>
-          <path d="M45 420 Q125 430 225 415 Q330 400 430 425 Q530 440 630 410 Q730 395 800 405" stroke="#93c5fd" stroke-width="2" fill="none" opacity="0.2"/>
-          <path d="M60 540 Q150 545 250 530 Q350 520 450 545 Q550 555 650 530 Q750 515 800 525" stroke="#3b82f6" stroke-width="2.5" fill="none" opacity="0.25"/>
-          <path d="M50 660 Q130 670 230 655 Q330 640 430 665 Q530 675 630 650 Q730 635 800 645" stroke="#60a5fa" stroke-width="2" fill="none" opacity="0.2"/>
-          <path d="M55 780 Q145 790 245 775 Q345 760 445 785 Q545 795 645 770 Q745 755 800 765" stroke="#3b82f6" stroke-width="3" fill="none" opacity="0.3"/>
-          <path d="M45 900 Q135 910 235 895 Q335 880 435 905 Q535 915 635 890 Q735 875 800 885" stroke="#93c5fd" stroke-width="2" fill="none" opacity="0.2"/>
-          <path d="M60 1020 Q150 1025 250 1010 Q350 1000 450 1025 Q550 1035 650 1010 Q750 995 800 1005" stroke="#60a5fa" stroke-width="2.5" fill="none" opacity="0.25"/>
-          <path d="M50 1140 Q140 1150 240 1135 Q340 1120 440 1145 Q540 1155 640 1130 Q740 1115 800 1125" stroke="#3b82f6" stroke-width="2" fill="none" opacity="0.2"/>
-        </g>
-        <!-- Mist/spray patches -->
-        <ellipse cx="150" cy="130" rx="80" ry="25" fill="#bfdbfe" opacity="0.12"/>
-        <ellipse cx="250" cy="350" rx="100" ry="30" fill="#dbeafe" opacity="0.1"/>
-        <ellipse cx="180" cy="550" rx="90" ry="28" fill="#bfdbfe" opacity="0.1"/>
-        <ellipse cx="220" cy="750" rx="100" ry="25" fill="#dbeafe" opacity="0.08"/>
-        <ellipse cx="160" cy="950" rx="80" ry="22" fill="#bfdbfe" opacity="0.1"/>
-        <ellipse cx="200" cy="1100" rx="90" ry="25" fill="#dbeafe" opacity="0.08"/>
-        <!-- Splash droplets -->
-        <circle cx="100" cy="50" r="4" fill="#3b82f6" opacity="0.1"/>
-        <circle cx="200" cy="230" r="3" fill="#60a5fa" opacity="0.08"/>
-        <circle cx="80" cy="450" r="5" fill="#3b82f6" opacity="0.1"/>
-        <circle cx="180" cy="680" r="3" fill="#93c5fd" opacity="0.08"/>
-        <circle cx="120" cy="850" r="4" fill="#60a5fa" opacity="0.1"/>
-        <circle cx="220" cy="1050" r="3" fill="#3b82f6" opacity="0.08"/>
-      </svg>
-    </div>
-    <div class="absolute bottom-6 left-6 pointer-events-none">
-      <span class="bg-white/50 text-wrc-blue-600/40 text-xs px-3 py-1 rounded-full font-heading backdrop-blur-sm">
-        IMAGE #6 — Waterfall sketch background
-      </span>
-    </div>
-  </div>
+  <!-- Decorative map image on left edge -->
+  <img src="/images/home/8-iguazu-map.png" alt="" class="absolute left-0 top-0 h-full w-auto object-cover object-left opacity-20 pointer-events-none" aria-hidden="true" />
+
 
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
     <h2 class="text-3xl md:text-4xl font-heading font-bold text-center text-wrc-green-900 mb-16">
@@ -90,10 +51,7 @@ const activities = [
                 ]}>
                   <div class="bg-white rounded-xl shadow-lg border border-gray-100 p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
                     <!-- Accent bar -->
-                    <div class:list={[
-                      'absolute top-0 left-0 right-0 h-1',
-                      `bg-${activity.color}`
-                    ]}></div>
+                    <div class="absolute top-0 left-0 right-0 h-1" style={`background-color: ${activity.hex};`}></div>
 
                     <!-- Mobile icon -->
                     <span class="md:hidden text-3xl mb-3 block" aria-hidden="true">{activity.icon}</span>
