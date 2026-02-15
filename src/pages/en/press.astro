@@ -85,8 +85,9 @@ const pressFaqs = [
   </section>
 
   <!-- Press Conference -->
-  <section class="py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <section class="relative py-16 overflow-hidden">
+    <img src="/images/home/30.png" alt="" aria-hidden="true" class="absolute right-0 top-8 h-52 w-auto opacity-50 pointer-events-none -scale-x-100 rotate-[30deg]" />
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl mx-auto">
         <h2 class="text-3xl font-heading font-bold text-wrc-green-900 mb-6">
           Press Conference
@@ -142,8 +143,20 @@ const pressFaqs = [
   <SectionDivider variant="jungle" class="bg-gray-50" />
 
   <!-- Press Releases -->
-  <section class="py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <section class="py-16 relative overflow-hidden nature-texture">
+    <div class="absolute top-0 left-0 right-0 w-full h-full pointer-events-none select-none overflow-hidden" aria-hidden="true" style="z-index: 0;">
+      <div class="w-full h-full opacity-[0.08]" style="
+        background: linear-gradient(135deg, #14532d 0%, #166534 20%, transparent 45%),
+                    linear-gradient(to right, #14532d 0%, #15803d 15%, #22c55e 25%, transparent 50%);
+        mask-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1600 800%22%3E%3Cpath d=%22M0 0 L1200 0 Q1150 50 1100 30 Q1050 10 1000 40 Q950 70 900 50 Q850 30 800 60 Q750 90 700 65 Q650 40 600 70 Q550 100 500 80 Q450 55 400 85 Q350 110 300 90 Q250 70 200 100 Q150 130 100 110 Q50 90 0 120Z%22 fill=%22white%22/%3E%3Cpath d=%22M0 120 Q50 150 100 130 Q200 180 300 160 Q400 200 500 170 Q600 220 700 190 Q800 250 900 210 Q950 270 1000 240 Q1050 300 1100 260 Q1150 320 1200 280 L1200 800 L0 800Z%22 fill=%22white%22/%3E%3C/svg%3E');
+        -webkit-mask-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1600 800%22%3E%3Cpath d=%22M0 0 L1200 0 Q1150 50 1100 30 Q1050 10 1000 40 Q950 70 900 50 Q850 30 800 60 Q750 90 700 65 Q650 40 600 70 Q550 100 500 80 Q450 55 400 85 Q350 110 300 90 Q250 70 200 100 Q150 130 100 110 Q50 90 0 120Z%22 fill=%22white%22/%3E%3Cpath d=%22M0 120 Q50 150 100 130 Q200 180 300 160 Q400 200 500 170 Q600 220 700 190 Q800 250 900 210 Q950 270 1000 240 Q1050 300 1100 260 Q1150 320 1200 280 L1200 800 L0 800Z%22 fill=%22white%22/%3E%3C/svg%3E');
+        mask-size: cover;
+        -webkit-mask-size: cover;
+        mask-repeat: no-repeat;
+        -webkit-mask-repeat: no-repeat;
+      "></div>
+    </div>
+    <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-10">
         Press Releases
       </h2>
@@ -174,15 +187,20 @@ const pressFaqs = [
       <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
         High-resolution photos available for editorial use
       </p>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-8">
-        {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-          <div class="aspect-square rounded-lg bg-gradient-to-br from-wrc-green-100 to-wrc-blue-100 flex items-center justify-center">
-            <span class="text-wrc-green-400 text-xs font-semibold">Photo {i}</span>
-          </div>
-        ))}
+      <div class="swiper photo-gallery-carousel max-w-5xl mx-auto mb-8">
+        <div class="swiper-wrapper">
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17].map((i) => (
+            <div class="swiper-slide">
+              <div class="aspect-square rounded-lg overflow-hidden">
+                <img src={`/images/photo_gallery/${i}.jpg`} alt={`Congress photo ${i}`} class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" loading="lazy" />
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="swiper-pagination mt-6"></div>
       </div>
       <div class="text-center">
-        <Button href="#" variant="primary">
+        <Button href="/downloads/wrc-photo-gallery.zip" variant="primary">
           Download All Photos
         </Button>
       </div>
@@ -250,9 +268,7 @@ const pressFaqs = [
       <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-8">
         {Object.values(ORGANIZERS).map((org) => (
           <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100">
-            <div class="w-14 h-14 rounded-lg bg-wrc-green-100 flex items-center justify-center mb-4">
-              <span class="text-wrc-green-700 font-heading font-bold text-sm">{org.shortName}</span>
-            </div>
+            <img src={org.logo} alt={org.shortName} class="w-1/2 h-auto object-contain mb-4 mx-auto" />
             <h3 class="font-heading font-bold text-lg text-gray-900 mb-2">{org.name}</h3>
             <p class="text-sm text-gray-600 leading-relaxed mb-3">{org.description}</p>
             <a href={org.website} class="text-sm text-wrc-green-700 font-semibold hover:underline" target="_blank" rel="noopener">
@@ -262,7 +278,7 @@ const pressFaqs = [
         ))}
       </div>
       <div class="text-center">
-        <Button href="#" variant="outline">
+        <Button href="/downloads/wrc-organizer-logos.zip" variant="outline" download>
           Download Logos
         </Button>
       </div>
@@ -284,3 +300,24 @@ const pressFaqs = [
     </div>
   </section>
 </PageLayout>
+
+<script>
+  import Swiper from 'swiper';
+  import { Pagination, Autoplay } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/pagination';
+
+  new Swiper('.photo-gallery-carousel', {
+    modules: [Pagination, Autoplay],
+    slidesPerView: 1.2,
+    spaceBetween: 16,
+    autoplay: { delay: 3000, disableOnInteraction: false },
+    pagination: { el: '.photo-gallery-carousel .swiper-pagination', clickable: true },
+    breakpoints: {
+      640: { slidesPerView: 2.2 },
+      1024: { slidesPerView: 3.2 },
+      1280: { slidesPerView: 4 },
+    },
+    a11y: { enabled: true },
+  });
+</script>

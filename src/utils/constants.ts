@@ -21,6 +21,7 @@ export const ORGANIZERS = {
   irf: {
     name: 'International Ranger Federation',
     shortName: 'IRF',
+    logo: '/images/logos/irf.png',
     founded: 1992,
     website: 'https://www.internationalrangers.org',
     description: 'A worldwide, non-profit membership-based organisation established in 1992, representing rangers across 50+ countries on 6 continents.',
@@ -28,6 +29,7 @@ export const ORGANIZERS = {
   sigunara: {
     name: 'Syndicate of National Rangers of Argentina Republic',
     shortName: 'SIGUNARA',
+    logo: '/images/logos/sigunara.png',
     founded: 1990,
     website: 'https://www.sigunara.org',
     description: 'The National Rangers union of Argentina, established in 1990 and recognized by the National Government.',
