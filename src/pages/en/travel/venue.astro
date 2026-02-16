@@ -17,6 +17,24 @@ const featuredHotels = [
     address: 'Av. Tres Fronteras 780, Puerto Iguazu',
     features: ['2 Restaurants', '2 Bars', 'Spa & Wellness', 'Triple Frontier Views', 'Congress Venue Hotel'],
     mapUrl: 'https://maps.app.goo.gl/6RD7UotVJshHRrfr8',
+
+    rate: 'USD 130 + VAT',
+    rateNotes: [
+      'Rates are expressed in US Dollars.',
+      'Rates are per room, per night.',
+      'Check-in: 2:00 PM – Check-out: 11:00 AM.',
+      'Net rates.',
+    ],
+    services: [
+      'Buffet breakfast',
+      'Wi-Fi Internet access',
+      'Access to the outdoor pool with waterfall, bars, solarium, and jacuzzi',
+      'Access to the heated indoor pool with jacuzzi',
+      'Access to Yvy Maraý Spa sauna',
+      'Tennis and soccer courts',
+      'Recreation area',
+      'Business Center',
+    ],
   },
   {
     name: 'Iguazu Grand Resort Spa & Casino',
@@ -160,8 +178,9 @@ const bookingContacts = [
   <SectionDivider variant="jungle" />
 
   <!-- Team Accommodation Note -->
-  <section class="py-12">
-    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+  <section class="py-12 relative overflow-hidden">
+    <img src="/images/home/14.png" alt="" aria-hidden="true" class="absolute right-0 top-8 h-full w-auto opacity-40 pointer-events-none object-contain object-right" />
+    <div class="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
       <div class="relative bg-gradient-to-br from-wrc-green-50 to-white rounded-2xl shadow-lg border border-wrc-green-200 overflow-hidden">
         <!-- Decorative accent bar -->
         <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-wrc-green-500 to-wrc-green-700"></div>
@@ -233,7 +252,7 @@ const bookingContacts = [
         Premium accommodation options near the congress venue
       </p>
       <div class="grid md:grid-cols-3 gap-6">
-        {featuredHotels.map((hotel) => (
+        {featuredHotels.map((hotel, idx) => (
           <div class="bg-white rounded-xl shadow-md border border-gray-100 p-6 flex flex-col">
             <div class="flex items-center justify-between mb-2">
               <h3 class="font-heading font-bold text-lg text-gray-900">{hotel.name}</h3>
@@ -241,8 +260,35 @@ const bookingContacts = [
             <p class="text-wrc-green-700 font-semibold text-sm mb-1">
               {'⭐'.repeat(hotel.stars)} {hotel.stars}-Star
             </p>
-            <p class="text-sm text-gray-500 mb-4">{hotel.rooms} rooms · {hotel.address}</p>
-            <ul class="space-y-1.5 mb-5 flex-1">
+            <p class="text-sm text-gray-500 mb-3">{hotel.rooms} rooms · {hotel.address}</p>
+
+            <!-- Rate -->
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-xs text-gray-500 uppercase tracking-wide font-semibold">Rate:</span>
+              {hotel.rate ? (
+                <span class="font-heading font-bold text-wrc-green-800 text-sm">{hotel.rate}</span>
+              ) : (
+                <span class="text-sm text-gray-400 italic">N/A</span>
+              )}
+              {hotel.rateNotes && (
+                <div class="relative group">
+                  <span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-gray-200 text-gray-600 text-[10px] font-bold cursor-help">i</span>
+                  <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 bg-gray-900 text-white text-xs rounded-lg p-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-20 pointer-events-none shadow-lg">
+                    <ul class="space-y-1">
+                      {hotel.rateNotes.map((note) => (
+                        <li class="flex items-start gap-1.5">
+                          <span class="text-wrc-green-400 mt-px">•</span>
+                          <span>{note}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <ul class="space-y-1.5 mb-4 flex-1">
               {hotel.features.map((f) => (
                 <li class="flex items-center gap-2 text-sm text-gray-600">
                   <svg class="w-4 h-4 text-wrc-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -252,12 +298,57 @@ const bookingContacts = [
                 </li>
               ))}
             </ul>
-            <Button href={hotel.mapUrl} variant="outline" size="sm">
-              View on Map &rarr;
-            </Button>
+
+            {hotel.services && (
+              <button
+                class="services-modal-trigger text-xs font-semibold text-wrc-green-700 hover:text-wrc-green-900 transition-colors mb-4 self-start underline underline-offset-2"
+                type="button"
+                data-modal={`services-modal-${idx}`}
+              >
+                Services Included
+              </button>
+            )}
+
+            <div class="mt-auto">
+              <Button href={hotel.mapUrl} variant="outline" size="sm">
+                View on Map &rarr;
+              </Button>
+            </div>
           </div>
         ))}
       </div>
+
+      <!-- Services Modals -->
+      {featuredHotels.map((hotel, idx) => (
+        hotel.services && (
+          <div id={`services-modal-${idx}`} class="services-modal fixed inset-0 z-50 hidden">
+            <div class="services-modal-backdrop absolute inset-0 bg-black/50"></div>
+            <div class="relative flex items-center justify-center min-h-full p-4">
+              <div class="services-modal-content relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 sm:p-8">
+                <button class="services-modal-close absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors" type="button">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+                <h3 class="font-heading font-bold text-lg text-wrc-green-900 mb-1">{hotel.name}</h3>
+                <p class="text-xs uppercase tracking-wide text-wrc-green-700 font-semibold mb-4">Services Included</p>
+                <ul class="space-y-2">
+                  {hotel.services.map((s) => (
+                    <li class="flex items-start gap-2 text-sm text-gray-700">
+                      <svg class="w-4 h-4 text-wrc-green-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        )
+      ))}
+    </div>
+  </section>
     </div>
   </section>
 
@@ -414,3 +505,25 @@ const bookingContacts = [
     </div>
   </section>
 </PageLayout>
+
+<script>
+  document.querySelectorAll('.services-modal-trigger').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const modalId = (btn as HTMLElement).dataset.modal;
+      const modal = document.getElementById(modalId!);
+      if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  });
+
+  document.querySelectorAll('.services-modal').forEach((modal) => {
+    const close = () => {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    };
+    modal.querySelector('.services-modal-close')?.addEventListener('click', close);
+    modal.querySelector('.services-modal-backdrop')?.addEventListener('click', close);
+  });
+</script>

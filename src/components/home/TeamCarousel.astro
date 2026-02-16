@@ -3,26 +3,27 @@ import { getLocaleFromUrl, t } from '../../i18n/utils';
 
 const locale = getLocaleFromUrl(Astro.url);
 
-const teamMembers = [
-  { name: 'Chris Galliers', role: 'President IRF', org: 'IRF' },
-  { name: 'Andy Davies', role: 'Secretary', org: 'IRF' },
-  { name: 'Carlien Roodt', role: 'Executive Officer', org: 'IRF' },
-  { name: 'Mike Lynch', role: 'Treasurer', org: 'IRF' },
-  { name: 'Jolene Nelson', role: 'Oceania Rep', org: 'IRF' },
-  { name: 'Monica Alvarez', role: 'Fed Development Officer', org: 'IRF' },
-  { name: 'Rohit Singh', role: 'Asia Rep', org: 'IRF' },
-  { name: 'Antuel Sánchez', role: 'General Secretary', org: 'SIGUNARA' },
-  { name: 'Leonardo Juber', role: 'Member', org: 'SIGUNARA' },
-  { name: 'Sofia Nazar', role: 'Member', org: 'SIGUNARA' },
-  { name: 'Oscar Carvajal Mora', role: 'President FLG', org: 'FLG' },
-  { name: 'Laura Pastorino Ladereche', role: 'Vice President FLG', org: 'FLG' },
-  { name: 'Andrea Juncos', role: 'Executive Director', org: 'Plan A' },
-  { name: 'Ana Lacuadra', role: 'Project Manager', org: 'Plan A' },
-  { name: 'Malvina Solis', role: 'Local Coordinator', org: 'Plan A' },
-  { name: 'Martina Alvarez', role: 'Registration', org: 'Plan A' },
-  { name: 'Natalia Benejam', role: 'Commercial Coordinator', org: 'Plan A' },
-  { name: 'Renata Bollini', role: 'Coordinator Assistant', org: 'Plan A' },
-  { name: 'Celeste Dichico', role: 'Academic Coordinator', org: 'Plan A' },
+const teamMembers: { name: string; role: string; org: string; image?: string; imagePos?: string }[] = [
+  { name: 'Chris Galliers', role: 'President', org: 'IRF', image: '/images/team/irf/Chris Galliers - Presidnet.jpg' },
+  { name: 'Rohit Singh', role: 'Vice President', org: 'IRF', image: '/images/team/irf/Rohit Singh - Vice president.jpg' },
+  { name: 'Andy Davies', role: 'Secretary', org: 'IRF', image: '/images/team/irf/Andy Davies.png' },
+  { name: 'Carlien Roodt', role: 'Executive Officer', org: 'IRF', image: '/images/team/irf/Carlien Roodt.jpg', imagePos: 'center 15%' },
+  { name: 'Mike Lynch', role: 'Treasurer', org: 'IRF', image: '/images/team/irf/Mike Lynch - Treasurer.jpg', imagePos: '35% 45%' },
+  { name: 'Monica Alvarez', role: 'Federation Development Officer', org: 'IRF', image: '/images/team/irf/Mónica Álvarez Malvido.jpg' },
+  { name: 'Jonathan Churcher', role: 'General Manager', org: 'IRF', image: '/images/team/irf/Jonathan Churcher.png' },
+  { name: 'Antuel Sánchez', role: 'General Secretary', org: 'SIGUNARA', image: '/images/team/sigunara/Antuel Sánchez, general secretary, SIGUNARA.jpeg' },
+  { name: 'Leonardo Juber', role: 'Member', org: 'SIGUNARA', image: '/images/team/sigunara/Leo Juber.jpeg' },
+  { name: 'Sofia Nazar', role: 'Member', org: 'SIGUNARA', image: '/images/team/sigunara/Sofia Nazar - Sigunara.jpeg', imagePos: 'center 30%' },
+  { name: 'Federico Rodríguez Mira', role: 'Member', org: 'SIGUNARA', image: '/images/team/sigunara/Federico Rodríguez Mira, SIGUNARA.jpeg' },
+  { name: 'Oscar Carvajal Mora', role: 'President FLG', org: 'FLG', image: '/images/team/sigunara/Óscar Carvajal Mora, FLG president.jpeg', imagePos: '15% center' },
+  { name: 'Laura Pastorino Ladereche', role: 'Vice President FLG', org: 'FLG', image: '/images/team/sigunara/Laura P FLG.jpeg' },
+  { name: 'Andrea Juncos', role: 'Executive Director', org: 'Plan A', image: '/images/team/plana/Andrea Juncos - Executive Director.jpg' },
+  { name: 'Ana Lacuadra', role: 'Project Manager', org: 'Plan A', image: '/images/team/plana/2 - Ana Lacuadra. Project Manager.jpg' },
+  { name: 'Malvina Solis', role: 'Local Coordinator', org: 'Plan A', image: '/images/team/plana/Malvina Solis - Local coordinator.jpg', imagePos: 'center 30%' },
+  { name: 'Martina Alvarez', role: 'Registration', org: 'Plan A', image: '/images/team/plana/Martina Alvarez - Registrations.png' },
+  { name: 'Natalia Benejam', role: 'Commercial Coordinator', org: 'Plan A', image: '/images/team/plana/Natalia Benejam - Comercial Coordinator.jpeg' },
+  { name: 'Renata Bollini', role: 'Coordinator Assistant', org: 'Plan A', image: '/images/team/plana/Renata Bollini - Coordinator Assitant.jpeg' },
+  { name: 'Celeste Dichico', role: 'Academic Coordinator', org: 'Plan A', image: '/images/team/plana/Celeste Dichico - Academic coordinator.jpg' },
 ];
 
 const orgColors: Record<string, string> = {
@@ -40,7 +41,7 @@ const avatarBgs: Record<string, string> = {
 };
 ---
 
-<section class="pt-0 pb-16 relative overflow-hidden">
+<section class="pt-0 pb-24 relative overflow-hidden">
   <div class="absolute inset-0 nature-texture" aria-hidden="true"></div>
 
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
@@ -62,12 +63,16 @@ const avatarBgs: Record<string, string> = {
         {teamMembers.map((member) => (
           <div class="swiper-slide">
             <div class="text-center px-2">
-              <!-- Photo placeholder with nature-themed ring -->
-              <div class={`w-24 h-24 sm:w-28 sm:h-28 mx-auto rounded-full flex items-center justify-center mb-3 shadow-md ring-2 ring-wrc-green-200/50 ${avatarBgs[member.org] || 'bg-gray-200 text-gray-500'}`}>
-                <span class="text-2xl font-heading font-bold">{member.name.charAt(0)}</span>
+              <!-- Team member photo -->
+              <div class={`w-24 h-24 sm:w-28 sm:h-28 mx-auto rounded-full flex items-center justify-center mb-3 shadow-md ring-2 ring-wrc-green-200/50 overflow-hidden ${avatarBgs[member.org] || 'bg-gray-200 text-gray-500'}`}>
+                {member.image ? (
+                  <img src={member.image} alt={member.name} class="w-full h-full object-cover" style={member.imagePos ? `object-position: ${member.imagePos}` : undefined} />
+                ) : (
+                  <span class="text-2xl font-heading font-bold">{member.name.charAt(0)}</span>
+                )}
               </div>
               <h3 class="font-heading font-bold text-sm text-gray-900">{member.name}</h3>
-              <p class="text-xs text-gray-500 mt-1">{member.role}</p>
+              <p class="text-[11px] text-gray-500 mt-1 whitespace-nowrap">{member.role}</p>
               <span class={`inline-block mt-2 px-2 py-0.5 rounded-full text-xs font-medium border ${orgColors[member.org] || 'bg-gray-100 text-gray-600 border-gray-200'}`}>
                 {member.org}
               </span>
@@ -75,21 +80,19 @@ const avatarBgs: Record<string, string> = {
           </div>
         ))}
       </div>
-      <div class="swiper-pagination mt-6"></div>
     </div>
   </div>
 </section>
 
 <script>
   import Swiper from 'swiper';
-  import { Pagination, Autoplay } from 'swiper/modules';
+  import { Autoplay } from 'swiper/modules';
 
   new Swiper('.team-carousel', {
-    modules: [Pagination, Autoplay],
+    modules: [Autoplay],
     slidesPerView: 2,
     spaceBetween: 16,
     autoplay: { delay: 3000, disableOnInteraction: false },
-    pagination: { el: '.team-carousel .swiper-pagination', clickable: true },
     breakpoints: {
       480: { slidesPerView: 3 },
       768: { slidesPerView: 4 },

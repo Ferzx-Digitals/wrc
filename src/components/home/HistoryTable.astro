@@ -4,16 +4,16 @@ import { getLocaleFromUrl, t } from '../../i18n/utils';
 const locale = getLocaleFromUrl(Astro.url);
 
 const congresses = [
-  { edition: '1st', year: 1995, location: 'Zakopane', country: 'Poland', emoji: '🏔️', flag: '🇵🇱', color: '#2563eb' },
-  { edition: '2nd', year: 1997, location: 'San José', country: 'Costa Rica', emoji: '🌋', flag: '🇨🇷', color: '#16a34a' },
-  { edition: '3rd', year: 2000, location: 'Kruger', country: 'South Africa', emoji: '🦁', flag: '🇿🇦', color: '#d97706' },
+  { edition: '1st', year: 1995, location: 'Zakopane', country: 'Poland', emoji: '🏔️', flag: '🇵🇱', color: '#2563eb', image: '/images/wrc/irf_1995.JPG' },
+  { edition: '2nd', year: 1997, location: 'San José', country: 'Costa Rica', emoji: '🌋', flag: '🇨🇷', color: '#16a34a', image: '/images/wrc/irf_1997.JPG' },
+  { edition: '3rd', year: 2000, location: 'Kruger', country: 'South Africa', emoji: '🦁', flag: '🇿🇦', color: '#d97706', image: '/images/wrc/irf_2000.JPG' },
   { edition: '4th', year: 2003, location: 'Melbourne', country: 'Australia', emoji: '🦘', flag: '🇦🇺', color: '#0284c7' },
   { edition: '5th', year: 2006, location: 'Stirling', country: 'Scotland', emoji: '🏰', flag: '🏴󠁧󠁢󠁳󠁣󠁴󠁿', color: '#4f46e5' },
   { edition: '6th', year: 2009, location: 'Santa Cruz', country: 'Bolivia', emoji: '🦙', flag: '🇧🇴', color: '#dc2626' },
-  { edition: '7th', year: 2012, location: 'Arusha', country: 'Tanzania', emoji: '🐘', flag: '🇹🇿', color: '#ca8a04' },
+  { edition: '7th', year: 2012, location: 'Arusha', country: 'Tanzania', emoji: '🐘', flag: '🇹🇿', color: '#ca8a04', image: '/images/wrc/irf_2012.JPG' },
   { edition: '8th', year: 2016, location: 'Estes Park', country: 'USA', emoji: '🦅', flag: '🇺🇸', color: '#475569' },
-  { edition: '9th', year: 2019, location: 'Chitwan', country: 'Nepal', emoji: '🐅', flag: '🇳🇵', color: '#ea580c' },
-  { edition: '10th', year: 2024, location: 'Aix-les-Bains', country: 'France', emoji: '🏞️', flag: '🇫🇷', color: '#e11d48' },
+  { edition: '9th', year: 2019, location: 'Chitwan', country: 'Nepal', emoji: '🐅', flag: '🇳🇵', color: '#ea580c', image: '/images/wrc/wrc_2019.png' },
+  { edition: '10th', year: 2024, location: 'Aix-les-Bains', country: 'France', emoji: '🏞️', flag: '🇫🇷', color: '#e11d48', image: '/images/wrc/wrc_2024.png' },
 ];
 ---
 
@@ -60,6 +60,7 @@ const congresses = [
               data-country={c.country}
               data-year={c.year}
               data-color={c.color}
+              data-image={c.image || ''}
             >
               <!-- Emoji circle -->
               <div class="timeline-emoji w-14 h-14 md:w-16 md:h-16 rounded-full bg-white shadow-md border-2 border-wrc-green-200 flex items-center justify-center text-2xl md:text-3xl hover:shadow-lg hover:scale-110 hover:border-wrc-green-400 transition-all duration-200 z-10">
@@ -165,12 +166,19 @@ const congresses = [
     el.addEventListener('mouseenter', () => {
       const color = el.dataset.color || '#166534';
 
-      emoji.textContent = el.dataset.emoji || '';
+      const imageSrc = el.dataset.image;
+      if (imageSrc) {
+        emoji.style.display = 'none';
+        img.style.background = `url(${imageSrc}) center/cover no-repeat`;
+      } else {
+        emoji.style.display = '';
+        emoji.textContent = el.dataset.emoji || '';
+        img.style.background = `linear-gradient(135deg, ${color}, ${color}cc)`;
+      }
       title.textContent = `${el.dataset.edition} WRC`;
       loc.textContent = `${el.dataset.location}, ${el.dataset.country}`;
       year.textContent = el.dataset.year || '';
       card.style.background = color;
-      img.style.background = `linear-gradient(135deg, ${color}, ${color}cc)`;
       arrow.style.background = color;
 
       // Position: anchor to top-center of emoji circle

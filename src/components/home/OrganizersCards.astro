@@ -29,9 +29,9 @@ const locale = getLocaleFromUrl(Astro.url);
     <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
       {Object.values(ORGANIZERS).map((org) => (
         <div class="bg-white/80 backdrop-blur-sm rounded-xl shadow-md p-6 md:p-8 border border-wrc-green-100 flex flex-col hover:shadow-lg transition-shadow">
-          <!-- Logo placeholder -->
-          <div class="w-16 h-16 rounded-lg bg-wrc-green-100 border border-wrc-green-200 flex items-center justify-center mb-4">
-            <span class="text-wrc-green-700 font-heading font-bold text-sm">{org.shortName}</span>
+          <!-- Organisation logo -->
+          <div class="w-16 h-16 rounded-lg bg-white border border-wrc-green-200 flex items-center justify-center mb-4 overflow-hidden p-1.5">
+            <img src={org.logo} alt={org.shortName} class="w-full h-full object-contain" />
           </div>
           <h3 class="font-heading font-bold text-xl text-gray-900 mb-2">{org.name}</h3>
           <p class="text-gray-600 text-sm leading-relaxed mb-4 flex-1">{org.description}</p>
