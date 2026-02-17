@@ -5,29 +5,22 @@ import SketchDecorations from '../easter-eggs/SketchDecorations.astro';
 const locale = getLocaleFromUrl(Astro.url);
 ---
 
-<section class="py-16 md:py-24 relative overflow-hidden nature-texture">
+<div class="py-16 md:py-24 relative overflow-hidden">
   <SketchDecorations variant="tropical" color="#14532d" />
 
-  <!--
-    Iguazu waterfall & terrain cutout decoration.
-    Replace placeholder with actual PNG:
-    - Path: /images/decorative/iguazu-terrain-cutout.png
-    - Recommended size: 1600 x 800px (2:1 ratio)
-    - Format: PNG-24 with transparent background
-    - Content: Iguazu waterfall panorama with organic irregular edges (cutout style)
-    - Optimize to under 400KB
-  -->
+  <!-- Iguazu terrain cutout wave decoration -->
   <div class="absolute top-0 left-0 right-0 w-full h-full pointer-events-none select-none overflow-hidden" aria-hidden="true" style="z-index: 0;">
-    <!-- Gradient placeholder simulating the Iguazu terrain cutout shape -->
     <div class="w-full h-full opacity-[0.08]" style="
       background: linear-gradient(135deg, #14532d 0%, #166534 20%, transparent 45%),
                   linear-gradient(to right, #14532d 0%, #15803d 15%, #22c55e 25%, transparent 50%);
-      mask-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1600 800%22%3E%3Cpath d=%22M0 0 L1200 0 Q1150 50 1100 30 Q1050 10 1000 40 Q950 70 900 50 Q850 30 800 60 Q750 90 700 65 Q650 40 600 70 Q550 100 500 80 Q450 55 400 85 Q350 110 300 90 Q250 70 200 100 Q150 130 100 110 Q50 90 0 120Z%22 fill=%22white%22/%3E%3Cpath d=%22M0 120 Q50 150 100 130 Q200 180 300 160 Q400 200 500 170 Q600 220 700 190 Q800 250 900 210 Q950 270 1000 240 Q1050 300 1100 260 Q1150 320 1200 280 L1200 800 L0 800Z%22 fill=%22white%22/%3E%3C/svg%3E');
-      -webkit-mask-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1600 800%22%3E%3Cpath d=%22M0 0 L1200 0 Q1150 50 1100 30 Q1050 10 1000 40 Q950 70 900 50 Q850 30 800 60 Q750 90 700 65 Q650 40 600 70 Q550 100 500 80 Q450 55 400 85 Q350 110 300 90 Q250 70 200 100 Q150 130 100 110 Q50 90 0 120Z%22 fill=%22white%22/%3E%3Cpath d=%22M0 120 Q50 150 100 130 Q200 180 300 160 Q400 200 500 170 Q600 220 700 190 Q800 250 900 210 Q950 270 1000 240 Q1050 300 1100 260 Q1150 320 1200 280 L1200 800 L0 800Z%22 fill=%22white%22/%3E%3C/svg%3E');
-      mask-size: cover;
-      -webkit-mask-size: cover;
+      mask-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1600 800%22%3E%3Cpath d=%22M0 0 L1200 0 Q1150 50 1100 30 Q1050 10 1000 40 Q950 70 900 50 Q850 30 800 60 Q750 90 700 65 Q650 40 600 70 Q550 100 500 80 Q450 55 400 85 Q350 110 300 90 Q250 70 200 100 Q150 130 100 110 Q50 90 0 120Z%22 fill=%22white%22/%3E%3Cpath d=%22M0 120 Q50 150 100 130 Q200 180 300 160 Q400 200 500 170 Q600 220 700 190 Q800 250 900 210 Q950 270 1000 240 Q1050 300 1100 260 Q1150 320 1200 280 L1200 800 L0 800Z%22 fill=%22white%22/%3E%3C/svg%3E'), linear-gradient(to bottom, white 60%, transparent 100%);
+      -webkit-mask-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1600 800%22%3E%3Cpath d=%22M0 0 L1200 0 Q1150 50 1100 30 Q1050 10 1000 40 Q950 70 900 50 Q850 30 800 60 Q750 90 700 65 Q650 40 600 70 Q550 100 500 80 Q450 55 400 85 Q350 110 300 90 Q250 70 200 100 Q150 130 100 110 Q50 90 0 120Z%22 fill=%22white%22/%3E%3Cpath d=%22M0 120 Q50 150 100 130 Q200 180 300 160 Q400 200 500 170 Q600 220 700 190 Q800 250 900 210 Q950 270 1000 240 Q1050 300 1100 260 Q1150 320 1200 280 L1200 800 L0 800Z%22 fill=%22white%22/%3E%3C/svg%3E'), linear-gradient(to bottom, white 60%, transparent 100%);
+      mask-size: cover, 100% 100%;
+      -webkit-mask-size: cover, 100% 100%;
       mask-repeat: no-repeat;
       -webkit-mask-repeat: no-repeat;
+      mask-composite: intersect;
+      -webkit-mask-composite: source-in;
     "></div>
   </div>
 
@@ -71,4 +64,4 @@ const locale = getLocaleFromUrl(Astro.url);
       </p>
     </div>
   </div>
-</section>
+</div>

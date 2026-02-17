@@ -5,13 +5,55 @@ import SketchDecorations from '../easter-eggs/SketchDecorations.astro';
 const locale = getLocaleFromUrl(Astro.url);
 
 const regions = [
-  { name: 'Europe', org: 'European Ranger Federation', color: 'from-blue-800 to-blue-600' },
-  { name: 'South America', org: '', color: 'from-green-800 to-green-600' },
-  { name: 'North America', org: '', color: 'from-indigo-800 to-indigo-600' },
-  { name: 'Africa', org: 'GRAA', color: 'from-amber-800 to-amber-600' },
-  { name: 'Oceania', org: '', color: 'from-cyan-800 to-cyan-600' },
-  { name: 'Central America', org: '', color: 'from-emerald-800 to-emerald-600' },
-  { name: 'Asia', org: '', color: 'from-purple-800 to-purple-600' },
+  {
+    id: 3,
+    title: 'South America',
+    coverUrl: 'https://i.imgur.com/U2s9hxi.jpg',
+    description:
+      'From the biodiverse Amazon forests shared by many countries, the Eastern Tropical Pacific Marine Corridor that reaches up to Galapagos Marine Reserve, the extension of grasslands in the Southern Cone, the Patagonia Region and outstanding Andes mountain ridge to the renowned World Heritage Site Machu Picchu, rangers across this vast continent work tirelessly to protect natural resources and abundant wildlife in collaboration with an enormous diversity of indigenous peoples and local communities.',
+  },
+  {
+    id: 5,
+    title: 'Africa',
+    coverUrl: 'https://i.imgur.com/THs7nV5.jpg',
+    description:
+      "The Game Rangers' Association of Africa (GRAA) is Africa's oldest and largest ranger association, founded in 1970. With a membership of over 2,500 rangers across 20 countries, GRAA proudly represents the International Ranger Federation (IRF) in the region.",
+  },
+  {
+    id: 6,
+    title: 'Central America',
+    coverUrl: 'https://i.imgur.com/EpncZyP.jpg',
+    description:
+      'From northern Mexico, crossing along the tropical rainforest of Selva Maya Corridor, the Mesoamerican Reef System and all the way to Caribbean Islands, rangers play a key role protecting outstanding biodiversity in land and water along with local communities from diverse cultures and backgrounds.',
+  },
+  {
+    id: 7,
+    title: 'Asia',
+    coverUrl: 'https://i.imgur.com/RsDfF4o.png',
+    description:
+      'Asia is recognized for its incomparable richness in biodiversity, encompassing a wide variety of plant and animal species that establish it as a global hotspot for biodiversity.',
+  },
+  {
+    id: 8,
+    title: 'Oceania',
+    coverUrl: 'https://i.imgur.com/Khqk79L.jpg',
+    description:
+      'The Oceania region is comprised of the 24 countries and territories of Polynesia, Micronesia, Melanesia, Australia and New Zealand containing a diverse range of ecosystems.',
+  },
+  {
+    id: 9,
+    title: 'North America',
+    coverUrl: 'https://i.imgur.com/d58ev2N.jpg',
+    description:
+      'Rangers across the United States and Canada work to preserve, protect, and share our natural, cultural, and scenic resources through education, engineering, and enforcement efforts. Our agencies have varied responsibilities, but our goals are common in protecting areas set aside for variety of conservation purposes.',
+  },
+  {
+    id: 10,
+    title: 'Europe',
+    coverUrl: 'https://i.imgur.com/8Vqc1Yo.jpg',
+    description:
+      'Across the great diversity from vast forests and marshlands to volcanic landscapes: Rangers in Europe are true mediators between humans and nature. Visitors to protected areas, neighbouring communities and economic interests – in the densely populated region Europe is, rangers mediate a variety of human needs with nature conservation. Their most important tasks therefore include duties like environmental education, visitor management and law enforcement alongside monitoring and supporting science. All for the one big goal uniting rangers worldwide: The protection of species and natural areas.',
+  },
 ];
 ---
 
@@ -19,7 +61,6 @@ const regions = [
   <!-- World map background silhouette -->
   <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.04]" aria-hidden="true">
     <svg viewBox="0 0 1000 500" class="w-[80%] h-auto" fill="#14532d">
-      <!-- Simplified world map continents -->
       <!-- North America -->
       <path d="M150 120 Q180 100 220 110 Q240 105 260 115 Q280 120 290 140 Q285 160 270 170 Q255 180 240 175 Q220 185 200 180 Q185 175 175 160 Q165 145 150 120Z"/>
       <!-- South America -->
@@ -56,18 +97,23 @@ const regions = [
       <div class="swiper-wrapper">
         {regions.map((region) => (
           <div class="swiper-slide">
-            <div class={`relative h-48 sm:h-56 rounded-xl overflow-hidden bg-gradient-to-br ${region.color} shadow-lg`}>
-              <!-- Nature pattern overlay -->
-              <div class="absolute inset-0 opacity-[0.08]" aria-hidden="true">
-                <svg class="w-full h-full" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
-                  <path d="M20 180 Q25 160 22 140 M22 140 Q18 138 14 142 M22 140 Q20 135 24 132" stroke="white" stroke-width="1.5" fill="none"/>
-                  <path d="M180 170 Q175 150 178 130 M178 130 Q182 128 186 132 M178 130 Q176 125 180 122" stroke="white" stroke-width="1.5" fill="none"/>
-                  <path d="M100 20 Q95 10 88 15 Q82 20 88 25 Q92 27 100 22 Q108 27 112 25 Q118 20 112 15 Q105 10 100 20" stroke="white" stroke-width="1" fill="none"/>
-                </svg>
-              </div>
+            <div
+              class="region-card relative h-48 sm:h-56 rounded-xl overflow-hidden shadow-lg group transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              data-title={region.title}
+              data-cover-url={region.coverUrl}
+              data-description={region.description}
+            >
+              <img
+                src={region.coverUrl}
+                alt={region.title}
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent"></div>
               <div class="absolute inset-0 flex flex-col justify-end p-5">
-                <h3 class="text-xl sm:text-2xl font-heading font-bold text-white drop-shadow-md">{region.name}</h3>
-                {region.org && <p class="text-sm text-white/80 mt-1">{region.org}</p>}
+                <h3 class="text-lg sm:text-xl font-heading font-bold text-white drop-shadow-md leading-tight">
+                  {region.title}
+                </h3>
               </div>
             </div>
           </div>
@@ -95,4 +141,92 @@ const regions = [
     },
     a11y: { enabled: true },
   });
+
+  // Hover tooltip (same pattern as HistoryTable timeline)
+  const tooltip = document.createElement('div');
+  tooltip.id = 'region-tip';
+  tooltip.style.cssText = 'position:fixed;z-index:9999;pointer-events:none;opacity:0;transition:opacity 0.2s ease,transform 0.2s ease;';
+  tooltip.innerHTML = `
+    <div style="width:480px;border-radius:12px;overflow:hidden;box-shadow:0 20px 40px rgba(0,0,0,0.25);background:#14532d;" id="rt-card">
+      <div style="height:160px;background:#14532d;" id="rt-img"></div>
+      <div style="padding:16px 18px;color:white;">
+        <p style="font-family:Montserrat,sans-serif;font-weight:700;font-size:16px;line-height:1.3;" id="rt-title"></p>
+        <p style="font-size:13px;line-height:1.6;opacity:0.85;margin-top:8px;" id="rt-desc"></p>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center;">
+      <div style="width:12px;height:12px;transform:rotate(45deg);margin-top:-6px;background:#14532d;" id="rt-arrow"></div>
+    </div>
+  `;
+  document.body.appendChild(tooltip);
+
+  const rtImg = document.getElementById('rt-img')!;
+  const rtTitle = document.getElementById('rt-title')!;
+  const rtDesc = document.getElementById('rt-desc')!;
+
+  const cards = document.querySelectorAll<HTMLElement>('.region-card');
+
+  cards.forEach((card) => {
+    card.addEventListener('mouseenter', () => {
+      const coverUrl = card.dataset.coverUrl || '';
+      rtImg.style.background = `url(${coverUrl}) center/cover no-repeat`;
+      rtTitle.textContent = card.dataset.title || '';
+      rtDesc.textContent = card.dataset.description || '';
+
+      // Position tooltip above the card center
+      const rect = card.getBoundingClientRect();
+      const tipW = 480;
+      const tipH = tooltip.offsetHeight || 320;
+
+      const left = Math.max(8, Math.min(
+        rect.left + rect.width / 2 - tipW / 2,
+        window.innerWidth - tipW - 8
+      ));
+      const top = Math.max(8, rect.top - tipH - 8);
+
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = top + 'px';
+
+      tooltip.style.opacity = '1';
+      tooltip.style.transform = 'translateY(0)';
+    });
+
+    card.addEventListener('mouseleave', () => {
+      tooltip.style.opacity = '0';
+      tooltip.style.transform = 'translateY(-8px)';
+    });
+  });
+
+  // Hide tooltip when carousel is swiped
+  const carouselEl = document.querySelector('.regions-carousel');
+  if (carouselEl) {
+    carouselEl.addEventListener('touchmove', () => {
+      tooltip.style.opacity = '0';
+    });
+  }
 </script>
+
+<style>
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .region-card img {
+      transition: none;
+    }
+    .region-card {
+      transition: none;
+    }
+  }
+
+  /* Pagination dot styles */
+  :global(.regions-carousel .swiper-pagination-bullet) {
+    background: #14532d !important;
+    opacity: 0.3;
+    width: 8px;
+    height: 8px;
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  :global(.regions-carousel .swiper-pagination-bullet-active) {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+</style>

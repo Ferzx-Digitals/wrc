@@ -29,7 +29,14 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(git push:*)",
-      "Bash(node -e:*)"
+      "Bash(node -e:*)",
+      "Bash(git checkout:*)",
+      "Bash(for f in *.jsonl)",
+      "Bash(do if python3 -c \" with open\\(''$f'', ''r''\\) as fh: for line in fh: if ''Q7TBXHN'' in line or ''F5i0PGY'' in line: print\\(''FOUND''\\) break \")",
+      "Bash(then)",
+      "Bash(echo:*)",
+      "Bash(fi)",
+      "Bash(done)"
     ]
   }
 }

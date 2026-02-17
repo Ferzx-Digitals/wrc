@@ -5,7 +5,7 @@ import Button from '../ui/Button.astro';
 const locale = getLocaleFromUrl(Astro.url);
 const prefix = `/${locale}`;
 
-const bannerImages = ['banner-1.jpg', 'banner-2.jpg', 'banner-3.jpg'];
+const bannerImages = ['banner-1.jpg', 'banner-2.png', 'banner-3.jpg'];
 
 const slides = [
   {
@@ -21,6 +21,8 @@ const slides = [
     description: t('home.hero.slide2.description', locale),
     bg: 'from-wrc-green-900 via-wrc-blue-900 to-wrc-green-800',
     banner: bannerImages[1],
+    bgPos: 'center 70%',
+    bgTop: '4rem',
   },
   {
     title: t('home.hero.slide3.title', locale),
@@ -43,8 +45,8 @@ const slides = [
           <div class={`relative w-full h-full bg-gradient-to-br ${slide.bg}`}>
             <!-- Banner image (fallback: gradient above shows if image missing) -->
             <div
-              class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-              style={`background-image: url('/images/home/${slide.banner}');`}
+              class="absolute inset-x-0 bottom-0 bg-cover bg-no-repeat"
+              style={`top: ${slide.bgTop || '0'}; background-image: url('/images/home/${slide.banner}'); background-position: ${slide.bgPos || 'center'};`}
               role="img"
               aria-hidden="true"
             />
