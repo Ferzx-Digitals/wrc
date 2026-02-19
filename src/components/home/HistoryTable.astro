@@ -7,13 +7,13 @@ const congresses = [
   { edition: '1st', year: 1995, location: 'Zakopane', country: 'Poland', emoji: '🏔️', flag: '🇵🇱', color: '#2563eb', image: '/images/wrc/irf_1995.JPG' },
   { edition: '2nd', year: 1997, location: 'San José', country: 'Costa Rica', emoji: '🌋', flag: '🇨🇷', color: '#16a34a', image: '/images/wrc/irf_1997.JPG' },
   { edition: '3rd', year: 2000, location: 'Kruger', country: 'South Africa', emoji: '🦁', flag: '🇿🇦', color: '#d97706', image: '/images/wrc/irf_2000.JPG' },
-  { edition: '4th', year: 2003, location: 'Melbourne', country: 'Australia', emoji: '🦘', flag: '🇦🇺', color: '#0284c7' },
-  { edition: '5th', year: 2006, location: 'Stirling', country: 'Scotland', emoji: '🏰', flag: '🏴󠁧󠁢󠁳󠁣󠁴󠁿', color: '#4f46e5' },
-  { edition: '6th', year: 2009, location: 'Santa Cruz', country: 'Bolivia', emoji: '🦙', flag: '🇧🇴', color: '#dc2626' },
+  { edition: '4th', year: 2003, location: 'Melbourne', country: 'Australia', emoji: '🦘', flag: '🇦🇺', color: '#0284c7', image: '/images/wrc/irf_2003.jpg', credit: 'Jeff Ohlfs' },
+  { edition: '5th', year: 2006, location: 'Stirling', country: 'Scotland', emoji: '🏰', flag: '🏴󠁧󠁢󠁳󠁣󠁴󠁿', color: '#4f46e5', image: '/images/wrc/irf_2006.JPG', credit: 'Jeff Ohlfs' },
+  { edition: '6th', year: 2009, location: 'Santa Cruz', country: 'Bolivia', emoji: '🦙', flag: '🇧🇴', color: '#dc2626', image: '/images/wrc/irf_2009.JPG', credit: 'Jeff Ohlfs' },
   { edition: '7th', year: 2012, location: 'Arusha', country: 'Tanzania', emoji: '🐘', flag: '🇹🇿', color: '#ca8a04', image: '/images/wrc/irf_2012.JPG' },
-  { edition: '8th', year: 2016, location: 'Estes Park', country: 'USA', emoji: '🦅', flag: '🇺🇸', color: '#475569' },
+  { edition: '8th', year: 2016, location: 'Estes Park', country: 'USA', emoji: '🦅', flag: '🇺🇸', color: '#475569', image: '/images/wrc/irf_2016.JPG', credit: 'Jeff Ohlfs' },
   { edition: '9th', year: 2019, location: 'Chitwan', country: 'Nepal', emoji: '🐅', flag: '🇳🇵', color: '#ea580c', image: '/images/wrc/wrc_2019.png' },
-  { edition: '10th', year: 2024, location: 'Aix-les-Bains', country: 'France', emoji: '🏞️', flag: '🇫🇷', color: '#e11d48', image: '/images/wrc/wrc_2024.png' },
+  { edition: '10th', year: 2024, location: 'Hyères', country: 'France', emoji: '🏞️', flag: '🇫🇷', color: '#e11d48', image: '/images/wrc/wrc_2024.png' },
 ];
 ---
 
@@ -60,6 +60,7 @@ const congresses = [
               data-year={c.year}
               data-color={c.color}
               data-image={c.image || ''}
+              data-credit={c.credit || ''}
             >
               <!-- Emoji circle -->
               <div class="timeline-emoji w-14 h-14 md:w-16 md:h-16 rounded-full bg-white shadow-md border-2 border-wrc-green-200 flex items-center justify-center text-2xl md:text-3xl hover:shadow-lg hover:scale-110 hover:border-wrc-green-400 transition-all duration-200 z-10">
@@ -140,7 +141,10 @@ const congresses = [
       <div style="padding:12px;color:white;">
         <p style="font-family:Montserrat,sans-serif;font-weight:700;font-size:14px;" id="tl-title"></p>
         <p style="font-size:12px;opacity:0.8;" id="tl-loc"></p>
-        <p style="font-size:12px;opacity:0.6;margin-top:4px;" id="tl-year"></p>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px;">
+          <p style="font-size:12px;opacity:0.6;" id="tl-year"></p>
+          <p style="font-size:10px;opacity:0.5;" id="tl-credit"></p>
+        </div>
       </div>
     </div>
     <div style="display:flex;justify-content:center;">
@@ -156,6 +160,7 @@ const congresses = [
   const loc = document.getElementById('tl-loc')!;
   const year = document.getElementById('tl-year')!;
   const arrow = document.getElementById('tl-arrow')!;
+  const credit = document.getElementById('tl-credit')!;
 
   const items = document.querySelectorAll('.timeline-item');
 
@@ -177,6 +182,7 @@ const congresses = [
       title.textContent = `${el.dataset.edition} WRC`;
       loc.textContent = `${el.dataset.location}, ${el.dataset.country}`;
       year.textContent = el.dataset.year || '';
+      credit.textContent = el.dataset.credit ? `📷 ${el.dataset.credit}` : '';
       card.style.background = color;
       arrow.style.background = color;
 

@@ -1,10 +1,13 @@
 {
   "trips": [
-    { "name": "Parque Nacional Iguazú", "description": "Explore las impresionantes Cataratas del Iguazú y la selva subtropical circundante, Patrimonio de la Humanidad de la UNESCO.", "duration": "Día completo", "price": 16, "country": "Argentina", "image": "Iguazu National Park.jpg" },
-    { "name": "Güirá Oga Rescate de Fauna", "description": "Visite un centro de rehabilitación de fauna silvestre dedicado al rescate y cuidado de animales nativos heridos.", "duration": "3 horas", "price": 16, "country": "Argentina", "image": "Guira Oga Wildlife Rescue.jpg" },
-    { "name": "Minas de Wanda", "description": "Descubra las famosas minas de piedras semipreciosas de Wanda, conocidas por sus cristales de amatista y cuarzo.", "duration": "4 horas", "price": 20, "country": "Argentina", "image": "Minas de Wanda.jpg" },
-    { "name": "Misiones Jesuíticas", "description": "Excursión de día completo a las históricas misiones jesuíticas, Patrimonio de la Humanidad de la UNESCO que muestra la historia de la era colonial.", "duration": "Día completo", "price": 16, "country": "Argentina", "image": "Jesuitical Missions.jpg" },
-    { "name": "Parque Nacional Do Iguaçu", "description": "Experimente el lado brasileño de las Cataratas del Iguazú con vistas panorámicas de la Garganta del Diablo.", "duration": "6 horas", "price": 16, "country": "Brazil", "image": "Parque Nacional Do Iguaçu.jpg" },
-    { "name": "Parque Das Aves", "description": "Camine por aviarios que albergan más de 1.300 aves de 130 especies en el Bosque Atlántico.", "duration": "6 horas", "price": 16, "country": "Brazil", "image": "Parque Das Aves.jpg" }
+    { "name": "Pasarelas de la Garganta del Diablo", "description": "Recorra 2.200 metros de pasarelas hasta el icónico mirador de la Garganta del Diablo en las Cataratas del Iguazú. El sendero totalmente accesible toma aproximadamente 2 horas, con acceso por el Tren Ecológico de la Selva hasta la Estación Garganta del Diablo. Contemple el río precipitándose en la garganta, con bruma visible a más de 7 km.", "duration": "~2 horas (ida y vuelta)", "price": 16, "country": "Argentina", "image": "Iguazu National Park.jpg" }
+  ],
+  "attractions": [
+    { "name": "Parque Nacional Iguazú (Parque Completo)", "description": "Explore las impresionantes Cataratas del Iguazú y la selva subtropical circundante, Patrimonio de la Humanidad de la UNESCO.", "country": "Argentina", "image": "Iguazu National Park.jpg" },
+    { "name": "Güirá Oga Rescate de Fauna", "description": "Visite un centro de rehabilitación de fauna silvestre dedicado al rescate y cuidado de animales nativos heridos.", "country": "Argentina", "image": "Guira Oga Wildlife Rescue.jpg" },
+    { "name": "Minas de Wanda", "description": "Descubra las famosas minas de piedras semipreciosas de Wanda, conocidas por sus cristales de amatista y cuarzo.", "country": "Argentina", "image": "Minas de Wanda.jpg" },
+    { "name": "Misiones Jesuíticas", "description": "Excursión de día completo a las históricas misiones jesuíticas, Patrimonio de la Humanidad de la UNESCO que muestra la historia de la era colonial.", "country": "Argentina", "image": "Jesuitical Missions.jpg" },
+    { "name": "Parque Nacional Do Iguaçu", "description": "Experimente el lado brasileño de las Cataratas del Iguazú con vistas panorámicas de la Garganta del Diablo.", "country": "Brazil", "image": "Parque Nacional Do Iguaçu.jpg" },
+    { "name": "Parque Das Aves", "description": "Camine por aviarios que albergan más de 1.300 aves de 130 especies en el Bosque Atlántico.", "country": "Brazil", "image": "Parque Das Aves.jpg" }
   ]
 }

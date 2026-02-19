@@ -9,6 +9,8 @@ const faq = defineCollection({
       question: z.string(),
       answer: z.string(),
       category: z.enum(['registration', 'accommodation', 'general', 'payment', 'sponsorship']),
+      button_text: z.string().optional(),
+      button_href: z.string().optional(),
     })),
   }),
 });

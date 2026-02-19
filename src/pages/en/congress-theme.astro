@@ -9,34 +9,34 @@ const prefix = `/${locale}`;
 
 const streams = [
   {
-    title: 'Inclusive and Representative Workforce',
-    description: 'Promoting diversity, equity, and inclusion within the ranger profession. Addressing gender balance, indigenous representation, and ensuring all voices are heard in conservation.',
+    title: 'Ranger Role and Recognition',
+    description: 'Enhancing the recognition and professional standing of rangers worldwide, ensuring their vital contribution to conservation is valued and supported.',
+    icon: '🏅',
+    image: 'ranger-recognition.jpg',
+  },
+  {
+    title: 'Rangers for 30x30 Framework',
+    description: 'Aligning the ranger profession with the global 30x30 target to protect 30% of the planet by 2030, and defining the role rangers play in achieving this goal.',
     icon: '🌍',
+    image: 'community-engagement-and-partnerships.jpg',
+  },
+  {
+    title: 'Inclusive Workforce',
+    description: 'Promoting diversity, equity, and inclusion within the ranger profession, addressing gender balance, indigenous representation, and ensuring all voices are heard.',
+    icon: '🤝',
     image: 'inclusive-and-representative-workforce.jpg',
   },
   {
-    title: 'Welfare and Working Conditions',
-    description: 'Improving safety, mental health support, fair compensation, and working environments for rangers worldwide. Addressing the risks and challenges rangers face daily.',
+    title: 'Ranger Representation',
+    description: 'Strengthening ranger advocacy, union representation, and collective voice to improve working conditions, welfare, and professional standards globally.',
     icon: '🛡️',
     image: 'welfare-and-working-conditions.jpg',
   },
   {
-    title: 'Professional Conduct and Ethics',
-    description: 'Establishing and maintaining high professional standards, ethical guidelines, and accountability frameworks for ranger operations globally.',
-    icon: '⚖️',
-    image: 'professional-conduct-and-ethics.jpg',
-  },
-  {
-    title: 'Capacity Building and Training',
-    description: 'Developing skills, knowledge, and capabilities through training programs, mentorship, and professional development opportunities for rangers at all levels.',
-    icon: '📚',
+    title: 'Open Stream: High Impact Contributions',
+    description: 'A platform for high-impact presentations on any topic relevant to the ranger profession that falls outside the other thematic streams.',
+    icon: '💡',
     image: 'capacity-building-and-training.jpg',
-  },
-  {
-    title: 'Community Engagement and Partnerships',
-    description: 'Building strong relationships between rangers, local communities, indigenous peoples, and conservation organizations to create collaborative approaches to protected area management.',
-    icon: '🤝',
-    image: 'community-engagement-and-partnerships.jpg',
   },
 ];
 
@@ -97,8 +97,10 @@ const topics = [
   </section>
 
   <!-- Theme Description -->
-  <section class="py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <section class="relative py-16 bg-gray-50 overflow-hidden">
+    <img src="/images/home/12.png" alt="" aria-hidden="true" class="absolute left-0 bottom-0 h-72 w-auto opacity-40 pointer-events-none" />
+    <img src="/images/home/15.png" alt="" aria-hidden="true" class="absolute right-0 top-0 h-[442px] w-auto opacity-40 pointer-events-none" />
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl mx-auto text-center">
         <div class="bg-wrc-green-50 rounded-2xl p-8 md:p-10 mb-12">
           <h2 class="text-2xl md:text-3xl font-heading font-bold text-wrc-green-900 mb-4">
@@ -141,7 +143,7 @@ const topics = [
     </div>
   </section>
 
-  <SectionDivider variant="jungle" />
+  <SectionDivider variant="jungle" class="bg-gray-50" />
 
   <!-- Congress Objectives -->
   <section class="relative py-16 overflow-hidden">
@@ -170,14 +172,15 @@ const topics = [
 
 
   <!-- WRC Topics Grid -->
-  <section class="py-16 bg-gray-50">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <section class="relative py-16 bg-gray-50 overflow-hidden">
+    <img src="/images/home/25.png" alt="" aria-hidden="true" class="absolute left-0 bottom-0 h-64 w-auto opacity-40 pointer-events-none" />
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl md:text-4xl font-heading font-bold text-center text-wrc-green-900 mb-10">
         Discussion Topics
       </h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <div class="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
         {topics.map((topic) => (
-          <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+          <div class="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] bg-white rounded-xl shadow-md p-6 border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
             <span class="text-3xl mb-3 block" aria-hidden="true">{topic.icon}</span>
             <h3 class="font-heading font-bold text-lg text-gray-900 mb-2">{topic.title}</h3>
             <p class="text-sm text-gray-600 leading-relaxed">{topic.description}</p>

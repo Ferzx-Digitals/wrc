@@ -3,6 +3,7 @@ import PageLayout from '../../layouts/PageLayout.astro';
 import Button from '../../components/ui/Button.astro';
 import SectionDivider from '../../components/global/SectionDivider.astro';
 import CountdownTimer from '../../components/global/CountdownTimer.astro';
+import SketchDecorations from '../../components/easter-eggs/SketchDecorations.astro';
 import { REGISTRATION_FEE_USD, MAX_CAPACITY, REGION_CAP, HOST_REGION_CAP, CONTACT_EMAIL } from '../../utils/constants';
 
 const registrationIncludes = [
@@ -58,8 +59,11 @@ const paymentMethods = [
   </section>
 
   <!-- Pricing -->
-  <section class="py-16">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <section class="py-16 relative overflow-hidden nature-texture bg-gradient-to-b from-wrc-green-50/30 via-wrc-green-50/50 to-gray-50">
+    <SketchDecorations variant="tropical" color="#166534" />
+    <img src="/images/home/10.png" alt="" aria-hidden="true" class="absolute left-0 top-0 h-72 w-auto opacity-50 pointer-events-none -scale-x-100" />
+    <img src="/images/home/14.png" alt="" aria-hidden="true" class="absolute right-0 bottom-0 h-[48rem] w-auto opacity-40 pointer-events-none" />
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="max-w-lg mx-auto text-center">
         <div class="bg-white rounded-2xl shadow-xl p-8 border-2 border-wrc-green-200">
           <p class="text-sm text-wrc-green-700 font-semibold uppercase tracking-wide mb-2">Inscription au Congrès</p>
@@ -83,7 +87,7 @@ const paymentMethods = [
           <p class="text-xs text-gray-500 mb-6">
             Période d'inscription : 20 février 2026 — 31 mars 2027
           </p>
-          <Button href="#registration-form" variant="primary" size="lg" class="w-full">
+          <Button href="https://intercloudy.contilatam.com/2269/world-ranger-congress" target="_blank" rel="noopener" variant="primary" size="lg" class="w-full">
             Inscrivez-vous Maintenant
           </Button>
         </div>
@@ -111,7 +115,7 @@ const paymentMethods = [
     </div>
   </section>
 
-  <SectionDivider variant="jungle" />
+  <SectionDivider variant="jungle" class="bg-gray-50" />
 
   <!-- Registration Rules -->
   <section class="py-16">
@@ -134,7 +138,6 @@ const paymentMethods = [
             <li>L'inscription est individuelle et personnelle</li>
             <li>Non transférable à une autre personne</li>
             <li>Pas d'inscriptions de groupe</li>
-            <li>Formulaire d'inscription en anglais uniquement</li>
           </ul>
         </div>
         <div class="bg-wrc-earth-50 rounded-xl p-6">
@@ -172,96 +175,27 @@ const paymentMethods = [
 
   <SectionDivider variant="jungle" />
 
-  <!-- Registration Form Shell -->
-  <section id="registration-form" class="py-16">
-    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-heading font-bold text-center text-wrc-green-900 mb-4">
-        Formulaire d'Inscription
-      </h2>
-      <p class="text-center text-gray-600 mb-8">
-        Remplissez le formulaire ci-dessous pour vous inscrire au congrès. Le formulaire est en anglais uniquement.
-        Utilisez <a href="https://translate.google.com" target="_blank" rel="noopener" class="text-wrc-green-700 underline">Google Translate</a> si nécessaire.
-      </p>
-
-      <form class="space-y-5 bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-        <div class="grid sm:grid-cols-2 gap-5">
-          <div>
-            <label for="reg-first-name" class="block text-sm font-medium text-gray-700 mb-1">Prénom *</label>
-            <input type="text" id="reg-first-name" name="firstName" required
-              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-wrc-green-500 focus:border-wrc-green-500"
-              placeholder="Prénom" />
-          </div>
-          <div>
-            <label for="reg-last-name" class="block text-sm font-medium text-gray-700 mb-1">Nom *</label>
-            <input type="text" id="reg-last-name" name="lastName" required
-              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-wrc-green-500 focus:border-wrc-green-500"
-              placeholder="Nom" />
-          </div>
-        </div>
-
-        <div>
-          <label for="reg-email" class="block text-sm font-medium text-gray-700 mb-1">Adresse E-mail *</label>
-          <input type="email" id="reg-email" name="email" required
-            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-wrc-green-500 focus:border-wrc-green-500"
-            placeholder="votre@email.com" />
-        </div>
-
-        <div class="grid sm:grid-cols-2 gap-5">
-          <div>
-            <label for="reg-country" class="block text-sm font-medium text-gray-700 mb-1">Pays *</label>
-            <input type="text" id="reg-country" name="country" required
-              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-wrc-green-500 focus:border-wrc-green-500"
-              placeholder="Votre pays" />
-          </div>
-          <div>
-            <label for="reg-region" class="block text-sm font-medium text-gray-700 mb-1">Région IRF *</label>
-            <select id="reg-region" name="region" required
-              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-wrc-green-500 focus:border-wrc-green-500">
-              <option value="">Sélectionner la région</option>
-              <option value="africa">Afrique</option>
-              <option value="asia">Asie</option>
-              <option value="europe">Europe</option>
-              <option value="latin-america">Amérique Latine et Caraïbes</option>
-              <option value="north-america">Amérique du Nord</option>
-              <option value="oceania">Océanie</option>
-              <option value="south-asia">Asie du Sud</option>
-            </select>
-          </div>
-        </div>
-
-        <div>
-          <label for="reg-organization" class="block text-sm font-medium text-gray-700 mb-1">Organisation / Agence</label>
-          <input type="text" id="reg-organization" name="organization"
-            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-wrc-green-500 focus:border-wrc-green-500"
-            placeholder="Votre organisation (optionnel)" />
-        </div>
-
-        <div>
-          <label for="reg-type" class="block text-sm font-medium text-gray-700 mb-1">Type d'Inscription *</label>
-          <select id="reg-type" name="registrationType" required
-            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-wrc-green-500 focus:border-wrc-green-500">
-            <option value="">Sélectionner le type</option>
-            <option value="local">Garde Local (Argentine)</option>
-            <option value="international">Garde International</option>
-            <option value="spouse">Conjoint / Partenaire</option>
-          </select>
-        </div>
-
-        <div class="bg-wrc-green-50 rounded-lg p-4 text-center">
-          <p class="text-sm text-gray-600 mb-1">Frais d'Inscription</p>
-          <p class="text-3xl font-heading font-extrabold text-wrc-green-900">${REGISTRATION_FEE_USD} USD</p>
-        </div>
-
-        <div class="pt-2">
-          <Button type="submit" variant="primary" size="lg" class="w-full">
-            Procéder au Paiement
-          </Button>
-          <p class="text-xs text-gray-500 text-center mt-3">
-            Intégration du paiement bientôt disponible. Pour une inscription anticipée, contactez{' '}
-            <a href={`mailto:${CONTACT_EMAIL}`} class="text-wrc-green-700 underline">{CONTACT_EMAIL}</a>
-          </p>
-        </div>
-      </form>
+  <!-- Inscription et Paiement en Ligne -->
+  <section id="registration-form" class="py-16 relative overflow-hidden">
+    <img src="/images/home/10.png" alt="" aria-hidden="true" class="absolute right-0 top-0 h-72 w-auto opacity-50 pointer-events-none" />
+    <img src="/images/home/10.png" alt="" aria-hidden="true" class="absolute left-0 bottom-0 h-72 w-auto opacity-50 pointer-events-none -scale-x-100" />
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12 border border-gray-100 text-center">
+        <h2 class="text-3xl font-heading font-bold text-wrc-green-900 mb-4">
+          Inscrivez-vous et Payez en Ligne
+        </h2>
+        <p class="text-gray-600 mb-8 max-w-xl mx-auto">
+          L'inscription et le paiement sont gérés via notre plateforme officielle d'inscription.
+          Cliquez sur le bouton ci-dessous pour remplir le formulaire d'inscription et effectuer votre paiement.
+        </p>
+        <Button href="https://intercloudy.contilatam.com/2269/world-ranger-congress" target="_blank" rel="noopener" variant="primary" size="lg">
+          Accéder au Portail d'Inscription
+        </Button>
+        <p class="text-sm text-gray-500 mt-6">
+          Questions ? Contactez{' '}
+          <a href={`mailto:${CONTACT_EMAIL}`} class="text-wrc-green-700 underline">{CONTACT_EMAIL}</a>
+        </p>
+      </div>
     </div>
   </section>
 

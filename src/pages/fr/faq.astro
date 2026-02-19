@@ -3,12 +3,12 @@ import PageLayout from '../../layouts/PageLayout.astro';
 import Button from '../../components/ui/Button.astro';
 import { CONTACT_EMAIL } from '../../utils/constants';
 import { getLocaleFromUrl } from '../../i18n/utils';
+import { fetchFaqItems } from '../../utils/google-sheets';
 
 const locale = getLocaleFromUrl(Astro.url);
 const prefix = `/${locale}`;
 
-const faqData = await import('../../content/faq/fr.json');
-const faqItems = faqData.items;
+const faqItems = await fetchFaqItems('fr');
 
 const categories = [
   { id: 'all', label: 'Toutes les Questions' },
@@ -88,6 +88,21 @@ const categories = [
             </summary>
             <div class="px-5 pb-4 text-gray-600 leading-relaxed text-sm [&_a]:text-wrc-green-700 [&_a]:font-semibold [&_a]:underline" set:html={item.answer}>
             </div>
+            {item.button_text && item.button_href && (
+              <div class="px-5 pb-4">
+                <a
+                  href={item.button_href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-4 py-2 text-sm font-heading font-semibold rounded-lg bg-wrc-green-700 text-white hover:bg-wrc-green-800 transition-colors"
+                >
+                  {item.button_text}
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            )}
           </details>
         ))}
       </div>

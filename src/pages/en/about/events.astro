@@ -9,6 +9,7 @@ const prefix = `/${locale}`;
 
 const fieldTripsData = await import('../../../content/field-trips/en.json');
 const fieldTrips = fieldTripsData.trips;
+const attractions = fieldTripsData.attractions;
 
 const schedule = [
   { day: 'Friday 18 April', key: 'events.schedule.arrival', accent: 'wrc-green-200' },
@@ -109,14 +110,14 @@ const activities = [
   <!-- Field Trips -->
   <section class="py-16 md:py-20 bg-white">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl md:text-4xl font-heading font-bold text-wrc-green-900 mb-4">
+      <h2 class="text-3xl md:text-4xl font-heading font-bold text-wrc-green-900 mb-4 text-center">
         {t('events.fieldTrips.title', locale)}
       </h2>
-      <p class="text-lg text-gray-600 max-w-3xl mb-12">
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12 text-center">
         {t('events.fieldTrips.description', locale)}
       </p>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="max-w-md mx-auto">
         {fieldTrips.map((trip) => (
           <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
             <div class="aspect-[16/10] bg-gradient-to-br from-wrc-green-100 to-wrc-blue-100 flex items-center justify-center relative overflow-hidden">
@@ -138,6 +139,36 @@ const activities = [
                 <span class="text-gray-500">{t('events.fieldTrips.duration', locale)}: {trip.duration}</span>
                 <span class="font-semibold text-wrc-green-700">{t('events.fieldTrips.entryFee', locale)}: USD ${trip.price}</span>
               </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Other Tourist Attractions -->
+      <h3 class="text-3xl md:text-4xl font-heading font-bold text-wrc-green-900 mt-20 mb-4">
+        {t('events.attractions.title', locale)}
+      </h3>
+      <p class="text-lg text-gray-600 max-w-3xl mb-12">
+        {t('events.attractions.description', locale)}
+      </p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {attractions.map((place) => (
+          <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
+            <div class="aspect-[16/10] bg-gradient-to-br from-wrc-green-100 to-wrc-blue-100 flex items-center justify-center relative overflow-hidden">
+              {place.image ? (
+                <img src={`/images/congress-events/${encodeURIComponent(place.image)}`} alt="" class="absolute inset-0 w-full h-full object-cover" />
+              ) : (
+                <span class="text-wrc-green-400 font-heading font-bold text-sm">{place.name}</span>
+              )}
+            </div>
+            <div class="p-5">
+              <div class="flex items-center gap-2 mb-3">
+                <span class={`text-xs px-2 py-0.5 rounded-full font-semibold ${place.country === 'Argentina' ? 'bg-wrc-blue-100 text-wrc-blue-700' : 'bg-wrc-green-100 text-wrc-green-700'}`}>
+                  {place.country}
+                </span>
+              </div>
+              <h3 class="font-heading font-bold text-gray-900 mb-2">{place.name}</h3>
+              <p class="text-sm text-gray-600 leading-relaxed">{place.description}</p>
             </div>
           </div>
         ))}

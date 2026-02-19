@@ -1,10 +1,13 @@
 {
   "trips": [
-    { "name": "Parc National d'Iguazú", "description": "Explorez les impressionnantes chutes d'Iguazú et la forêt subtropicale environnante, site du patrimoine mondial de l'UNESCO.", "duration": "Journée complète", "price": 16, "country": "Argentina", "image": "Iguazu National Park.jpg" },
-    { "name": "Güirá Oga Sauvetage de la Faune", "description": "Visitez un centre de réhabilitation de la faune dédié au sauvetage et aux soins des animaux indigènes blessés.", "duration": "3 heures", "price": 16, "country": "Argentina", "image": "Guira Oga Wildlife Rescue.jpg" },
-    { "name": "Mines de Wanda", "description": "Découvrez les célèbres mines de pierres semi-précieuses de Wanda, connues pour leurs cristaux d'améthyste et de quartz.", "duration": "4 heures", "price": 20, "country": "Argentina", "image": "Minas de Wanda.jpg" },
-    { "name": "Missions Jésuites", "description": "Excursion d'une journée complète aux missions jésuites historiques, site du patrimoine mondial de l'UNESCO présentant l'histoire de l'époque coloniale.", "duration": "Journée complète", "price": 16, "country": "Argentina", "image": "Jesuitical Missions.jpg" },
-    { "name": "Parque Nacional Do Iguaçu", "description": "Découvrez le côté brésilien des chutes d'Iguazú avec des vues panoramiques sur la Gorge du Diable.", "duration": "6 heures", "price": 16, "country": "Brazil", "image": "Parque Nacional Do Iguaçu.jpg" },
-    { "name": "Parque Das Aves", "description": "Parcourez des volières abritant plus de 1 300 oiseaux de 130 espèces dans la forêt atlantique.", "duration": "6 heures", "price": 16, "country": "Brazil", "image": "Parque Das Aves.jpg" }
+    { "name": "Passerelles de la Gorge du Diable", "description": "Parcourez 2 200 mètres de passerelles jusqu'au point de vue emblématique de la Gorge du Diable aux chutes d'Iguazú. Le sentier entièrement accessible prend environ 2 heures, accessible par le Train Écologique de la Jungle jusqu'à la station Garganta del Diablo. Admirez le fleuve se précipitant dans la gorge, avec une brume visible à plus de 7 km.", "duration": "~2 heures (aller-retour)", "price": 16, "country": "Argentina", "image": "Iguazu National Park.jpg" }
+  ],
+  "attractions": [
+    { "name": "Parc National d'Iguazú (Parc Complet)", "description": "Explorez les impressionnantes chutes d'Iguazú et la forêt subtropicale environnante, site du patrimoine mondial de l'UNESCO.", "country": "Argentina", "image": "Iguazu National Park.jpg" },
+    { "name": "Güirá Oga Sauvetage de la Faune", "description": "Visitez un centre de réhabilitation de la faune dédié au sauvetage et aux soins des animaux indigènes blessés.", "country": "Argentina", "image": "Guira Oga Wildlife Rescue.jpg" },
+    { "name": "Mines de Wanda", "description": "Découvrez les célèbres mines de pierres semi-précieuses de Wanda, connues pour leurs cristaux d'améthyste et de quartz.", "country": "Argentina", "image": "Minas de Wanda.jpg" },
+    { "name": "Missions Jésuites", "description": "Excursion d'une journée complète aux missions jésuites historiques, site du patrimoine mondial de l'UNESCO présentant l'histoire de l'époque coloniale.", "country": "Argentina", "image": "Jesuitical Missions.jpg" },
+    { "name": "Parque Nacional Do Iguaçu", "description": "Découvrez le côté brésilien des chutes d'Iguazú avec des vues panoramiques sur la Gorge du Diable.", "country": "Brazil", "image": "Parque Nacional Do Iguaçu.jpg" },
+    { "name": "Parque Das Aves", "description": "Parcourez des volières abritant plus de 1 300 oiseaux de 130 espèces dans la forêt atlantique.", "country": "Brazil", "image": "Parque Das Aves.jpg" }
   ]
 }
