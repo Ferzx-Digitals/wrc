@@ -10,16 +10,16 @@ function localizeHref(href: string): string {
 }
 ---
 
-<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
+<header id="main-header" class="header sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm overflow-visible">
   <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
-    <div class="flex h-16 items-center justify-between">
-      <!-- Logo -->
-      <a href={localizeHref('/')} class="flex items-center gap-2 shrink-0" aria-label={t('nav.home', locale)}>
-        <img src="/images/logos/wrc.png" alt="11th IRF World Ranger Congress" class="h-10 w-auto object-contain" />
+    <div id="header-nav-inner" class="header__nav-inner flex h-16 items-start justify-between overflow-visible">
+      <!-- Logo: large at top of page, shrinks on scroll -->
+      <a href={localizeHref('/')} class="header__logo-link flex shrink-0 items-start pb-3 transition-[padding] duration-300" aria-label={t('nav.home', locale)}>
+        <img src="/images/logos/wrc.png" alt="11th IRF World Ranger Congress" class="header__logo h-[140px] w-auto object-contain object-left-top rounded-b-xl transition-[height,border-radius] duration-300 ease-out" />
       </a>
 
       <!-- Desktop Navigation -->
-      <div class="hidden lg:flex lg:items-center lg:gap-1">
+      <div class="hidden lg:flex h-16 lg:items-center lg:gap-1">
         {NAV_ITEMS.map((item) => (
           item.children ? (
             <div class="relative group">
@@ -64,19 +64,21 @@ function localizeHref(href: string): string {
       </div>
 
       <!-- Mobile menu button -->
-      <button
-        id="mobile-menu-toggle"
-        class="lg:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100"
-        aria-label="Toggle menu"
-        aria-expanded="false"
-      >
-        <svg class="w-6 h-6" id="menu-open-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-        <svg class="w-6 h-6 hidden" id="menu-close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
+      <div class="flex h-16 items-center lg:hidden">
+        <button
+          id="mobile-menu-toggle"
+          class="p-2 rounded-md text-gray-700 hover:bg-gray-100"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <svg class="w-6 h-6" id="menu-open-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg class="w-6 h-6 hidden" id="menu-close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
     </div>
 
     <!-- Mobile Navigation -->
@@ -124,7 +126,35 @@ function localizeHref(href: string): string {
   </nav>
 </header>
 
+<style is:global>
+  .header--scrolled .header__logo {
+    height: 2.5rem; /* h-10 */
+    border-radius: 0;
+  }
+  .header--scrolled .header__logo-link {
+    padding-bottom: 0;
+  }
+  .header--scrolled .header__nav-inner {
+    align-items: center;
+    padding-top: 0;
+  }
+</style>
+
 <script>
+  const header = document.getElementById('main-header');
+  const scrollThreshold = 40;
+
+  function updateHeaderScroll() {
+    if (window.scrollY > scrollThreshold) {
+      header?.classList.add('header--scrolled');
+    } else {
+      header?.classList.remove('header--scrolled');
+    }
+  }
+
+  updateHeaderScroll();
+  window.addEventListener('scroll', updateHeaderScroll, { passive: true });
+
   const toggle = document.getElementById('mobile-menu-toggle');
   const menu = document.getElementById('mobile-menu');
   const openIcon = document.getElementById('menu-open-icon');
