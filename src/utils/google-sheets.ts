@@ -22,6 +22,10 @@ const VALID_CATEGORIES = new Set([
 ]);
 
 function buildCsvUrl(sheetId: string, tab: string): string {
+  // Support both published IDs (2PACX-...) and regular spreadsheet IDs
+  if (sheetId.startsWith('2PACX-')) {
+    return `https://docs.google.com/spreadsheets/d/e/${sheetId}/pub?output=csv&sheet=${tab}`;
+  }
   return `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&sheet=${tab}`;
 }
 
@@ -72,12 +76,7 @@ async function loadFallbackJson(locale: Locale): Promise<FaqItem[]> {
 }
 
 export async function fetchFaqItems(locale: Locale): Promise<FaqItem[]> {
-  const sheetId = import.meta.env.GOOGLE_SHEET_ID;
-
-  if (!sheetId) {
-    console.warn('[FAQ] GOOGLE_SHEET_ID not set, falling back to local JSON');
-    return loadFallbackJson(locale);
-  }
+  const sheetId = '2PACX-1vTc7FvBhpt6ClxHXyjkoEUe1liQixwq5-YsofqlOpU4cWDzIhEcVTFsweAVm584LWp8giu5lmYPBlEC';
 
   const url = buildCsvUrl(sheetId, locale);
 
