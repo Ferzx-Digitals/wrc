@@ -87,9 +87,15 @@ const paymentMethods = [
           <p class="text-xs text-gray-500 mb-6">
             Período de inscripción: 20 de febrero de 2026 — 31 de marzo de 2027
           </p>
+          <!-- EXTERNAL_REGISTER_BUTTON 5/6 - uncomment when registration portal is live -->
+          <!--
           <Button href="https://intercloudy.contilatam.com/2269/world-ranger-congress" target="_blank" rel="noopener" variant="primary" size="lg" class="w-full">
             Inscríbase Ahora
           </Button>
+          -->
+          <button type="button" disabled class="inline-flex items-center justify-center font-heading font-semibold rounded-lg px-8 py-4 text-lg w-full bg-wrc-green-700 text-white opacity-75 cursor-not-allowed">
+            Coming Soon...
+          </button>
         </div>
       </div>
     </div>
@@ -188,9 +194,15 @@ const paymentMethods = [
           La inscripción y el pago se realizan a través de nuestra plataforma oficial de registro.
           Haga clic en el botón a continuación para completar el formulario de inscripción y realizar su pago.
         </p>
+        <!-- EXTERNAL_REGISTER_BUTTON 6/6 - uncomment when registration portal is live -->
+        <!--
         <Button href="https://intercloudy.contilatam.com/2269/world-ranger-congress" target="_blank" rel="noopener" variant="primary" size="lg">
           Ir al Portal de Inscripción
         </Button>
+        -->
+        <button type="button" disabled class="inline-flex items-center justify-center font-heading font-semibold rounded-lg px-8 py-4 text-lg bg-wrc-green-700 text-white opacity-75 cursor-not-allowed">
+          Coming Soon...
+        </button>
         <p class="text-sm text-gray-500 mt-6">
           ¿Preguntas? Contacte{' '}
           <a href={`mailto:${CONTACT_EMAIL}`} class="text-wrc-green-700 underline">{CONTACT_EMAIL}</a>
