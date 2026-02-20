@@ -12,10 +12,10 @@ function localizeHref(href: string): string {
 
 <header id="main-header" class="header sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm overflow-visible">
   <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
-    <div id="header-nav-inner" class="header__nav-inner flex h-16 items-start justify-between overflow-visible">
-      <!-- Logo: large at top of page, shrinks on scroll -->
-      <a href={localizeHref('/')} class="header__logo-link flex shrink-0 items-start pb-3 transition-[padding] duration-300" aria-label={t('nav.home', locale)}>
-        <img src="/images/logos/wrc.png" alt="11th IRF World Ranger Congress" class="header__logo h-[140px] w-auto object-contain object-left-top rounded-b-xl transition-[height,border-radius] duration-300 ease-out" />
+    <div id="header-nav-inner" class="header__nav-inner flex h-16 items-center lg:items-start justify-between overflow-visible">
+      <!-- Logo: on mobile always small; on desktop large at top, shrinks on scroll -->
+      <a href={localizeHref('/')} class="header__logo-link flex shrink-0 items-start pb-0 lg:pb-3 transition-[padding] duration-300" aria-label={t('nav.home', locale)}>
+        <img src="/images/logos/wrc.png" alt="11th IRF World Ranger Congress" class="header__logo h-10 w-auto object-contain object-left-top rounded-none lg:h-[140px] lg:rounded-b-xl transition-[height,border-radius] duration-300 ease-out" />
       </a>
 
       <!-- Desktop Navigation -->
@@ -127,16 +127,18 @@ function localizeHref(href: string): string {
 </header>
 
 <style is:global>
-  .header--scrolled .header__logo {
-    height: 2.5rem; /* h-10 */
-    border-radius: 0;
-  }
-  .header--scrolled .header__logo-link {
-    padding-bottom: 0;
-  }
-  .header--scrolled .header__nav-inner {
-    align-items: center;
-    padding-top: 0;
+  /* Large logo and scroll-shrink only on desktop (lg+) */
+  @media (min-width: 1024px) {
+    .header--scrolled .header__logo {
+      height: 2.5rem; /* h-10 */
+      border-radius: 0;
+    }
+    .header--scrolled .header__logo-link {
+      padding-bottom: 0;
+    }
+    .header--scrolled .header__nav-inner {
+      align-items: center;
+    }
   }
 </style>
 
